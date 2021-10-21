@@ -1,0 +1,11 @@
+
+
+.headline {
+    grid-row: 1;
+    /* grid-column: 2; */
+}
+
+.invite {
+    grid-row: 2;
+    /* grid-column: 2; */
+}

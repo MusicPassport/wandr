@@ -1,0 +1,30 @@
+[
+    {
+    "id": 1,
+    "event_name": "Graduation",
+    "summary": "N/A",
+    "city": "Remote",
+    "address": "Remote",
+    "eventbrite_url": "N/A",
+    "img_url": "N/A",
+    "start": "2021-10-21T19:19:51Z",
+    "end": "2021-10-21T19:19:54Z",
+    "status": "DONE",
+    "currency": "USD",
+    "seen": false
+},
+    {
+    "id": 2,
+    "event_name": "Graduation Party",
+    "summary": "N/A",
+    "city": "Remote",
+    "address": "Remote",
+    "eventbrite_url": "N/A",
+    "img_url": "N/A",
+    "start": "2021-11-21T19:19:51Z",
+    "end": "2021-11-21T19:19:54Z",
+    "status": null,
+    "currency": "USD",
+    "seen": false
+}
+]

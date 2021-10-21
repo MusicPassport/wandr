@@ -20,6 +20,7 @@
 - Util Directory
 - no styled components
 - update your dev log every day.
+- exact paths on Routes
 
 ## Resources
 [FlowMapp](https://app.flowmapp.com/projects/239254/userflow/166397/)

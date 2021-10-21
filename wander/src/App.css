@@ -1,38 +1,88 @@
+/* Okay, first, we're going to create a simple, scrollable, mobile-friendly design, that's based on grid. */
+
 .App {
-  text-align: center;
+    /* we'll need to specify our app's height and width, too */
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(180deg, rgba(255,255,255,1)22%, rgba(233,233,233,0.7)66%, rgba(200,200,200,0.5)100%);
+    
+    
+    display: grid;
+    grid-template-rows: 1fr 7fr;
+    grid-template-columns: 1fr;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* YOUR job, Drew, is to create a friendly set of rules for our NAV component. Our Nav will live inside the HEADER html tag, which I'll go set up on App.jsx */
+header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(108, 200, 200, 0.8)20%,rgba(88, 190, 190, 0.8)50%, rgba(55, 175,175, 0.8)80%);
+    box-shadow: 1px 2px 6px black;
+    /* hmmm, the justify-content command isn't taking hold just yet. Let me change where we render the header, by switching it to the Nav's return. */
+    /* That did it! Now, we can add an alignment to clean up where they live in vertical space. */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* It's time to clean up our MAIN section. This is where we enter the Gridception game of grids within grids. */
+
+main {
+    
+/* BwwOOMMMMMMMM */
+    padding: 1rem;
+    display: grid;
+    /* the syntax becomes a mouthful here, but what we are doing is creating REPEATING rows and columns that AUTO-FILL the browser window with as many rows/columns as possible, according to the minmax ratio and px dimensions */
+    grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+    text-align: center;
+
+    overflow: auto;
+
+    /* Great! Now, let's go return a MAIN in our App.jsx */
+    /* Allright, we're not quite there yet. Let's think on why our h1 Wandr and Explore Link are stacking on top of each other for a moment. */
+    /* Let's see if our h1 and Link just need specified locations.  */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+main::-webkit-scrollbar {
+    display: none;
 }
 
-.App-link {
-  color: #61dafb;
+.link {
+    border-bottom: solid 1px black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a {
+    color: gray;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+a:hover {
+    color: black;
+}
+
+/* Down here, I've created a media query for when we are bigger than a phone */
+@media(min-width: 500px) {
+    .App {
+        grid-template-rows: 2fr 7fr 1fr;
+        grid-template-columns: 1fr 8fr 1fr;
+    }
+
+    header {
+        grid-row: 1;
+        grid-column: 1/span 3;
+        justify-content: space-around;
+    }
+
+    main {
+        grid-row: 2;
+        grid-column: 1/span 3;
+
+
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+
+    }
 }
