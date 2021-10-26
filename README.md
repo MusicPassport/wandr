@@ -1,33 +1,70 @@
-# MusicPassport-FE
+# Getting Started with Create React App
 
-## MVP
-- As a user, I want to start on a clean, easy to navigate landing page.
-- As a user, I want to see upcoming concerts and music festivals.
-- As a user, I want to select a concert/MF to save it to 'my concerts' (might not persist).
-- As a user, I want to have full CRUD capability for reviews for events.
-- As a user, I want to be redirected to the ticket page from an event.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Available Scripts
 
-## Stretch Goals
-### Bronze 
-- As a user, I want to be able to sign up for an account/log into my personal account.
-- As a user, I don't want to be automatically kicked out every 15 minutes.
-- As a user, I want 'my concerts' to persist every time I log out/in.
-- As a user, I want to be able to add an event that I couldn't find when searching.
+In the project directory, you can run:
 
-- As a user, I want my concerts to be displayed in a calendar format.
-- As a user, I want an additional calendar with ALL upcoming events.
-- As a user, I want to see how many people are attending each event.
-- As a user, I want to see a timeline of all my past and future events.
+### `npm start`
 
-- As a user, I want to review different events/venues and see other peoples reviews.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Silver 
-- As a user, I want to be able to see concert venues near me. 
-- As a user, I want to search by location.
-- As a user, I want to save my events to my local calendar (google calendar, apple calendar, etc).
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-### Gold 
-- As a user, I want to see which of my friends are going to each event.
-- As a user, I want to see 'most active tweets' for a certain hashtag.
-- As a user, I want to see different prices from different ticket avenues.
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
