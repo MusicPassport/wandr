@@ -33,6 +33,7 @@ if (events.length < 1) {
 }
 
     return (
+
 			<div className='event-list'>
 				{events.map((event) => (
 					<Link className='event-link' to={`/events/${event.id}`}>
