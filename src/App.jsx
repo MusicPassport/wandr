@@ -12,7 +12,7 @@ import Events from './components/Events/Events';
 import Create from './components/Create/Create';
 import axios from 'axios';
 import Login from './components/Authentication/Login/Login';
-import SignUp from './components/Authentication/Sign Up/SignUp';
+import SignUp from './components/Authentication/SignUp/SignUp';
 import Calendar from './components/Calendar/Calendar';
 import Dashboard from './components/Dashboard/Dashboard';
 import BucketList from './components/BucketList/BucketList';
