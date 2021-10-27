@@ -17,6 +17,9 @@ import Dashboard from './components/Dashboard/Dashboard';
 import BucketList from './components/BucketList/BucketList';
 import EventSearch from './components/Events/EventSearch';
 import EventSearchResults from './components/Events/EventSearchResults';
+import ResetPassword from './components/Authentication/Reset/ResetPassword';
+import ResetEmail from './components/Authentication/Reset/ResetEmail';
+
 
 const App = () => {
 	// const [events,setEvents] = useState([{}]);
@@ -53,6 +56,9 @@ const App = () => {
 
 
 					<Route exact path='/dashboard' component={Dashboard}/>
+					<Route path='/dashboard/reset-password' component={ResetPassword}/>
+					<Route path='/dashboard/reset-email' component={ResetEmail}/>
+
 
 				</DataContext.Provider>
 			</main>

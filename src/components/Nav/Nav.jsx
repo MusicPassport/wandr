@@ -22,6 +22,7 @@ const handleClick = () => {
             {/* <Link to='/calendar'>Calendar</Link> */}
             {/* <Link to='/timeline'>Timeline</Link> */}
             {/* <Link to='/map'>Map</Link> */}
+            <Link to='/dashboard'>Dashboard</Link> 
             <Link to='/about'>About</Link>
             <Link to='/events'>Events</Link>
             <Link to='/login'>Login</Link> 
@@ -34,6 +35,8 @@ const handleClick = () => {
                     {/* <Link to='/calendar'>Calendar</Link> */}
                     {/* <Link to='/timeline'>Timeline</Link> */}
                     {/* <Link to='/map'>Map</Link> */}
+                    <Link to='/dashboard'>Dashboard</Link> 
+
                     <Link to='/about'>About</Link>
                     <Link to='/events'>Events</Link>
                     <Link to='/login'>Login</Link>
