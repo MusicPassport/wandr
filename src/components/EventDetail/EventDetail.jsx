@@ -2,23 +2,116 @@ import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { DataContext } from '../../Utility/Context';
 import axios from 'axios';
+import './EventDetail.css';
 
 function EventDetail() {
 	const { id } = useParams();
+	const [currentUser, setCurrentUser] = useState();
 	const { events, setEvents } = useContext(DataContext);
-	const [eventDetail, setEventDetail] = useState({...events.filter((event) => event.id === id)[0]});
+	const [eventDetail, setEventDetail] = useState();
+	const [updateEvent, setUpdateEvent] = useState();
 
-	
+	const url = `https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=${'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB'}`;
 
 	useEffect(() => {
-		setEventDetail({
-			...events.filter((event) => event.id === id)[0],
-		});
-	},[])
+		// get events
+		axios
+			.get(url)
+			.then((res) => setEventDetail({ ...res.data }))
+			.catch((err) => console.log(err));
 
-	
-	if (JSON.stringify(eventDetail) === '{}') {
-		return <h1>Loading...</h1>
+		// get user (temp)
+
+		axios
+			.get('https://intense-island-04626.herokuapp.com/user/2')
+			.then((res) => setCurrentUser({ ...res.data }))
+			.catch((err) => console.log(err));
+	}, []);
+
+	const getEvent = async () => {
+		try {
+			console.log('Checking for event...');
+			const event = await axios.get(
+				`https://intense-island-04626.herokuapp.com/events/${id}`
+			);
+			if (event.status === 200) {
+				console.log('Found');
+
+				return true;
+			} else if (event.status === 404) {
+				console.log('Not found');
+				return false;
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const formatData = async () => {
+		const newEvent = {
+			id: id,
+			name: eventDetail.name,
+			genre: eventDetail.genre,
+			owner: 'currentUser.username',
+			summary: 'eventDetail.promoter.description',
+			city: eventDetail['_embedded'].venues[0].city.name,
+			state: eventDetail['_embedded'].venues[0].state.name,
+			address: eventDetail['_embedded'].venues.address[0].line1,
+			tm_url: eventDetail.url,
+			img_url: eventDetail.images[0].url,
+			eventId: eventDetail.id,
+			start: eventDetail.dates.start.localDate,
+			venue: eventDetail.venues[0].name,
+			attendees: [],
+			viewers: [],
+		};
+		return newEvent;
+	};
+
+	const addSeen = async () => {
+		// send a request to update the user detail to include the current user in the events attendees
+		try {
+			const event = await axios.get(
+				`https://intense-island-04626.herokuapp.com/events/${id}`
+			);
+			console.log('Found!');
+			setUpdateEvent({ ...event.data });
+			axios.put(`https://intense-island-04626.herokuapp.com/events/${id}`, {
+				...updateEvent,
+				attendees: [...updateEvent.attendees, currentUser.id],
+			});
+		} catch (error) {
+			console.log('Not Found!');
+			axios.post(`https://intense-island-04626.herokuapp.com/events`, {
+				...formatData(),
+				attendees: [...updateEvent.attendees, currentUser.id],
+			});
+		}
+	};
+
+	const addBucketList = async () => {
+		// send a request to update the user detail to include the current user in the events viewers
+		try {
+			const event = await axios.get(
+				`https://intense-island-04626.herokuapp.com/events/${id}`
+			);
+			console.log('Found!');
+			setUpdateEvent({ ...event.data });
+			axios.put(`https://intense-island-04626.herokuapp.com/events/${id}`, {
+				...updateEvent,
+				viewers: [...updateEvent.viewers, currentUser.id],
+			});
+		} catch (error) {
+			console.log('Not Found!');
+			axios.post(`https://intense-island-04626.herokuapp.com/events`, {
+				...formatData(),
+				viewers: [...updateEvent.viewers, currentUser.id],
+			});
+		}
+	};
+
+	if (!eventDetail) {
+		return <h1>Loading...</h1>;
 	}
 
 	//display the event detail in a card
@@ -27,25 +120,32 @@ function EventDetail() {
 			<div className='images-container'>
 				<img
 					className='event-img'
-					src={eventDetail.images[0].url}
+					src={eventDetail.images[1].url}
 					alt={`${eventDetail.name} + promo`}></img>
-			</div>
-			<div className='detail-btns'>
-				<button className='btn detail-btn bucket'>Add To BucketList</button>
-				<button className='btn detail-btn seen'>Add To Seen</button>
-				<a href={eventDetail.url}>
-					<button className='btn detail-btn tickets'>View Tickets</button>
-				</a>
 			</div>
 			<div className='info-container'>
 				<h2>{eventDetail.name}</h2>
-				{/* <p>Start Date: {eventDetail.start.localDate}</p> */}
-				<div className='seat-map'>
-					<img
-						className='event-img seat-img'
-						// src={eventDetail.seatmap.staticUrl}
-						alt={`${eventDetail.name} + seat map`}></img>
+				<p className='start'>Start Date: {eventDetail.dates.start.localDate}</p>
+				<div className='detail-btns'>
+					<button className='btn detail-btn bucket' onClick={addBucketList}>
+						Add To BucketList
+					</button>
+					<button className='btn detail-btn seen' onClick={addSeen}>
+						Add To Seen
+					</button>
+					<a target='_blank' href={eventDetail.url}>
+						<button className='btn detail-btn tickets'>View Tickets</button>
+					</a>
 				</div>
+				<h3>Seat Map</h3>
+				{eventDetail.seatmap ? (
+					<div className='seat-map'>
+						<img
+							className='event-img seat-img'
+							src={eventDetail.seatmap.staticUrl}
+							alt={`${eventDetail.name} + seat map`}></img>
+					</div>
+				) : null}
 			</div>
 		</div>
 	);
