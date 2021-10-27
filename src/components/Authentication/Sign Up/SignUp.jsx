@@ -15,7 +15,7 @@ const createUser = async (e) => {
     // checkPasswords()
     try {
         if (password === validatePassword) {            
-            const res = await axios.post(`${backendAPI}/users`, {
+            const res = await axios.post(`${backendAPI}/users/`, {
                 email: username,
                 username: username,
                 password: password,

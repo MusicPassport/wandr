@@ -80,13 +80,13 @@ function EventDetail() {
 			);
 			console.log('Found!');
 			setUpdateEvent({ ...event.data });
-			axios.put(`https://intense-island-04626.herokuapp.com/events/${id}`, {
+			axios.put(`https://intense-island-04626.herokuapp.com/events/${id}/`, {
 				...updateEvent,
 				[event.target.id]: [...updateEvent[event.target.id], currentUser],
 			});
 		} catch (error) {
 			console.log('Not Found!');
-			axios.post(`https://intense-island-04626.herokuapp.com/events`, {
+			axios.post(`https://intense-island-04626.herokuapp.com/events/`, {
 				...formatData(),
 				[event.target.id]: [...updateEvent[event.target.id], currentUser],
 			});
