@@ -1,51 +1,85 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { backendAPI } from '../../../Utility/Config';
+import { DataContext } from '../../../Utility/Context.jsx';
 
 const Login = () => {
-    const history = useHistory();
+    const { currentUser, setCurrentUser } = useContext(DataContext)
+	const history = useHistory();
 
-const [email, setEmail] = useState()
-const [password, setPassword] = useState()
-const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-        const res = await axios.post(`${backendAPI}/token/login`, {
-            password: password,
-            email: email,
-        })
-        console.log(res);
-        history.push('/dashboard')
-        // console.log(res.data.auth_token);
-    } catch (error) {
-        console.log(error);
-    }
+	const [email, setEmail] = useState();
+	const [password, setPassword] = useState();
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		try {
+			const res = await axios.post(`${backendAPI}/token/login`, {
+				password: password,
+				email: email,
+			});
+			console.log(res);
+			const auth = res.data.auth_token;
+			// history.push('/dashboard');
+			localStorage.setItem('auth', auth);
+			getUser(auth);
+			// console.log(res.data.auth_token);
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
-}
+	const getUser = async (auth) => {
+		console.log(localStorage.getItem('auth'));
+        // console.log(auth);
 
-const captureEmail = (e) => {
-    setEmail(e.target.value)
-}
+		const login = await axios.get(`${backendAPI}/users/me/`, {
+			headers: {
+				Authorization: `Token  ${auth}`,
+			},
+		});
+		console.log(login.data.id);
+        const getUserInfo = await axios.get(`${backendAPI}/users/${login.data.id}/`, {
+			headers: {
+				Authorization: `Token  ${auth}`,
+			},
+		})
+        console.log(getUserInfo);
+        setCurrentUser({...getUserInfo.data})
+        console.log(currentUser)
+	};
 
-const capturePassword = (e) => {
-    setPassword(e.target.value)
-}
+	const captureEmail = (e) => {
+		setEmail(e.target.value);
+	};
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <h2>Login</h2>
-            <div className='username'>
-            <label htmlFor="">Username:</label>
-            <input type="text" placeholder=' e.g. myaddress@email.com' onChange={captureEmail} />
-            </div>
-            <div className='password'>
-            <label htmlFor="">Password:</label>
-            <input type="password" placeholder=' enter password' onChange={capturePassword} />
-            </div>
-            <button type="submit" className='signup-login'>Login</button>
-        </form>
-    )
-}
+	const capturePassword = (e) => {
+		setPassword(e.target.value);
+	};
 
-export default Login
+	return (
+		<form onSubmit={handleSubmit}>
+			<h2>Login</h2>
+			<div className='username'>
+				<label htmlFor=''>Username:</label>
+				<input
+					type='text'
+					placeholder=' e.g. myaddress@email.com'
+					onChange={captureEmail}
+				/>
+			</div>
+			<div className='password'>
+				<label htmlFor=''>Password:</label>
+				<input
+					type='password'
+					placeholder=' enter password'
+					onChange={capturePassword}
+				/>
+			</div>
+			<button type='submit' className='signup-login'>
+				Login
+			</button>
+		</form>
+	);
+};
+
+export default Login;

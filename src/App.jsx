@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
-import { AppContext } from './Utility/Context';
 import { DataContext } from './Utility/Context';
 import './App.css';
 import Nav from './components/Nav/Nav';
@@ -26,10 +25,7 @@ import EventSearchResults from './components/Events/EventSearchResults';
 
 const App = () => {
 	// const [events,setEvents] = useState([{}]);
-	const [currentUser, setCurrentUser] = useState({
-		name: 'Group 4',
-		events: [],
-	});
+	const [currentUser, setCurrentUser] = useState();
 
 	const [events, setEvents] = useState([]);
 
@@ -44,7 +40,7 @@ const App = () => {
 		<div className='App'>
 			<Nav />
 			<main>
-				<DataContext.Provider value={{ events, setEvents }}>
+				<DataContext.Provider value={{ events, setEvents, currentUser, setCurrentUser }}>
 					<Route exact path='/' component={Home} />
 					<Route exact path='/about' component={About} />
 					<Route exact path='/login' component={Login} />

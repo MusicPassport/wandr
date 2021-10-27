@@ -8,13 +8,18 @@ const Dashboard = () => {
     const [displaySettings, setDisplaySettings] = useState(false);
     const [memories,setMemories] = useState([]);
     const url = `https://intense-island-04626.herokuapp.com/users/me`;
+    const token = localStorage.getItem('auth');
 
 //     need to specify a request so that only this user's memories are gotten.
 // get all memories that have this user's id in their owner property.
 
     const getContent = async() => {
+        console.log(token);
+        let config = {
+            headers: {Bearer: token}
+        }
         try {
-            const content = await axios.get(url);
+            const content = await axios.get(url, config);
             setMemories(content.data.memories);
         } catch(err){
             //for dev only
