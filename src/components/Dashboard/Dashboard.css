@@ -1,0 +1,25 @@
+
+
+.settings {
+    width: 120px;
+    height: 30px;
+}
+
+
+
+.personal-calendar {
+    margin: 1rem auto;
+}
+
+@media(min-width: 600px){
+
+
+    .personal-calendar {
+    grid-column: 3;
+    grid-row: 1/span 2;
+    }
+
+    .personal-memories {
+        grid-column: 1/span 2;
+    }
+}
