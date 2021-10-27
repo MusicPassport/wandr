@@ -19,9 +19,9 @@ const Login = () => {
 			});
 			console.log(res);
 			const auth = res.data.auth_token;
-			// history.push('/dashboard');
 			localStorage.setItem('auth', auth);
-			getUser(auth);
+			await getUser(auth);
+			history.push('/dashboard');
 			// console.log(res.data.auth_token);
 		} catch (error) {
 			console.log(error);
@@ -44,6 +44,7 @@ const Login = () => {
 			},
 		})
         console.log(getUserInfo);
+		localStorage.setItem('currentUser', JSON.stringify(getUserInfo.data));
         setCurrentUser({...getUserInfo.data})
         console.log(currentUser)
 	};
