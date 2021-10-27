@@ -28,24 +28,7 @@ function EventDetail() {
 			.catch((err) => console.log(err));
 	}, []);
 
-	const getEvent = async () => {
-		try {
-			console.log('Checking for event...');
-			const event = await axios.get(
-				`https://intense-island-04626.herokuapp.com/events/${id}`
-			);
-			if (event.status === 200) {
-				console.log('Found');
-
-				return true;
-			} else if (event.status === 404) {
-				console.log('Not found');
-				return false;
-			}
-		} catch (error) {
-			console.log(error);
-		}
-	};
+	
 
 	const formatData = async () => {
 		const newEvent = {
@@ -68,28 +51,28 @@ function EventDetail() {
 		return newEvent;
 	};
 
-	const addSeen = async () => {
-		// send a request to update the user detail to include the current user in the events attendees
-		try {
-			const event = await axios.get(
-				`https://intense-island-04626.herokuapp.com/events/${id}`
-			);
-			console.log('Found!');
-			setUpdateEvent({ ...event.data });
-			axios.put(`https://intense-island-04626.herokuapp.com/events/${id}`, {
-				...updateEvent,
-				attendees: [...updateEvent.attendees, currentUser.id],
-			});
-		} catch (error) {
-			console.log('Not Found!');
-			axios.post(`https://intense-island-04626.herokuapp.com/events`, {
-				...formatData(),
-				attendees: [...updateEvent.attendees, currentUser.id],
-			});
-		}
-	};
+	// const addSeen = async () => {
+	// 	// send a request to update the user detail to include the current user in the events attendees
+	// 	try {
+	// 		const event = await axios.get(
+	// 			`https://intense-island-04626.herokuapp.com/events/${id}`
+	// 		);
+	// 		console.log('Found!');
+	// 		setUpdateEvent({ ...event.data });
+	// 		axios.put(`https://intense-island-04626.herokuapp.com/events/${id}`, {
+	// 			...updateEvent,
+	// 			attendees: [...updateEvent.attendees, currentUser],
+	// 		});
+	// 	} catch (error) {
+	// 		console.log('Not Found!');
+	// 		axios.post(`https://intense-island-04626.herokuapp.com/events`, {
+	// 			...formatData(),
+	// 			attendees: [...updateEvent.attendees, currentUser],
+	// 		});
+	// 	}
+	// };
 
-	const addBucketList = async () => {
+	const addEvent= async (event) => {
 		// send a request to update the user detail to include the current user in the events viewers
 		try {
 			const event = await axios.get(
@@ -99,13 +82,13 @@ function EventDetail() {
 			setUpdateEvent({ ...event.data });
 			axios.put(`https://intense-island-04626.herokuapp.com/events/${id}`, {
 				...updateEvent,
-				viewers: [...updateEvent.viewers, currentUser.id],
+				[event.target.id]: [...updateEvent[event.target.id], currentUser],
 			});
 		} catch (error) {
 			console.log('Not Found!');
 			axios.post(`https://intense-island-04626.herokuapp.com/events`, {
 				...formatData(),
-				viewers: [...updateEvent.viewers, currentUser.id],
+				[event.target.id]: [...updateEvent[event.target.id], currentUser],
 			});
 		}
 	};
@@ -127,10 +110,10 @@ function EventDetail() {
 				<h2>{eventDetail.name}</h2>
 				<p className='start'>Start Date: {eventDetail.dates.start.localDate}</p>
 				<div className='detail-btns'>
-					<button className='btn detail-btn bucket' onClick={addBucketList}>
+					<button className='btn detail-btn bucket' id='viewers' onClick={addEvent}>
 						Add To BucketList
 					</button>
-					<button className='btn detail-btn seen' onClick={addSeen}>
+					<button className='btn detail-btn seen' id='attendees' onClick={addEvent}>
 						Add To Seen
 					</button>
 					<a target='_blank' href={eventDetail.url}>
