@@ -6,8 +6,7 @@ import './EventDetail.css';
 
 function EventDetail() {
 	const { id } = useParams();
-	const [currentUser, setCurrentUser] = useState();
-	const { events, setEvents } = useContext(DataContext);
+	const { events, setEvents, currentUser } = useContext(DataContext);
 	const [eventDetail, setEventDetail] = useState();
 	const [updateEvent, setUpdateEvent] = useState();
 
@@ -19,13 +18,6 @@ function EventDetail() {
 			.get(url)
 			.then((res) => setEventDetail({ ...res.data }))
 			.catch((err) => console.log(err));
-
-		// get user (temp)
-
-		axios
-			.get('https://intense-island-04626.herokuapp.com/user/2')
-			.then((res) => setCurrentUser({ ...res.data }))
-			.catch((err) => console.log(err));
 	}, []);
 
 	
@@ -35,7 +27,7 @@ function EventDetail() {
 			id: id,
 			name: eventDetail.name,
 			genre: eventDetail.genre,
-			owner: 'currentUser.username',
+			owner: currentUser.username,
 			summary: 'eventDetail.promoter.description',
 			city: eventDetail['_embedded'].venues[0].city.name,
 			state: eventDetail['_embedded'].venues[0].state.name,
@@ -75,15 +67,19 @@ function EventDetail() {
 	const addEvent= async (event) => {
 		// send a request to update the user detail to include the current user in the events viewers
 		try {
+			const auth = localStorage.getItem('auth')
 			const event = await axios.get(
-				`https://intense-island-04626.herokuapp.com/events/${id}`
+				`https://intense-island-04626.herokuapp.com/events/${id}`,
 			);
 			console.log('Found!');
 			setUpdateEvent({ ...event.data });
 			axios.put(`https://intense-island-04626.herokuapp.com/events/${id}/`, {
 				...updateEvent,
 				[event.target.id]: [...updateEvent[event.target.id], currentUser],
-			});
+			}, {
+			headers: {
+				Authorization: `Token  ${auth}`,
+			}});
 		} catch (error) {
 			console.log('Not Found!');
 			axios.post(`https://intense-island-04626.herokuapp.com/events/`, {

@@ -29,7 +29,7 @@ const handleClick = () => {
             </div>
             <div className='hamburger' onClick={handleClick}>
                 <Hamburger />
-                <div className={menuOpen ? 'linkDisplay' : 'links'}>
+                <div className={menuOpen ? 'linkDisplay' : 'links hidden'} >
                     <Link to='/'>Home</Link>
                     {/* <Link to='/calendar'>Calendar</Link> */}
                     {/* <Link to='/timeline'>Timeline</Link> */}
