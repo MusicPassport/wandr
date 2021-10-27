@@ -1,8 +1,10 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { backendAPI } from '../../../Utility/Config';
 
 const Login = () => {
+    const history = useHistory();
 
 const [email, setEmail] = useState()
 const [password, setPassword] = useState()
@@ -14,6 +16,7 @@ const handleSubmit = async (e) => {
             email: email,
         })
         console.log(res);
+        history.push('/dashboard')
         // console.log(res.data.auth_token);
     } catch (error) {
         console.log(error);
