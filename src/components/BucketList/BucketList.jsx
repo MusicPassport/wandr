@@ -2,7 +2,9 @@ import axios from 'axios';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+
 import './BucketList.css'
+
 
 const BucketList = () => {
 	// get the events in the users bucketlist
@@ -148,6 +150,7 @@ const BucketList = () => {
                 
                 )}
             </div>
+
 		</div>
 	);
 };
