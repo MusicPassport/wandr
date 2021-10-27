@@ -1,10 +1,13 @@
 
-
-.settings {
-    width: 120px;
-    height: 30px;
+.dashboard-buttons {
+    display: inline;
 }
 
+.dashboard-btn {
+    width: 120px;
+    height: 30px;
+    border: none;
+}
 
 
 .personal-calendar {
