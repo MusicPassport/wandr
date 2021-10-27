@@ -18,14 +18,9 @@ import BucketList from './components/BucketList/BucketList';
 import EventSearch from './components/Events/EventSearch';
 import EventSearchResults from './components/Events/EventSearchResults';
 
-
-
-
-
-
 const App = () => {
 	// const [events,setEvents] = useState([{}]);
-	const [currentUser, setCurrentUser] = useState();
+	const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('currentUser'))|| {});
 
 	const [events, setEvents] = useState([]);
 
