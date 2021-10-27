@@ -14,17 +14,14 @@ import axios from 'axios';
 import Login from './components/Authentication/Login/Login';
 import SignUp from './components/Authentication/Sign Up/SignUp';
 import Calendar from './components/Calendar/Calendar';
-<<<<<<< HEAD
-=======
 import Dashboard from './components/Dashboard/Dashboard';
-
-
 import BucketList from './components/BucketList/BucketList';
 import EventSearch from './components/Events/EventSearch';
 import EventSearchResults from './components/Events/EventSearchResults';
 
->>>>>>> bb0d5fc (Update)
-import Dashboard from './components/Dashboard/Dashboard';
+
+
+
 
 
 const App = () => {
@@ -53,20 +50,17 @@ const App = () => {
 					<Route exact path='/login' component={Login} />
 					<Route exact path='/signup' component={SignUp} />
 					{/* <Route exact path='/timeline' component={Timeline}/> */}
+					<Route exact path='/bucketlist/' component={BucketList} />
 					<Route exact path='/events/:id' component={EventDetail} />
 					<Route exact path='/events' component={Events} />
 					<Route exact path='/create' component={Create} />
 					<Route exact path='/calendar' component={Calendar}/>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
 
 					<Route exact path='/search/' component={EventSearch} />
 					<Route exact path='/search/events' component={EventSearchResults}/>
 
-=======
->>>>>>> 074ada9 (set up rough draft for dashboard)
->>>>>>> bb0d5fc (Update)
+
 					<Route exact path='/dashboard' component={Dashboard}/>
 
 				</DataContext.Provider>
