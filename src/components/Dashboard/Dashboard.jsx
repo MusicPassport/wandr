@@ -80,7 +80,7 @@ const Dashboard = () => {
                 minDate,
                 maxDate
             }}>
-                 <DateRangePickerComponent placeholder="pick a date range"></DateRangePickerComponent>
+                 <DateRangePickerComponent className='date-picker'  placeholder="pick a date range"></DateRangePickerComponent>
                 {display()}
             </DashContext.Provider>
            
