@@ -50,5 +50,11 @@
         display: grid; /* children live inside a grid */
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* grid has a template for it's columns. the columns repeat at 300px */
         gap: 5rem; /* place a gap between each child equal to 5 elemental units */
-    }    
+    } 
+    .toggle{
+    display:block;
+}
+.noToggle{
+    display:none;
+}   
 }

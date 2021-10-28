@@ -22,11 +22,18 @@ const Events = () => {
 
      let url=`https://app.ticketmaster.com/discovery/v2/events.json?size=100&apikey=${'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB'}${keyword}${postalCode}${city}${state}${startDate}${endDate}${classification}`
 
+	 console.log(url)
 
 	const getEvents = async () => {
 		try {
 			const result = await axios.get(url);
+			console.log('this is the result', result);
+			if (result.data.page.totalElements > 0 ){
 			setEvents([...result.data['_embedded'].events]);
+
+			} else {
+				console.log('No events matched')
+			}
 		} catch (error) {
 			console.log(error);
 		}
@@ -49,15 +56,17 @@ const Events = () => {
 				{/* <div className='event-list'> */}
 				{events.map((event) => (
 					<Link className='event-link' to={`/events/${event.id}`}>
-						<div className='img-container'>
-							<img className='image' src={event.images[2].url} alt='' />
-					</div>
-					<h2>{event.name}</h2>
-					{/* <h4>{event.dates.start.localDate}</h4> */}
-					<h4>{event.dates.status.code}</h4>
-					{/* <h4>{event._embedded.venues[0].name}</h4> */}
-					{/* <h4>Address: {event._embedded.venues[0].address.line1}, {event._embedded.venues[0].city.name}, {event._embedded.venues[0].state.stateCode}</h4> */}
-				</Link>
+							<div className='img-container'>
+								<img className='image' src={event.images[2].url} alt='' />
+						</div>
+						<h2>{event.name}</h2>
+						<h4>{event.dates.start.localDate}</h4>
+						<h4>{event.dates.status.code}</h4>
+						<h4>{event._embedded.venues[0].name}</h4>
+						{/* <h4>Address: {event._embedded.venues[0].address.line1}, {event._embedded.venues[0].city.name}, {event._embedded.venues[0].state.stateCode}</h4> */}
+						<h4>Address: {event._embedded.venues[0].address.line1}, {event._embedded.venues[0].city.name}</h4>
+						{/* {!event._embedded.venues[0].country.countryCode === 'US' ? <h4>{event._embedded.venues[0].country.name} </h4>  : <h4>{event._embedded.venues[0].state.name}</h4>} */}
+					</Link>
 				// <button onClick={addEvent}>Add Event</button>
 			))}
 

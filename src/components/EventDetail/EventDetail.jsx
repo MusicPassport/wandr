@@ -2,14 +2,15 @@ import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { DataContext } from '../../Utility/Context';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './EventDetail.css';
-
 
 function EventDetail() {
 	const { id } = useParams();
-	const { currentUser } = useContext(DataContext);
+	const { currentUser, updateUser } = useContext(DataContext);
 	const [eventDetail, setEventDetail] = useState();
 	const [updateEvent, setUpdateEvent] = useState();
+	const [select, setSelect] = useState(false)
 
 	const url = `https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=${'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB'}`;
 
@@ -43,18 +44,21 @@ function EventDetail() {
 
 	const addEvent = async (event) => {
 		// send a request to update the user detail to include the current user in the events viewers
+		setSelect(true)
 		const auth = localStorage.getItem('auth');
-		console.log(event.target.id)
-		let target = event.target.id
+		console.log(event.target.id);
+		let target = event.target.id;
 		try {
 			const event = await axios.get(
 				`https://intense-island-04626.herokuapp.com/events/${id}`
 			);
 			setUpdateEvent({ ...event.data });
-			console.log('Updated Event:', {...updateEvent,
-					target: [...target, parseInt(currentUser.id)]})	
+			console.log('Updated Event:', {
+				...updateEvent,
+				target: [...target, parseInt(currentUser.id)],
+			});
 			if (event.status == 200) {
-				console.log('Updating Event!')
+				console.log('Updating Event!');
 				await axios.put(
 					`https://intense-island-04626.herokuapp.com/events/${id}`,
 					{ ...updateEvent, target: [...target, parseInt(currentUser.id)] },
@@ -64,25 +68,24 @@ function EventDetail() {
 						},
 					}
 				);
-
-			}	
-
+			}
+			updateUser()
 		} catch (error) {
-			console.log(error)
-			console.log(event.target.id)
-			let newTarget = event.target.id
-			console.log({...formatData(), [newTarget]: [currentUser.id] });
+			console.log(error);
+			console.log(event.target.id);
+			let newTarget = event.target.id;
+			console.log({ ...formatData(), [newTarget]: [currentUser.id] });
 			console.log('Not Found!');
 			const results = await axios.post(
 				`https://intense-island-04626.herokuapp.com/events/`,
-				{...formatData(), [newTarget]: [currentUser.id] }
-				,
+				{ ...formatData(), [newTarget]: [currentUser.id] },
 				{
 					headers: {
 						Authorization: `Token  ${auth}`,
 					},
 				}
 			);
+			updateUser();
 			console.log('Results ', results);
 		}
 	};
@@ -104,18 +107,30 @@ function EventDetail() {
 				<h2>{eventDetail.name}</h2>
 				<p className='start'>Start Date: {eventDetail.dates.start.localDate}</p>
 				<div className='detail-btns'>
-					<button
-						className='btn detail-btn bucket'
-						id='viewers'
-						onClick={addEvent}>
-						Add To BucketList
-					</button>
-					<button
-						className='btn detail-btn seen'
-						id='attendees'
-						onClick={addEvent}>
-						Add To Seen
-					</button>
+					<div>
+						{select ? (
+							<Link to='/dashboard/timeline'>
+								<button className='btn detail-btn view'>
+									View On TimeLine
+								</button>
+							</Link>
+						) : (
+							<>
+								<button
+									className='btn detail-btn bucket'
+									id='viewers'
+									onClick={addEvent}>
+									Add To BucketList
+								</button>
+								<button
+									className='btn detail-btn seen'
+									id='attendees'
+									onClick={addEvent}>
+									Add To Attending
+								</button>
+							</>
+						)}
+					</div>
 					<a target='_blank' href={eventDetail.url} rel='noreferrer'>
 						<button className='btn detail-btn tickets'>View Tickets</button>
 					</a>
