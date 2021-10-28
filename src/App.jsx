@@ -19,6 +19,8 @@ import EventSearch from './components/Events/EventSearch';
 import EventSearchResults from './components/Events/EventSearchResults';
 import ResetPassword from './components/Authentication/Reset/ResetPassword';
 import ResetEmail from './components/Authentication/Reset/ResetEmail';
+import Timeline from './components/Timeline/Timeline';
+import Memories from './components/Memories/Memories';
 
 
 const App = () => {
@@ -58,6 +60,10 @@ const App = () => {
 					<Route exact path='/dashboard' component={Dashboard}/>
 					<Route path='/dashboard/reset-password' component={ResetPassword}/>
 					<Route path='/dashboard/reset-email' component={ResetEmail}/>
+					<Route path='/dashboard/timeline' component={Timeline}/>
+					<Route path='/dashboard/memories' component={Memories}/>
+
+
 
 
 				</DataContext.Provider>

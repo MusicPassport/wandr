@@ -16,10 +16,19 @@ const ResetEmail = () => {
             headers: {
                 Authorization: `Token ${localStorage.getItem('auth')}`
                 },
-            data: userInput,
+            data: { 
+                username: userInput['email'],
+                email: userInput['email']
+            },
         }
         try {
-            const update = await axios.put(`${backendAPI}/users/me/`, config);
+            console.log({username: userInput['email'], email: userInput[[]]})
+            const update = await axios.put(`${backendAPI}/users/me/`, {
+                    username: userInput['email'],
+                    email: userInput['email']
+                }, { 
+                    headers: {  Authorization: `Token ${localStorage.getItem('auth')}` } 
+                });
             console.log(update);
         } catch(err) {
             console.log(err);

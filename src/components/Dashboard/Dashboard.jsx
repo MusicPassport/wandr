@@ -1,43 +1,62 @@
 import {useState, useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import {DataContext} from '../../Utility/Context';
+import {DataContext, DashContext} from '../../Utility/Context';
 import { backendAPI } from '../../Utility/Config';
 
 import { CalendarComponent, DateRangePickerComponent } from '@syncfusion/ej2-react-calendars';
 import './Dashboard.css';
-import { findAllByDisplayValue } from '@testing-library/react';
+import Timeline from '../Timeline/Timeline';
+import Memories from '../Memories/Memories';
 
 const Dashboard = () => {
 
     const { currentUser } = useContext(DataContext);
-    const [displaySettings, setDisplaySettings] = useState({
-        calendar: false,
-        timeline: false,
-        settings: false,
-        bucketlist: false,
-        memories: false,
-        email: false,
-        password: false
-    });
+
+    const [displaySettings, setDisplaySettings] = useState('memories');
     const [dateValue, setDateValue] = useState(null);
     const [minDate, setminDate] = useState(null);
     const [maxDate, setmaxDate] = useState(null);
-    const [memories,setMemories] = useState();
-
-    useEffect(() => {
-        console.log('current user: ',currentUser);
-        setMemories(currentUser.memories);
-    })
-
 
     const openAndClose = (e) => {
         let value = displaySettings[e.target.name];
-        setDisplaySettings({...displaySettings, [e.target.name]: !value});
+        // setDisplaySettings({...displaySettings, [e.target.name]: !value});
+        setDisplaySettings(e.target.name);
+        console.log(e.target.name);
     }
 
+    const getEvent = async (memory) => {
+            try {
+                axios.get(`${backendAPI}/events/${memory.event}` )
+            } catch(err) {
+                console.log(err);
+            }
+    }
 
-    return ( !displaySettings.settings ? (
+    const display = () => {
+        switch(displaySettings){
+            case('calendar'):
+                return(<CalendarComponent
+                className='personal-calendar'
+                value={dateValue}
+                min={minDate}
+                max={maxDate}
+                isMultiSelection={true}
+                />);
+            case('settings'):
+                return (
+                    <Link to="/dashboard/reset-password">Change Password</Link>
+                );
+            case('timeline'):
+                return(<Timeline/>);
+            case('bucketlist'):
+                return( <h1>Hello from BucketList</h1>);
+            default:
+                return ( <Memories/>);
+        }
+    }
+
+    return (
         <>
             <section className="dashboard-buttons">
                 <button className="dashboard-btn" name='settings' onClick={openAndClose}>
@@ -56,44 +75,18 @@ const Dashboard = () => {
                 Bucket List
             </button>
             </section>
+            <DashContext.Provider value={{
+                dateValue,
+                minDate,
+                maxDate
+            }}>
+                 <DateRangePickerComponent placeholder="pick a date range"></DateRangePickerComponent>
 
-            <DateRangePickerComponent placeholder="pick a date range"></DateRangePickerComponent>
-            {displaySettings.calendar && 
-                <CalendarComponent
-            className='personal-calendar'
-            value={dateValue}
-            min={minDate}
-            max={maxDate}
-            isMultiSelection={true}
-            />
-            }
-
-            <div className='personal-memories'>
-                <h3>Memories</h3>
-                { displaySettings.memories && ( memories &&
-                    memories.map(memory => {
-                        return (
-                            <>
-                                <h6>{memory.title}</h6>
-                                {/* need to update alts for memories */}
-                                <img src={memory.image} alt="one of your memories!" />
-                                <p>{memory.body}</p>
-                            </>
-                        );
-                    })
-                    ) 
-                }
-            </div>
-            
-        </>
-    ) : (
-       <>
-            <Link to="/dashboard/reset-email" >Change Email Address</Link>
-            <Link to="/dashboard/reset-password">Change Password</Link>
-        </>
-
+                {display()}
+            </DashContext.Provider>
+           
+            </>
     )
-    );
 };
 
 export default Dashboard;
