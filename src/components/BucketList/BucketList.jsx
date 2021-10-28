@@ -8,16 +8,8 @@ import './BucketList.css'
 
 
 const BucketList = () => {
-	// get the events in the users bucketlist
-	// load the current user
-	// load events in bucketlist
-    // const userId = 1;
-	const { currentUser, setCurrentUser } = useContext(DataContext);
-    const [eventDetail, setEventDetail] = useState();
-	const [updateEvent, setUpdateEvent] = useState();
-    const id = currentUser.id;
 
-    console.log(currentUser.viewing);
+	const { currentUser, setCurrentUser } = useContext(DataContext);
 
     const removeFromBucket = async (event) => {
         try {
@@ -26,52 +18,24 @@ const BucketList = () => {
             const url = `${backendAPI}/events/${event.target.id}`
             console.log(url)
      
-            await axios
+            const targetEvent = await axios
             .get(url)
-            .then((res) => setEventDetail({ ...res.data }))
-            // .then((res) => console.log(res.data))
-            .catch((err) => console.log(err))
+            console.log(targetEvent.data.viewers)
+            const newEvent ={...targetEvent.data, viewers: [...targetEvent.data.viewers.filter(user => user !== currentUser.id)]}
                 
-            console.log(eventDetail.viewers)
-            let index = eventDetail.viewers.indexOf(id);
-            eventDetail.viewers.splice(index,1);
-            console.log(eventDetail)
+            const auth = localStorage.getItem('auth')
+            let res = await axios
+            .put(url, newEvent,{
+        headers: {
+            Authorization: `Token ${auth}`,
+        }
+        } )
+            console.log(res)
 
-            let config = {
-            headers: {
-                Authorization: localStorage.getItem('auth')
-            }
-            }
-            axios
-                .put(url,config, eventDetail )
-            
         } catch (error) {
             console.log(error)
         }
-            
-        // }
-    }
 
-       	const formatData = async () => {
-		const newEvent = {
-			id: eventDetail.id,
-			name: eventDetail.name,
-			genre: eventDetail.genre,
-			owner: eventDetail.owner,
-			city: eventDetail.city,
-			state: eventDetail.state,
-			address: eventDetail.address,
-			tm_url: eventDetail.tm_url,
-			img_url: eventDetail.img_url,
-			start: eventDetail.start,
-			venue: eventDetail.venue,
-			attendees: eventDetail.attendees,
-			viewers: eventDetail.viewers,
-		};
-		return newEvent;
-	
-
-   
     }
 
 	return (
@@ -102,13 +66,3 @@ const BucketList = () => {
 };
 
 export default BucketList;
-
-
-
-       // let ind = currentUser.viewing.findIndex(id => id === event.target.id);
-        // for (let i = 0; i < currentUser.viewing.length; i++) {
-        //     if (currentUser.viewing[i].id === event.target.id) {
-        //         console.log(currentUser.viewing[i])
-        //         console.log(i)
-        //         currentUser.viewing.splice(i,1)
-        //     }
