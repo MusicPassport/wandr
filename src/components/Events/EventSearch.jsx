@@ -329,7 +329,7 @@ const EventSearch = ({ isOpen , setIsOpen }) => {
                         </select>
                     </div>			 */}
             </form>
-            <Link to="/search/events">
+            <Link to="/events">
                 <button classlabel="searchButton" type="submit" onClick={handleSubmit}>Search</button>
             </Link>
         </div>  
