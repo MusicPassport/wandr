@@ -1,45 +1,84 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios'
+import { useContext } from 'react';
+import { DataContext } from '../../Utility/Context.jsx';
+import './Create.css'
 
 const Create = () => {
+
+const { currentUser } = useContext(DataContext)
+const [eventID, setEventID] = useState("")
+const auth = localStorage.getItem('auth')
+
+const  createID = (length=8) => {
+    let result = '';
+    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+   }
+   setEventID(result);
+}
+
     const url = `https://intense-island-04626.herokuapp.com/events/`
     let initialState = {
-            "event_name": '',
-            "summary": '',
-            "city": '',
-            "address": '',
-            "eventbrite_url": '',
-            "img_url": '',
-            "start": '',
-            "end": '',
-            "status": '',
-            "currency": '',
-            "seen": false,
+                "id": "",
+                "name": "",
+                "owner": "",
+                "genre": "",
+                "city": "",
+                "address": "",
+                "tm_url": "",
+                "venue": null,
+                "img_url": "",
+                "start": "",
+                "seen": false,
     }
-    const [formstate, setFormstate] = useState(initialState);
+    const [formState, setFormState] = useState(initialState);
 
-    function handleSubmit(event){
-        event.preventDefault();
+    useEffect(() => {
+        createID()
+    }, [])
+
+    function handleSubmit(e){
+        e.preventDefault();
+        addEvent()
         
-
     }
+    console.log(formState);
+    console.log(eventID);
 
-    const addEvent = async (event) => {
-        event.preventDefault();
+    const addEvent = async (e) => {
+        // e.preventDefault();
         try {
-            await axios.post(url,{
-                event_name: formstate.event_name,
-                summary: formstate.summary,
-                city: formstate.city,
-                address: formstate.address,
-                eventbrite_url: formstate.eventbrite_url,
-                img_url: formstate.img_url,
-                start: formstate.start,
-                end: formstate.end,
-                status: formstate.status,
-                currency: formstate.currency,
-                seen: false,
+            await axios.get(url, {
+                  headers: {
+				Authorization: `Token  ${auth}`,
+			}
             })
+           const res = await axios.post(url,{ 
+               id: eventID,
+               name: formState.name,
+               owner: formState.owner,
+               genre: formState.genre,
+               city: formState.city,
+               state: formState.state,
+               address: formState.address,
+               tm_url: "string",
+               venue: null,
+               img_url: formState.img_url,
+               start: formState.start,
+               attendees: [],
+               viewers: [],
+               // seen: false,
+           },{
+               headers: {
+                Authorization: `Token  ${auth}`,
+           },
+            
+         }) 
+            console.log(res);
         } catch (error) {
             console.log(error)
         }
@@ -47,35 +86,35 @@ const Create = () => {
 
    
     const handleChange = (event) => {
-        setFormstate({...formstate, [event.target.id]: event.target.value});
+        setFormState({...formState, [event.target.id]: event.target.value, "id": eventID, "owner": currentUser.username});
+
+
+        
     };
 
     return (
         <div>
             <h3>Add Event</h3>
-            <form onSubmit={handleSubmit}>
-                <label id="event_name" htmlFor="event-name">Event Name</label>
-                <input placeholder='event name'/>
-                <label id="summary" htmlFor="event-name">Summary</label>
-                <textarea placeholder='summary'/> 
-                <label id="city" htmlFor="start-timetart">City</label>
-                <input placeholder='city'/>
-                <label id="address" htmlFor="start-timetart">Address</label>
-                <input placeholder='address'/>
-                <label id="eventbrite_url" htmlFor="start-timetart">Event URL</label>
-                <input placeholder='event url'/>
-                <label id="img_url" htmlFor="start-timetart">Image URL</label>
-                <input placeholder='image url'/>
-                <label id="start" htmlFor="start-timetart">Start Time</label>
-                <input placeholder='start time'/>
-                <label id="end" htmlFor="end-time">End Time</label>
-                <input placeholder='end time'/>
-                <label id="status" htmlFor="start-timetart">Status</label>
-                <input placeholder='status'/>
-                <label id="currency" htmlFor="start-timetart">Currency</label>
-                <input placeholder='currency'/>
-                <button type="submit" onSubmit={addEvent}></button>                 
-
+            <form onSubmit={handleSubmit} onChange={handleChange}>
+                <label htmlFor="event-name">Event Name</label>
+                <input id="name" placeholder='event name'/>
+                <label htmlFor="genre">Genre</label>
+                <input id="genre" placeholder='genre'/> 
+                <label htmlFor="city">City</label>
+                <input id="city" placeholder='city'/>
+                <label htmlFor="state">State</label>
+                <input id="state" placeholder='state'/>
+                <label htmlFor="address">Address</label>
+                <input id="address" placeholder='address'/>
+                {/* <label id="url" htmlFor="event-url">Event URL</label>
+                <input placeholder='event url'/> */}
+                {/* <label htmlFor="venue">Venue</label> */}
+                {/* <input id="venue" placeholder='venue'/> */}
+                <label htmlFor="image url">Image URL</label>
+                <input id="img_url" placeholder='image url'/>
+                <label htmlFor="start-time">Start Time</label>
+                <input id="start" placeholder='start time'/>
+                <button type="submit" >Submit</button>                 
             </form>       
         </div>
     );
