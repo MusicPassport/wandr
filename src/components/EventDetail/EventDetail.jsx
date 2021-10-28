@@ -34,7 +34,7 @@ function EventDetail() {
 			tm_url: eventDetail.url,
 			img_url: eventDetail.images[0].url,
 			start: eventDetail.dates.start.localDate,
-			venue: 'eventDetail.venues[0].name',
+			venue: null,
 			attendees: [],
 			viewers: [],
 		};
@@ -71,38 +71,12 @@ function EventDetail() {
 			console.log(error)
 			console.log(event.target.id)
 			let newTarget = event.target.id
-			let newEvent = {
-				id: id,
-				name: eventDetail.name,
-				genre: eventDetail.classifications[0].genre.name,
-				city: eventDetail['_embedded'].venues[0].city.name,
-				state: eventDetail['_embedded'].venues[0].state.name,
-				address: eventDetail['_embedded'].venues[0].address.line1,
-				tm_url: eventDetail.url,
-				img_url: eventDetail.images[0].url,
-				start: eventDetail.dates.start.localDate,
-				venue: 'eventDetail.venues[0].name',
-				attendees: [currentUser.id],
-				viewers: [],
-			};
 			console.log({...formatData(), [newTarget]: [currentUser.id] });
 			console.log('Not Found!');
 			const results = await axios.post(
 				`https://intense-island-04626.herokuapp.com/events/`,
-				{
-					id: id,
-					name: eventDetail.name,
-					genre: eventDetail.classifications[0].genre.name,
-					city: eventDetail['_embedded'].venues[0].city.name,
-					state: eventDetail['_embedded'].venues[0].state.name,
-					address: eventDetail['_embedded'].venues[0].address.line1,
-					tm_url: eventDetail.url,
-					img_url: eventDetail.images[0].url,
-					start: eventDetail.dates.start.localDate,
-					venue: 'eventDetail.venues[0].name',
-					attendees: [currentUser.id],
-					viewers: [],
-				},
+				{...formatData(), [newTarget]: [currentUser.id] }
+				,
 				{
 					headers: {
 						Authorization: `Token  ${auth}`,
