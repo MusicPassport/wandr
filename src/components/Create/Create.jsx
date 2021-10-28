@@ -7,7 +7,8 @@ import './Create.css'
 const Create = () => {
 
 const { currentUser } = useContext(DataContext)
-const [eventID, setEventID] = useState()
+const [eventID, setEventID] = useState("")
+const auth = localStorage.getItem('auth')
 
 const  createID = (length=8) => {
     let result = '';
@@ -20,8 +21,6 @@ const  createID = (length=8) => {
    setEventID(result);
 }
 
-// console.log(makeid(5));
-
     const url = `https://intense-island-04626.herokuapp.com/events/`
     let initialState = {
                 "id": "",
@@ -31,7 +30,7 @@ const  createID = (length=8) => {
                 "city": "",
                 "address": "",
                 "tm_url": "",
-                "venue": "",
+                "venue": null,
                 "img_url": "",
                 "start": "",
                 "seen": false,
@@ -47,24 +46,38 @@ const  createID = (length=8) => {
         addEvent()
         
     }
-    console.log(currentUser);
+    console.log(formState);
+    console.log(eventID);
 
     const addEvent = async (e) => {
         // e.preventDefault();
         try {
-           const res = await axios.post(url,{
-                id: eventID,
-                name: formState.name,
-                owner: currentUser.username,
-                genre: formState.genre,
-                city: formState.city,
-                address: formState.address,
-                // tm_url: formState.url,
-                venue: formState.venue,
-                img_url: formState.img_url,
-                start: formState.start,
-                seen: false,
+            await axios.get(url, {
+                  headers: {
+				Authorization: `Token  ${auth}`,
+			}
             })
+           const res = await axios.post(url,{ 
+               id: eventID,
+               name: formState.name,
+               owner: formState.owner,
+               genre: formState.genre,
+               city: formState.city,
+               state: formState.state,
+               address: formState.address,
+               tm_url: "string",
+               venue: null,
+               img_url: formState.img_url,
+               start: formState.start,
+               attendees: [],
+               viewers: [],
+               // seen: false,
+           },{
+               headers: {
+                Authorization: `Token  ${auth}`,
+           },
+            
+         }) 
             console.log(res);
         } catch (error) {
             console.log(error)
@@ -73,7 +86,10 @@ const  createID = (length=8) => {
 
    
     const handleChange = (event) => {
-        setFormState({...formState, [event.target.id]: event.target.value});
+        setFormState({...formState, [event.target.id]: event.target.value, "id": eventID, "owner": currentUser.username});
+
+
+        
     };
 
     return (
@@ -86,12 +102,14 @@ const  createID = (length=8) => {
                 <input id="genre" placeholder='genre'/> 
                 <label htmlFor="city">City</label>
                 <input id="city" placeholder='city'/>
+                <label htmlFor="state">State</label>
+                <input id="state" placeholder='state'/>
                 <label htmlFor="address">Address</label>
                 <input id="address" placeholder='address'/>
                 {/* <label id="url" htmlFor="event-url">Event URL</label>
                 <input placeholder='event url'/> */}
-                <label htmlFor="venue">Venue</label>
-                <input id="venue" placeholder='venue'/>
+                {/* <label htmlFor="venue">Venue</label> */}
+                {/* <input id="venue" placeholder='venue'/> */}
                 <label htmlFor="image url">Image URL</label>
                 <input id="img_url" placeholder='image url'/>
                 <label htmlFor="start-time">Start Time</label>

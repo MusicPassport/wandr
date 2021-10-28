@@ -47,11 +47,12 @@ main::-webkit-scrollbar {
 }
 
 .home-link {
-  color: gray;
+  color: #8f3b76;
   text-decoration: none;
-  font-size: 30px;
+  font-size: 3em;
   font-weight: 500;
   text-align: center;
+  grid-column: 2;
 }
 
 .home-link:hover {
@@ -67,21 +68,22 @@ main::-webkit-scrollbar {
   height: 300px;
   /* width: 100vw; */
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: repeat(5, 1fr);
   justify-content: space-between;
+  align-items: center;
   padding: 1rem;
   margin: 0.3rem;
 }
 
 .linkDisplay a {
   text-decoration: none;
-  color: gray;
+  color: whitesmoke;
+  border-bottom: solid 2px #f5487f;
   font-size: 2rem;
 }
 
-.home-link {
-  font-size: 3em;
-  grid-row: 2;
+.linkDisplay a:hover {
+  background-color: #171717;
 }
 
 .hamburger-link {
@@ -129,6 +131,12 @@ input {
 }
 
 /* event links styled on Events.css */
+@media (prefers-color-scheme: dark) {
+  .App {
+    background: #171717;
+    color: whitesmoke;
+  }
+}
 /* Down here, I've created a media query for when we are bigger than a phone */
 @media (min-width: 600px) {
   .App {
@@ -154,6 +162,10 @@ input {
   .links {
     display: contents;
     font-size: 30px;
+  }
+
+  .hamburger {
+    display: none;
   }
 }
 
