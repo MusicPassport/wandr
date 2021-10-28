@@ -265,7 +265,7 @@ const EventSearch = ({ isOpen , setIsOpen }) => {
                         value={searchInputs.city }/>
                 <label classlabel="c16">State</label>
                 <div>
-                    <Select id="stateCode" onChange={handleChange} options={stateOptions} />
+                    <Select id="stateCode" onChange={handleChange} options={stateOptions} default=""/>
                 </div>
                 {/* <div classlabel="stateScroll">
                     <select classlabel="c26 stateScroll" 
@@ -329,7 +329,7 @@ const EventSearch = ({ isOpen , setIsOpen }) => {
                         </select>
                     </div>			 */}
             </form>
-            <Link to="/search/events">
+            <Link to="/events">
                 <button classlabel="searchButton" type="submit" onClick={handleSubmit}>Search</button>
             </Link>
         </div>  
