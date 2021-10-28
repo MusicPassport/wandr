@@ -4,7 +4,6 @@ import { DataContext } from '../../Utility/Context';
 import axios from 'axios';
 import './EventDetail.css';
 
-
 function EventDetail() {
 	const { id } = useParams();
 	const { currentUser } = useContext(DataContext);
@@ -44,17 +43,19 @@ function EventDetail() {
 	const addEvent = async (event) => {
 		// send a request to update the user detail to include the current user in the events viewers
 		const auth = localStorage.getItem('auth');
-		console.log(event.target.id)
-		let target = event.target.id
+		console.log(event.target.id);
+		let target = event.target.id;
 		try {
 			const event = await axios.get(
 				`https://intense-island-04626.herokuapp.com/events/${id}`
 			);
 			setUpdateEvent({ ...event.data });
-			console.log('Updated Event:', {...updateEvent,
-					target: [...target, parseInt(currentUser.id)]})	
+			console.log('Updated Event:', {
+				...updateEvent,
+				target: [...target, parseInt(currentUser.id)],
+			});
 			if (event.status == 200) {
-				console.log('Updating Event!')
+				console.log('Updating Event!');
 				await axios.put(
 					`https://intense-island-04626.herokuapp.com/events/${id}`,
 					{ ...updateEvent, target: [...target, parseInt(currentUser.id)] },
@@ -64,19 +65,16 @@ function EventDetail() {
 						},
 					}
 				);
-
-			}	
-
+			}
 		} catch (error) {
-			console.log(error)
-			console.log(event.target.id)
-			let newTarget = event.target.id
-			console.log({...formatData(), [newTarget]: [currentUser.id] });
+			console.log(error);
+			console.log(event.target.id);
+			let newTarget = event.target.id;
+			console.log({ ...formatData(), [newTarget]: [currentUser.id] });
 			console.log('Not Found!');
 			const results = await axios.post(
 				`https://intense-island-04626.herokuapp.com/events/`,
-				{...formatData(), [newTarget]: [currentUser.id] }
-				,
+				{ ...formatData(), [newTarget]: [currentUser.id] },
 				{
 					headers: {
 						Authorization: `Token  ${auth}`,
