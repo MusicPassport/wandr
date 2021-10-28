@@ -3,12 +3,25 @@ import { Link } from 'react-router-dom';
 import { DataContext } from '../../Utility/Context';
 import './Events.css';
 import axios from 'axios';
+import EventSearch from './EventSearch.jsx';
 
 const Events = () => {
 	const { events, setEvents } = useContext(DataContext);
 
-	const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=music&size=100&sort=random&apikey=${'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB'}`;
-	console.log(events);
+    const { searchInputs, setSearchInputs } = useContext(DataContext);
+    const [isOpen, setIsOpen] = useState(false);
+    
+    let keyword = searchInputs.keyword ? `&keyword=${encodeURIComponent(searchInputs.keyword)}`:""; 
+    let postalCode = searchInputs.postalCode ? `&postalCode=${encodeURIComponent(searchInputs.postalCode)}`:"";
+    let city = searchInputs.city ? `&city=${encodeURIComponent(searchInputs.city)}` : "";
+    let state= searchInputs.stateCode ? `&stateCode=${encodeURIComponent(searchInputs.stateCode)}`:"";
+    let startDate= searchInputs.startDateTime ? `&startDateTime=${encodeURIComponent(searchInputs.startDateTime)}T00:00:00Z` :"";
+    let endDate= searchInputs.endDateTime ? `&endDateTime=${encodeURIComponent(searchInputs.endDateTime)}T00:00:00Z` :"";
+    let classification= searchInputs.classificationName ? `&segment=${encodeURIComponent(searchInputs.classificationName) }` :"";
+
+
+     let url=`https://app.ticketmaster.com/discovery/v2/events.json?size=100&apikey=${'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB'}${keyword}${postalCode}${city}${state}${startDate}${endDate}${classification}`
+
 
 	const getEvents = async () => {
 		try {
@@ -20,22 +33,24 @@ const Events = () => {
 	};
 
 	useEffect(() => {
-		if (events.length < 1) {
+	
 			getEvents();
-		}
-		// eslint-disable-next-line
-	}, []);
+		
+	}, [isOpen]);
 
-	if (events.length < 1) {
-		return <h1>Loading...</h1>;
-	}
 
 	return (
-		<div className='event-list'>
-			{events.map((event) => (
-				<Link className='event-link' to={`/events/${event.id}`}>
-					<div className='img-container'>
-						<img className='image' src={event.images[2].url} alt='' />
+		 <div>
+            <button className={isOpen ? 'noToggle' : 'toggle'} onClick={()=>setIsOpen(!isOpen)}>Advanced Search</button>
+            <div className={isOpen ? 'toggle' : 'noToggle'}>
+                <EventSearch setIsOpen={setIsOpen} isOpen={isOpen}/>
+            </div>
+            <div className={isOpen ? 'noToggle' : 'toggle'}></div>
+				<div className='event-list'>
+				{events.map((event) => (
+					<Link className='event-link' to={`/events/${event.id}`}>
+						<div className='img-container'>
+							<img className='image' src={event.images[2].url} alt='' />
 					</div>
 					<h2>{event.name}</h2>
 					{/* <h4>{event.dates.start.localDate}</h4> */}
@@ -47,6 +62,7 @@ const Events = () => {
 			))}
 
 			{/* <Link to="/create">Create an Event</Link> */}
+		</div>
 		</div>
 	);
 };

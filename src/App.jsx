@@ -74,7 +74,7 @@ const App = () => {
 			<Nav />
 			<main>
 
-				<DataContext.Provider value={{ events, setEvents, currentUser, setCurrentUser, , updateUser, searchInputs, setSearchInputs }}>
+				<DataContext.Provider value={{ events, setEvents, currentUser, setCurrentUser, updateUser, searchInputs, setSearchInputs }}>
 
 					<Route exact path='/' component={Home} />
 					<Route exact path='/about' component={About} />
