@@ -69,7 +69,9 @@ function EventDetail() {
 					}
 				);
 			}
+
 			updateUser()
+
 		} catch (error) {
 			console.log(error);
 			console.log(event.target.id);
