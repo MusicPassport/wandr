@@ -17,6 +17,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import BucketList from './components/BucketList/BucketList';
 import EventSearch from './components/Events/EventSearch';
 import EventSearchResults from './components/Events/EventSearchResults';
+import Seen from './components/Seen/Seen';
 
 const App = () => {
 	// const [events,setEvents] = useState([{}]);
@@ -35,7 +36,8 @@ const App = () => {
 		<div className='App'>
 			<Nav />
 			<main>
-				<DataContext.Provider value={{ events, setEvents, currentUser, setCurrentUser }}>
+				<DataContext.Provider
+					value={{ events, setEvents, currentUser, setCurrentUser }}>
 					<Route exact path='/' component={Home} />
 					<Route exact path='/about' component={About} />
 					<Route exact path='/login' component={Login} />
@@ -45,15 +47,13 @@ const App = () => {
 					<Route exact path='/events/:id' component={EventDetail} />
 					<Route exact path='/events' component={Events} />
 					<Route exact path='/create' component={Create} />
-					<Route exact path='/calendar' component={Calendar}/>
-
+					<Route exact path='/calendar' component={Calendar} />
 
 					<Route exact path='/search/' component={EventSearch} />
-					<Route exact path='/search/events' component={EventSearchResults}/>
+					<Route exact path='/search/events' component={EventSearchResults} />
 
-
-					<Route exact path='/dashboard' component={Dashboard}/>
-
+					<Route exact path='/dashboard' component={Dashboard} />
+					<Route exact path='/seen' component={Seen} />
 				</DataContext.Provider>
 			</main>
 		</div>

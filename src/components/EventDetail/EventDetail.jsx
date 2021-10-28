@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom';
 import { DataContext } from '../../Utility/Context';
 import axios from 'axios';
 import './EventDetail.css';
-import { set } from 'mongoose';
+
 
 function EventDetail() {
 	const { id } = useParams();
-	const { events, setEvents, currentUser } = useContext(DataContext);
+	const { currentUser } = useContext(DataContext);
 	const [eventDetail, setEventDetail] = useState();
 	const [updateEvent, setUpdateEvent] = useState();
 

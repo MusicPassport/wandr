@@ -7,9 +7,7 @@ import axios from 'axios';
 const Events = () => {
 	const { events, setEvents } = useContext(DataContext);
 
-	const url = `https://app.ticketmaster.com/discovery/v2/events.json?size=100&keyword=music&sort=random&apikey=${'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB'}`;
-
-	// `https://app.ticketmaster.com/discovery/v2/events.json?size=100&postalCode=11235&radius=50&unit=miles&apikey=${'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB'}`;
+	const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=music&size=100&sort=random&apikey=${'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB'}`;
 	console.log(events);
 
 	const getEvents = async () => {
