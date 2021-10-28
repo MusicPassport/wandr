@@ -3,6 +3,9 @@ $purple: rgba(85, 55, 114, 1);
 $magenta: rgba(143, 59, 118, 1);
 $deep-pink: rgba(199, 65, 123, 1);
 $hot-pink: rgba(245, 72, 127, 1);
+$dark-gray: rgb(23, 23, 23, 1);
+$white-smoke: rgba(245,245,245,1);
+
 
 
 /* Okay, first, we're going to create a simple, scrollable, mobile-friendly design, that's based on grid. */
@@ -61,11 +64,12 @@ main::-webkit-scrollbar {
 }
 
 .home-link {
-    color: gray;
+    color: $magenta;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 3em;
     font-weight: 500;
     text-align: center;
+    grid-column: 2;
 }
 
 .home-link:hover {
@@ -81,22 +85,24 @@ main::-webkit-scrollbar {
     height: 300px;
     /* width: 100vw; */
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: repeat(5, 1fr);
     justify-content: space-between;
+    align-items: center;
     padding: 1rem;
     margin: .3rem;
 }
 
 .linkDisplay a {
     text-decoration: none;
-    color: gray;
+    color: $white-smoke;
+    border-bottom: solid 2px $hot-pink;
     font-size: 2rem;
 }
 
-.home-link {
-    font-size: 3em;
-    grid-row: 2;
+.linkDisplay a:hover {
+    background-color: $dark-gray;
 }
+
 
 .hamburger-link {
     font-size: 2rem;
@@ -150,6 +156,16 @@ input {
 
 /* event links styled on Events.css */
 
+// Media query for color scheme
+
+@media (prefers-color-scheme: dark) {
+    .App {
+        background: $dark-gray;
+        color: $white-smoke;
+
+    }
+}
+
 /* Down here, I've created a media query for when we are bigger than a phone */
 @media(min-width: 600px) {
     .App {
@@ -177,5 +193,9 @@ input {
     .links {
         display: contents;
         font-size: 30px;
+    }
+
+    .hamburger {
+        display: none;
     }
 }

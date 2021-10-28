@@ -21,6 +21,8 @@ import ResetPassword from './components/Authentication/Reset/ResetPassword';
 import ResetEmail from './components/Authentication/Reset/ResetEmail';
 import Timeline from './components/Timeline/Timeline';
 import Memories from './components/Memories/Memories';
+import Seen from './components/Seen/Seen';
+
 
 
 const App = () => {
@@ -29,18 +31,35 @@ const App = () => {
 
 	const [events, setEvents] = useState([]);
 
-	const url = `https://app.ticketmaster.com/discovery/v2/events.json?size=100&keyword=music&apikey=${'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB'}`;
+	const url = `https://app.ticketmaster.com/discovery/v2/events.json?size=100&keyword=music&random=true&apikey=${'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB'}`;
 
 	useEffect(() => {
 		axios.get(url).then((res) => setEvents([...res.data['_embedded'].events])).catch(err => console.log(err));
 	}, []);
+
+	const updateUser = async () => {
+		const auth = localStorage.getItem('auth')
+		 const config = {
+				headers: {
+					Authorization: `Token  ${auth}`,
+				},
+			};
+		 // update user 
+        let updatedUser = await axios.get(
+					`https://intense-island-04626.herokuapp.com/users/${currentUser.id}/`, config
+				);
+
+        setCurrentUser({...updatedUser.data})
+        console.log(updatedUser)
+	}
 	
 
 	return (
 		<div className='App'>
 			<Nav />
 			<main>
-				<DataContext.Provider value={{ events, setEvents, currentUser, setCurrentUser }}>
+				<DataContext.Provider
+					value={{ events, setEvents, currentUser, setCurrentUser, updateUser }}>
 					<Route exact path='/' component={Home} />
 					<Route exact path='/about' component={About} />
 					<Route exact path='/login' component={Login} />
@@ -50,8 +69,7 @@ const App = () => {
 					<Route exact path='/events/:id' component={EventDetail} />
 					<Route exact path='/events' component={Events} />
 					<Route exact path='/create' component={Create} />
-					<Route exact path='/calendar' component={Calendar}/>
-
+					<Route exact path='/calendar' component={Calendar} />
 
 					<Route exact path='/search/' component={EventSearch} />
 					<Route exact path='/search/events' component={EventSearchResults}/>
@@ -63,9 +81,7 @@ const App = () => {
 					<Route path='/dashboard/timeline' component={Timeline}/>
 					<Route path='/dashboard/memories' component={Memories}/>
 
-
-
-
+					<Route exact path='/seen' component={Seen} />
 				</DataContext.Provider>
 			</main>
 		</div>
