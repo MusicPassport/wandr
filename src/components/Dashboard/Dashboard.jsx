@@ -8,6 +8,7 @@ import { CalendarComponent, DateRangePickerComponent } from '@syncfusion/ej2-rea
 import './Dashboard.css';
 import Timeline from '../Timeline/Timeline';
 import Memories from '../Memories/Memories';
+import BucketList from '../BucketList/BucketList';
 
 const Dashboard = () => {
 
@@ -50,7 +51,7 @@ const Dashboard = () => {
             case('timeline'):
                 return(<Timeline/>);
             case('bucketlist'):
-                return( <h1>Hello from BucketList</h1>);
+                return( <BucketList/>);
             default:
                 return ( <Memories/>);
         }
