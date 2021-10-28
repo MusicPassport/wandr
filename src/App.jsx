@@ -18,11 +18,24 @@ import BucketList from './components/BucketList/BucketList';
 import EventSearch from './components/Events/EventSearch';
 import EventSearchResults from './components/Events/EventSearchResults';
 
+
 const App = () => {
 	// const [events,setEvents] = useState([{}]);
 	const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('currentUser'))|| {});
 
 	const [events, setEvents] = useState([]);
+
+	const initialState={
+		keyword:'',
+		postalCode:'',
+		venueId:'',
+		city:'',
+		stateCode:'',
+		startDateTime:'',
+		endDateTime:'',
+		classificationName:'',
+	}
+	const [searchInputs, setSearchInputs] = useState(initialState);
 
 	const url = `https://app.ticketmaster.com/discovery/v2/events.json?size=100&keyword=music&apikey=${'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB'}`;
 
@@ -35,7 +48,7 @@ const App = () => {
 		<div className='App'>
 			<Nav />
 			<main>
-				<DataContext.Provider value={{ events, setEvents, currentUser, setCurrentUser }}>
+				<DataContext.Provider value={{ events, setEvents, currentUser, setCurrentUser, searchInputs, setSearchInputs }}>
 					<Route exact path='/' component={Home} />
 					<Route exact path='/about' component={About} />
 					<Route exact path='/login' component={Login} />
@@ -53,6 +66,7 @@ const App = () => {
 
 
 					<Route exact path='/dashboard' component={Dashboard}/>
+
 
 				</DataContext.Provider>
 			</main>
