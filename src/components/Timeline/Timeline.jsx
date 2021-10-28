@@ -3,24 +3,28 @@ import {DataContext} from '../../Utility/Context';
 
 const Timeline = () => {
     const {currentUser} = useContext(DataContext);
-    const [timeline, setTimeline] = useState();
+    const [timeline, setTimeline] = useState([]);
 
+
+  
     useEffect( () => {
-        if(currentUser.events.length) setTimeline(currentUser.events);
+        console.log(currentUser);
+        if(currentUser.attending.length) setTimeline((currentUser.attending.concat(currentUser.viewing)).sort((a, b) => b.start- a.start));
     }, []);
 
 const [input, setInput] = useState();
 
-if(!timeline) return(<h1>No Events yet</h1>);
+if(!timeline.length) return(<h1>No Events yet</h1>);
 
 return (
     <div>
-        <h1>Hello from Timeline</h1>
-        {timeline.map(event => {
+         <h1>{timeline.length ? 'Hello from Timeline' : 'No timeline yet'}</h1>
+        {timeline && 
+            timeline.map(event => {
             return(
                 <>
                 <h2>{event.name}</h2>
-                <p>{event.start} to {event.end}</p>
+                <p>{event.start}</p>
                 </>
             )
         })}
