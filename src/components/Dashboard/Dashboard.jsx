@@ -63,7 +63,7 @@ const Dashboard = () => {
         <>
             <section className="dashboard-buttons">
                 <button className="dashboard-btn" name='settings' onClick={openAndClose}>
-                Profile Settings
+                Settings
             </button>
             <button className="dashboard-btn" name='calendar' onClick={openAndClose}>
                 Calendar
@@ -82,11 +82,13 @@ const Dashboard = () => {
                 dateValue,
                 dates
             }}>
-                 <DateRangePickerComponent 
-                 placeholder="pick a date range" 
-                value={dates}
+                 <DateRangePickerComponent className='date-picker'  placeholder="pick a date range"></DateRangePickerComponent>
 
-                 ></DateRangePickerComponent>
+//                  <DateRangePickerComponent 
+//                  placeholder="pick a date range" 
+//                 value={dates}
+
+//                  ></DateRangePickerComponent>
                 {display()}
             </DashContext.Provider>
            

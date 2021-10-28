@@ -65,8 +65,7 @@ main::-webkit-scrollbar {
 }
 
 .linkDisplay {
-  height: 300px;
-  /* width: 100vw; */
+  height: 100vh;
   display: grid;
   grid-template-rows: repeat(5, 1fr);
   justify-content: space-between;
@@ -75,7 +74,7 @@ main::-webkit-scrollbar {
   margin: 0.3rem;
 }
 
-.linkDisplay a {
+.linkDisplay a, .logout {
   text-decoration: none;
   color: whitesmoke;
   border-bottom: solid 2px #f5487f;
@@ -88,6 +87,14 @@ main::-webkit-scrollbar {
 
 .hamburger-link {
   font-size: 2rem;
+}
+
+.logout {
+  color: whitesmoke;
+  border-bottom: solid 2px #f5487f;
+  font-size: 2rem;
+  background: none;
+  padding: 0;
 }
 
 /* CSS for the login and sign up forms */
@@ -134,6 +141,10 @@ input {
 @media (prefers-color-scheme: dark) {
   .App {
     background: #171717;
+    color: whitesmoke;
+  }
+
+  .e-input-group {
     color: whitesmoke;
   }
 }

@@ -1,0 +1,57 @@
+@import '../../App';
+
+
+.dashboard-buttons {
+    display: inline-flex;
+    border: none;
+    text-decoration: none; 
+
+}
+
+.dashboard-btn {
+    width: 120px;
+    height: 30px;
+    border: none;
+    background: none;
+    font-size: .72em;
+    text-decoration: underline $navy;
+}
+
+.dashboard-btn:hover{
+    background: lightgray;
+}
+
+.date-picker {
+    margin-top: 20px
+}
+
+
+.personal-calendar {
+    margin: 1rem auto;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    .dashboard-btn {
+        color: $white-smoke;
+        text-decoration: underline $magenta;
+    }
+    .dashboard-btn:hover{
+    background: $purple;
+}
+
+}
+
+
+@media(min-width: 600px){
+
+
+    .personal-calendar {
+    grid-column: 3;
+    grid-row: 1/span 2;
+    }
+
+    .personal-memories {
+        grid-column: 1/span 2;
+    }
+}
