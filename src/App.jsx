@@ -25,13 +25,28 @@ import Seen from './components/Seen/Seen';
 
 
 
+
 const App = () => {
 	// const [events,setEvents] = useState([{}]);
 	const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('currentUser'))|| {});
 
 	const [events, setEvents] = useState([]);
 
+	const initialState={
+		keyword:'',
+		postalCode:'',
+		venueId:'',
+		city:'',
+		stateCode:'',
+		startDateTime:'',
+		endDateTime:'',
+		classificationName:'',
+	}
+	const [searchInputs, setSearchInputs] = useState(initialState);
+
+
 	const url = `https://app.ticketmaster.com/discovery/v2/events.json?size=100&keyword=music&random=true&apikey=${'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB'}`;
+
 
 	useEffect(() => {
 		axios.get(url).then((res) => setEvents([...res.data['_embedded'].events])).catch(err => console.log(err));
@@ -58,8 +73,9 @@ const App = () => {
 		<div className='App'>
 			<Nav />
 			<main>
-				<DataContext.Provider
-					value={{ events, setEvents, currentUser, setCurrentUser, updateUser }}>
+
+				<DataContext.Provider value={{ events, setEvents, currentUser, setCurrentUser, , updateUser, searchInputs, setSearchInputs }}>
+
 					<Route exact path='/' component={Home} />
 					<Route exact path='/about' component={About} />
 					<Route exact path='/login' component={Login} />
@@ -81,7 +97,9 @@ const App = () => {
 					<Route path='/dashboard/timeline' component={Timeline}/>
 					<Route path='/dashboard/memories' component={Memories}/>
 
+
 					<Route exact path='/seen' component={Seen} />
+
 				</DataContext.Provider>
 			</main>
 		</div>

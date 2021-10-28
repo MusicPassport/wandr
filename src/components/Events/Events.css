@@ -26,6 +26,12 @@
     border:5px solid red;
     overflow-y: none;
 }
+.toggle{
+    display:block;
+}
+.noToggle{
+    display:none;
+}
 
 @media (min-width: 600px) {
 
