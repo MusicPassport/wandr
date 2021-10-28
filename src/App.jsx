@@ -19,6 +19,7 @@ import EventSearch from './components/Events/EventSearch';
 import EventSearchResults from './components/Events/EventSearchResults';
 import Seen from './components/Seen/Seen';
 
+
 const App = () => {
 	// const [events,setEvents] = useState([{}]);
 	const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('currentUser'))|| {});
