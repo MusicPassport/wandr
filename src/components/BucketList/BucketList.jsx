@@ -58,13 +58,15 @@ const BucketList = () => {
 			);
             console.log(eventToUpdate)
 			setUpdateEvent({ ...eventToUpdate.data });
-            while(!updateEvent){
-                console.log('waiting')
-            }
+            // while(!updateEvent){
+            //     console.log('waiting')
+            // }
             let updated = {
 				...updateEvent,
 				attendees: [parseInt(currentUser.id)],viewers: [...eventToUpdate.data.viewers.filter(user => user !== currentUser.id)],
 			}
+            
+            console.log(updated.length)
 			console.log('Updated Event:', updated);
 			
 			let res = await axios.put(
