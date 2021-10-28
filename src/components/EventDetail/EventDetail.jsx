@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { DataContext } from '../../Utility/Context';
 import axios from 'axios';
 import './EventDetail.css';
+import { set } from 'mongoose';
 
 function EventDetail() {
 	const { id } = useParams();
@@ -16,76 +17,91 @@ function EventDetail() {
 		// get events
 		axios
 			.get(url)
-			.then((res) => setEventDetail({ ...res.data }))
+			.then((res) => {
+				setEventDetail({ ...res.data });
+			})
 			.catch((err) => console.log(err));
 	}, []);
-
-	
 
 	const formatData = async () => {
 		const newEvent = {
 			id: id,
 			name: eventDetail.name,
 			genre: eventDetail.genre,
-			owner: currentUser.username,
-			summary: 'eventDetail.promoter.description',
 			city: eventDetail['_embedded'].venues[0].city.name,
 			state: eventDetail['_embedded'].venues[0].state.name,
-			address: eventDetail['_embedded'].venues.address[0].line1,
+			address: eventDetail['_embedded'].venues[0].address.line1,
 			tm_url: eventDetail.url,
 			img_url: eventDetail.images[0].url,
-			eventId: eventDetail.id,
 			start: eventDetail.dates.start.localDate,
-			venue: eventDetail.venues[0].name,
+			venue: 'eventDetail.venues[0].name',
 			attendees: [],
 			viewers: [],
 		};
 		return newEvent;
 	};
 
-	// const addSeen = async () => {
-	// 	// send a request to update the user detail to include the current user in the events attendees
-	// 	try {
-	// 		const event = await axios.get(
-	// 			`https://intense-island-04626.herokuapp.com/events/${id}`
-	// 		);
-	// 		console.log('Found!');
-	// 		setUpdateEvent({ ...event.data });
-	// 		axios.put(`https://intense-island-04626.herokuapp.com/events/${id}`, {
-	// 			...updateEvent,
-	// 			attendees: [...updateEvent.attendees, currentUser],
-	// 		});
-	// 	} catch (error) {
-	// 		console.log('Not Found!');
-	// 		axios.post(`https://intense-island-04626.herokuapp.com/events`, {
-	// 			...formatData(),
-	// 			attendees: [...updateEvent.attendees, currentUser],
-	// 		});
-	// 	}
-	// };
-
-	const addEvent= async (event) => {
+	const addEvent = async (event) => {
 		// send a request to update the user detail to include the current user in the events viewers
+		const auth = localStorage.getItem('auth');
+		console.log(event.target.id)
+		let target = event.target.id
 		try {
-			const auth = localStorage.getItem('auth')
 			const event = await axios.get(
-				`https://intense-island-04626.herokuapp.com/events/${id}`,
+				`https://intense-island-04626.herokuapp.com/events/${id}`
 			);
-			console.log('Found!');
+			console.log(event)
+			console.log(event.status)
 			setUpdateEvent({ ...event.data });
-			axios.put(`https://intense-island-04626.herokuapp.com/events/${id}/`, {
-				...updateEvent,
-				[event.target.id]: [...updateEvent[event.target.id], currentUser],
-			}, {
-			headers: {
-				Authorization: `Token  ${auth}`,
-			}});
+			console.log('Old Event ', updateEvent)
+			console.log('Found!');
+			console.log('Updated Event:', {...updateEvent,
+					target: [...target, parseInt(currentUser.id)]})
+			
+			if (event.status == 200) {
+				console.log('Updating Event!')
+				await axios.put(
+					`https://intense-island-04626.herokuapp.com/events/${id}`,
+					{ ...updateEvent, target: [...target, parseInt(currentUser.id)] },
+					{
+						headers: {
+							Authorization: `Token  ${auth}`,
+						},
+					}
+				);
+
+			} else {
+				console.log('Not Found!');
+				
+				const results = await axios.post(
+					`https://intense-island-04626.herokuapp.com/events/`,
+					{
+						id: id,
+						name: eventDetail.name,
+						genre: eventDetail.classifications[0].genre.name,
+						city: eventDetail['_embedded'].venues[0].city.name,
+						state: eventDetail['_embedded'].venues[0].state.name,
+						address: eventDetail['_embedded'].venues[0].address.line1,
+						tm_url: eventDetail.url,
+						img_url: eventDetail.images[0].url,
+						start: '2021-10-27T15:47:00Z',
+						venue: null,
+						attendees: [parseInt(currentUser.id)],
+						viewers: [],
+					},
+					{
+						headers: {
+							Authorization: `Token  ${auth}`,
+						},
+					}
+				);
+				console.log('Results ', results);
+
+			}
+			
+
 		} catch (error) {
-			console.log('Not Found!');
-			axios.post(`https://intense-island-04626.herokuapp.com/events/`, {
-				...formatData(),
-				[event.target.id]: [...updateEvent[event.target.id], currentUser],
-			});
+			console.log(error);	
 		}
 	};
 
@@ -106,13 +122,19 @@ function EventDetail() {
 				<h2>{eventDetail.name}</h2>
 				<p className='start'>Start Date: {eventDetail.dates.start.localDate}</p>
 				<div className='detail-btns'>
-					<button className='btn detail-btn bucket' id='viewers' onClick={addEvent}>
+					<button
+						className='btn detail-btn bucket'
+						id='viewers'
+						onClick={addEvent}>
 						Add To BucketList
 					</button>
-					<button className='btn detail-btn seen' id='attendees' onClick={addEvent}>
+					<button
+						className='btn detail-btn seen'
+						id='attendees'
+						onClick={addEvent}>
 						Add To Seen
 					</button>
-					<a target='_blank' href={eventDetail.url}>
+					<a target='_blank' href={eventDetail.url} rel='noreferrer'>
 						<button className='btn detail-btn tickets'>View Tickets</button>
 					</a>
 				</div>
