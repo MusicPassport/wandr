@@ -18,7 +18,6 @@ const Nav = () => {
         console.log("Logging Out!!")
         localStorage.clear();
         history.push('/')
-        
     }
 
 	return (

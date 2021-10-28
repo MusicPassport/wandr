@@ -1,61 +1,62 @@
 import {useState, useEffect, useContext} from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import {DataContext} from '../../Utility/Context';
+import {DataContext, DashContext} from '../../Utility/Context';
 import { backendAPI } from '../../Utility/Config';
 
 import { CalendarComponent, DateRangePickerComponent } from '@syncfusion/ej2-react-calendars';
 import './Dashboard.css';
-import { findAllByDisplayValue } from '@testing-library/react';
+import Timeline from '../Timeline/Timeline';
+import Memories from '../Memories/Memories';
 
 const Dashboard = () => {
 
     const { currentUser } = useContext(DataContext);
-    const [displaySettings, setDisplaySettings] = useState({
-        calendar: false,
-        timeline: false,
-        settings: false,
-        bucketlist: false,
-        memories: false
-    });
+
+    const [displaySettings, setDisplaySettings] = useState('memories');
     const [dateValue, setDateValue] = useState(null);
     const [minDate, setminDate] = useState(null);
     const [maxDate, setmaxDate] = useState(null);
-    const [memories,setMemories] = useState();
-
-    const [userInput, setUserInput] = useState({});
-
-    useEffect(() => {
-        console.log('current user: ',currentUser);
-        setMemories(currentUser.memories);
-    })
-   
-/*
-Okay, I need the user's personal calendar.
-I need a form that appears when the user wants to update their profile.
-I need a way to view memories.
-*/
-
-    const handleChange = (e) => {
-        setUserInput({...userInput, [e.target.name]: e.target.value});
-    }
 
     const openAndClose = (e) => {
         let value = displaySettings[e.target.name];
-        setDisplaySettings({...displaySettings, [e.target.name]: !value});
+        // setDisplaySettings({...displaySettings, [e.target.name]: !value});
+        setDisplaySettings(e.target.name);
+        console.log(e.target.name);
     }
 
-    const handleSubmit = () => {
-
-        let config = {
-            headers: {
-                Authorization: localStorage.getItem('auth')
+    const getEvent = async (memory) => {
+            try {
+                axios.get(`${backendAPI}/events/${memory.event}` )
+            } catch(err) {
+                console.log(err);
             }
-        }
-        axios.put(`${backendAPI}/users/me`, config);
-
     }
 
-    return ( !displaySettings.settings ? (
+    const display = () => {
+        switch(displaySettings){
+            case('calendar'):
+                return(<CalendarComponent
+                className='personal-calendar'
+                value={dateValue}
+                min={minDate}
+                max={maxDate}
+                isMultiSelection={true}
+                />);
+            case('settings'):
+                return (
+                    <Link to="/dashboard/reset-password">Change Password</Link>
+                );
+            case('timeline'):
+                return(<Timeline/>);
+            case('bucketlist'):
+                return( <h1>Hello from BucketList</h1>);
+            default:
+                return ( <Memories/>);
+        }
+    }
+
+    return (
         <>
             <section className="dashboard-buttons">
                 <button className="dashboard-btn" name='settings' onClick={openAndClose}>
@@ -74,55 +75,17 @@ I need a way to view memories.
                 Bucket List
             </button>
             </section>
-
-            <DateRangePickerComponent placeholder="pick a date range"></DateRangePickerComponent>
-            {displaySettings.calendar && 
-                <CalendarComponent
-            className='personal-calendar'
-            value={dateValue}
-            min={minDate}
-            max={maxDate}
-            isMultiSelection={true}
-            />
-            }
-
-            <div className='personal-memories'>
-                <h3>Memories</h3>
-                { displaySettings.memories && ( memories &&
-                    memories.map(memory => {
-                        return (
-                                <>
-                                <h6>{memory.title}</h6>
-                                {/* need to update alts for memories */}
-                                <img src={memory.image} alt="one of your memories!" />
-                                <p>{memory.body}</p>
-                            </>
-                        );
-                    })
-                    ) 
-                }
-            </div>
-            
-        </>
-    ) : (
-        <form className="personal-settings" onSubmit={handleSubmit}>
-
-            <label htmlFor="email">Email Address: </label>
-            <input id = 'email' name='email' type="text" placeholder="email address" onChange={handleChange}/>
-
-            <label htmlFor="pw">New Password: </label>
-            <input id='pw' name='pw' type="text" placeholder="new password"onChange={handleChange}/>
-            
-            <label htmlFor="pw-confirm">Confirm Password: </label>
-            <input id='pw-confirm' name='pw-confirm' type="text" placeholder="confirm new password" onChange={handleChange}/>
-
-           <div className="dashboard-buttons">
-                <button type="submit">Submit</button>
-                <button name="settings" onClick={openAndClose}>Cancel</button>
-           </div>
-        </form>
+            <DashContext.Provider value={{
+                dateValue,
+                minDate,
+                maxDate
+            }}>
+                 <DateRangePickerComponent placeholder="pick a date range"></DateRangePickerComponent>
+                {display()}
+            </DashContext.Provider>
+           
+            </>
     )
-    );
 };
 
 export default Dashboard;
