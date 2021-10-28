@@ -9,7 +9,16 @@ import './BucketList.css'
 
 const BucketList = () => {
 
-	const { currentUser, setCurrentUser } = useContext(DataContext);
+	const { currentUser, setCurrentUser, updateUser } = useContext(DataContext);
+    const [updateEvent, setUpdateEvent] = useState();
+
+    useEffect(() => {
+        updateUser();
+        
+        return () => {
+            
+        }
+    }, [])
 
     const removeFromBucket = async (event) => {
         try {
@@ -30,13 +39,56 @@ const BucketList = () => {
             Authorization: `Token ${auth}`,
         }
         } )
-            console.log(res)
+        console.log(res)
+        updateUser();
 
         } catch (error) {
             console.log(error)
         }
 
     }
+    const addEvent = async (event) => {
+		// send a request to update the user detail to include the current user in the events viewers
+		const auth = localStorage.getItem('auth');
+		console.log(event.target.id);
+        
+		try {
+			const eventToUpdate = await axios.get(
+				`https://intense-island-04626.herokuapp.com/events/${event.target.id}`
+			);
+            console.log(eventToUpdate)
+			setUpdateEvent({ ...eventToUpdate.data });
+            // while(!updateEvent){
+            //     console.log('waiting')
+            // }
+            let updated = {
+				...updateEvent,
+				attendees: [parseInt(currentUser.id)],viewers: [...eventToUpdate.data.viewers.filter(user => user !== currentUser.id)],
+			}
+            
+            console.log(updated.length)
+			console.log('Updated Event:', updated);
+			
+			let res = await axios.put(
+					`https://intense-island-04626.herokuapp.com/events/${event.target.id}`,
+					updated,
+					{
+						headers: {
+							Authorization: `Token  ${auth}`,
+						},
+					}
+				)
+
+                // removeFromBucket();
+                
+                updateUser();
+                
+		} catch (error) {
+		console.log(error)
+		}
+	
+	}
+
 
 	return (
 		<div>
@@ -55,7 +107,12 @@ const BucketList = () => {
                     <h4>{event.venue}</h4>
                     <a href={event.tm_url}>Get your tickets here!</a>
                     <button onClick={removeFromBucket} id={event.id}>Remove from Bucketlist</button>
-                    <button>I'm going!</button>
+                    <button
+						className='btn detail-btn seen'
+						id={event.id}
+						onClick={addEvent}>
+						Add To Attending
+					</button>
                 </div>
                  
                 )}
