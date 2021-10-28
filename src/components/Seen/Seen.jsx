@@ -33,7 +33,7 @@ const Seen = () => {
 	return (
 		<div>
 			<h3 className='greeting'>Hey, {currentUser.username}!</h3>
-			<h1>Seen</h1>
+			<h1>Attending</h1>
 			<div className='event-list'>
 				{currentUser.attending.map((event, index) => (
 					<div className='event-link' key={`${event.id}`}>
