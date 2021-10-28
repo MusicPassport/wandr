@@ -3,6 +3,7 @@ import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { backendAPI } from '../../../Utility/Config';
 import { DataContext } from '../../../Utility/Context.jsx';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const { currentUser, setCurrentUser } = useContext(DataContext)
@@ -58,28 +59,36 @@ const Login = () => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<h2>Login</h2>
-			<div className='username'>
-				<label htmlFor=''>Username:</label>
-				<input
-					type='text'
-					placeholder=' e.g. myaddress@email.com'
-					onChange={captureEmail}
-				/>
+		<div>
+			<form onSubmit={handleSubmit}>
+				<h2>Login</h2>
+				<div className='username'>
+					<label htmlFor=''>Username:</label>
+					<input
+						type='text'
+						placeholder=' e.g. myaddress@email.com'
+						onChange={captureEmail}
+					/>
+				</div>
+				<div className='password'>
+					<label htmlFor=''>Password:</label>
+					<input
+						type='password'
+						placeholder=' enter password'
+						onChange={capturePassword}
+					/>
+				</div>
+				<button type='submit' className='signup-login'>
+					Login
+				</button>
+			</form>
+			<div className='redirect-user'>
+				<p>New? Sign Up!</p>
+				<Link to='/signup'>
+					<button>SignUp</button>
+				</Link>
 			</div>
-			<div className='password'>
-				<label htmlFor=''>Password:</label>
-				<input
-					type='password'
-					placeholder=' enter password'
-					onChange={capturePassword}
-				/>
-			</div>
-			<button type='submit' className='signup-login'>
-				Login
-			</button>
-		</form>
+		</div>
 	);
 };
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { backendAPI } from '../../../Utility/Config'
 import { useHistory } from 'react-router'
+import { Link } from 'react-router-dom'
 
 const SignUp = () => {
 
@@ -51,23 +52,47 @@ const captureUsername = (e) => {
 //     }
 // }
     return (
-        <form onSubmit={createUser}>
-            <h2>Sign Up</h2>
-            <div className='username'>
-            <label htmlFor="">Username:</label>
-            <input type="text" placeholder=' e.g. myaddress@email.com' onChange={captureUsername} />
-            </div>
-            <div className='password'>
-            <label htmlFor="">Password:</label>
-            <input type="password" className='new-password' placeholder=' enter password' onChange={capturePassword} />
-            </div>
-            <div className='password '>
-            <label htmlFor="">Confirm Password:</label>
-            <input type="password" className='confirm-password' placeholder=' enter password' onChange={confirmPassword}/>
-            </div>
-            <button type="submit" className='signup-login'>Sign Up</button>
-        </form>
-    )
+			<div>
+				<form onSubmit={createUser}>
+					<h2>Sign Up</h2>
+					<div className='username'>
+						<label htmlFor=''>Username:</label>
+						<input
+							type='text'
+							placeholder=' e.g. myaddress@email.com'
+							onChange={captureUsername}
+						/>
+					</div>
+					<div className='password'>
+						<label htmlFor=''>Password:</label>
+						<input
+							type='password'
+							className='new-password'
+							placeholder=' enter password'
+							onChange={capturePassword}
+						/>
+					</div>
+					<div className='password '>
+						<label htmlFor=''>Confirm Password:</label>
+						<input
+							type='password'
+							className='confirm-password'
+							placeholder=' enter password'
+							onChange={confirmPassword}
+						/>
+					</div>
+					<button type='submit' className='signup-login'>
+						Sign Up
+					</button>
+				</form>
+                <div className='redirect-user'>
+				<p>Already have an account? Login!</p>
+				<Link to='/login'>
+					<button>Login</button>
+				</Link>
+			    </div>
+			</div>
+		);
 }
 
 export default SignUp
