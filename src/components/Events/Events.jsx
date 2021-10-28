@@ -45,8 +45,8 @@ const Events = () => {
             <div className={isOpen ? 'toggle' : 'noToggle'}>
                 <EventSearch setIsOpen={setIsOpen} isOpen={isOpen}/>
             </div>
-            <div className={isOpen ? 'noToggle' : 'toggle'}></div>
-				<div className='event-list'>
+            <div className={isOpen ? 'event-list noToggle' : 'event-list toggle'}>
+				{/* <div className='event-list'> */}
 				{events.map((event) => (
 					<Link className='event-link' to={`/events/${event.id}`}>
 						<div className='img-container'>
