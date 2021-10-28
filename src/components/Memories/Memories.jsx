@@ -19,7 +19,10 @@ const Memories = () => {
     }, []);
 
     const handleChange = (e) => {
-        setUserInput({...userInput, [e.target.name]: e.target.value});
+        if(e.target.name === 'photo') setUserInput({...userInput, [e.target.name]: e.target.files[0].name})
+        else{
+             setUserInput({...userInput, [e.target.name]: e.target.value});
+            }
         console.log(userInput);
     }
 
@@ -34,21 +37,23 @@ const Memories = () => {
     }
     
     const handleSubmit = async(event) => {
+        // console.log('userInput: ', {...userInput, photo: sp})
         event.preventDefault();
-        console.log('userInput: ', userInput);
         try {
-            const memory = await axios.post(`${backendAPI}/memories/`, 
-                {...userInput},
+            console.log(`${backendAPI}/memories/`)
+            console.log(userInput)
+            const memory = await axios.post(`${backendAPI}/memories`, 
+                userInput,
                 { 
-                    headers: { 
-                        Authorization: `Token ${localStorage.getItem('auth')}`
-                        }
+                headers: { 
+                    Authorization: `Token ${localStorage.getItem('auth')}`
+                    }
                 })
+                console.log(memory)
         } catch(err) {
             console.log(err);
         }
     }
-
 return (
     <div>
         <h1>{memories.length ? 'Hello from memories' : 'No memories yet'}</h1>
@@ -58,6 +63,10 @@ return (
                 <input type="text" name="title" onChange={handleChange}/>
                 <textarea name="body" rows='10' onChange={handleChange}/>
                 <select name="event" defaultValue={null} onChange={handleChange}>
+                    return (
+                        <>
+                         <option name={null} selected value={null}>
+                            Choose an event.</option>
                     {events.map(event => {
                         console.log('events', events);
                         return(
@@ -66,16 +75,19 @@ return (
                             </option>
                         )
                     })}
+                    </>
+                    )
                 </select>
-                <input type="file" accept='image/jpg, image/jpeg, image/png' placeholder="choose image" onChange={handleChange} />
+                <input type="file" name="photo" accept='image/jpg, image/jpeg, image/png' placeholder="choose image" onChange={handleChange} />
                 <button type="submit">Submit</button>
             </form>
         )}
         {memories && memories.map(event => {
             return(
                 <>
-                <h2>{event.name}</h2>
-                <p>{event.start} to {event.end}</p>
+                <h2>{event.title}</h2>
+                <p>{event.body}</p>
+                <image src={event.photo}/>
                 </>
             )
         })}
