@@ -60,7 +60,7 @@ const Dashboard = () => {
         <>
             <section className="dashboard-buttons">
                 <button className="dashboard-btn" name='settings' onClick={openAndClose}>
-                Profile Settings
+                Settings
             </button>
             <button className="dashboard-btn" name='calendar' onClick={openAndClose}>
                 Calendar

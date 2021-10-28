@@ -1,9 +1,13 @@
 
 .dashboard-buttons {
-    display: inline;
+    display: inline-flex;
+    border: none;
+    text-decoration: none; 
+
 }
 
 .dashboard-btn {
+    margin-left: 5px;
     width: 120px;
     height: 30px;
     border: none;
