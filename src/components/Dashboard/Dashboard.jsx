@@ -4,7 +4,7 @@ import axios from 'axios';
 import {DataContext, DashContext} from '../../Utility/Context';
 import { backendAPI } from '../../Utility/Config';
 
-import { CalendarComponent, DateRangePickerComponent } from '@syncfusion/ej2-react-calendars';
+import { DatePickerComponent, DateRangePickerComponent } from '@syncfusion/ej2-react-calendars';
 import './Dashboard.css';
 import Timeline from '../Timeline/Timeline';
 import Memories from '../Memories/Memories';
@@ -16,14 +16,16 @@ const Dashboard = () => {
 
     const [displaySettings, setDisplaySettings] = useState('memories');
     const [dateValue, setDateValue] = useState(null);
-    const [minDate, setminDate] = useState(null);
-    const [maxDate, setmaxDate] = useState(null);
+    const [dates,setDates] = useState([]);
 
     const openAndClose = (e) => {
-        let value = displaySettings[e.target.name];
-        // setDisplaySettings({...displaySettings, [e.target.name]: !value});
         setDisplaySettings(e.target.name);
-        console.log(e.target.name);
+    }
+    const handleDates = (event) => {
+        console.log(event);
+        setDates(event.target.value);
+        setDateValue(null);
+        console.log(dates);
     }
 
     const getEvent = async (memory) => {
@@ -34,14 +36,14 @@ const Dashboard = () => {
             }
     }
 
+
+
     const display = () => {
         switch(displaySettings){
             case('calendar'):
-                return(<CalendarComponent
+                return(<DatePickerComponent
                 className='personal-calendar'
                 value={dateValue}
-                min={minDate}
-                max={maxDate}
                 isMultiSelection={true}
                 />);
             case('settings'):
@@ -78,10 +80,13 @@ const Dashboard = () => {
             </section>
             <DashContext.Provider value={{
                 dateValue,
-                minDate,
-                maxDate
+                dates
             }}>
-                 <DateRangePickerComponent placeholder="pick a date range"></DateRangePickerComponent>
+                 <DateRangePickerComponent 
+                 placeholder="pick a date range" 
+                value={dates}
+
+                 ></DateRangePickerComponent>
                 {display()}
             </DashContext.Provider>
            
