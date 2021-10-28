@@ -30,6 +30,22 @@ const App = () => {
 	useEffect(() => {
 		axios.get(url).then((res) => setEvents([...res.data['_embedded'].events])).catch(err => console.log(err));
 	}, []);
+
+	const updateUser = async () => {
+		const auth = localStorage.getItem('auth')
+		 const config = {
+				headers: {
+					Authorization: `Token  ${auth}`,
+				},
+			};
+		 // update user 
+        let updatedUser = await axios.get(
+					`https://intense-island-04626.herokuapp.com/users/${currentUser.id}/`, config
+				);
+
+        setCurrentUser({...updatedUser.data})
+        console.log(updatedUser)
+	}
 	
 
 	return (
@@ -37,7 +53,7 @@ const App = () => {
 			<Nav />
 			<main>
 				<DataContext.Provider
-					value={{ events, setEvents, currentUser, setCurrentUser }}>
+					value={{ events, setEvents, currentUser, setCurrentUser, updateUser }}>
 					<Route exact path='/' component={Home} />
 					<Route exact path='/about' component={About} />
 					<Route exact path='/login' component={Login} />

@@ -5,14 +5,12 @@ import axios from 'axios';
 
 
 const Seen = () => {
-    const {currentUser} = useContext(DataContext)
+    const {currentUser, setCurrentUser, updateUser} = useContext(DataContext)
     const [event, setEvent] = useState()
 
     const deleteEvent = async (event) => {
-        console.log(event.target.id)
         const id = event.target.id
         const targetEvent = await axios.get(`https://intense-island-04626.herokuapp.com/events/${id}`)
-        console.log(targetEvent.data)
         const newEvent = {...targetEvent.data, attendees: [...targetEvent.data.attendees.filter(user => user !== currentUser.id)]}
         const auth = localStorage.getItem('auth')
         const config = {
@@ -27,6 +25,9 @@ const Seen = () => {
 
         console.log(res)
 
+        // update user 
+        updateUser()
+    
     }
 
 	return (
