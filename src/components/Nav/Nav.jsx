@@ -22,7 +22,7 @@ const Nav = () => {
 
 	return (
 		<header>
-			<div className='links'>
+			<div className='links hidden'>
 				<Link to='/'>Home</Link>
 				{/* <Link to='/calendar'>Calendar</Link> */}
 				{/* <Link to='/timeline'>Timeline</Link> */}
@@ -47,10 +47,12 @@ const Nav = () => {
 					<Link to='/about'>About</Link>
 					<Link to='/events'>Events</Link>
 					{localStorage.getItem('currentUser') ? (
-                        <>
-                        <Link to='/dashboard'>Dashboard</Link>
-                        <button className='logout' onClick={logoutUser}>Logout</button>
-                        </>    
+						<>
+							<Link to='/dashboard'>Dashboard</Link>
+							<button className='logout' onClick={logoutUser}>
+								Logout
+							</button>
+						</>
 					) : (
 						<>
 							<Link to='/login'>Login</Link>
