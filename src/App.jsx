@@ -33,6 +33,14 @@ import Seen from './components/Seen/Seen';
 const App = () => {
 	// const [events,setEvents] = useState([{}]);
 	const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('currentUser'))|| {});
+	 const [dateRange, setDateRange] = useState();
+		const [currentMemory, setCurrentMemory] = useState({
+			title: '',
+			body: '',
+			photo: '',
+			owner: '',
+			event: '',
+		});
 
 	const [events, setEvents] = useState([]);
 
@@ -92,7 +100,6 @@ const App = () => {
 					<Route exact path='/login' component={Login} />
 					<Route exact path='/signup' component={SignUp} />
 					{/* <Route exact path='/timeline' component={Timeline}/> */}
-					<Route exact path='/bucketlist/' component={BucketList} />
 					<Route exact path='/events/:id' component={EventDetail} />
 					<Route exact path='/events' component={Events} />
 					<Route exact path='/create' component={Create} />
@@ -100,12 +107,29 @@ const App = () => {
 					<Route exact path='/altcalendar' component={AltCalendar} />
 
 					<Route exact path='/search/' component={EventSearch} />
-					<Route exact path='/search/events' component={EventSearchResults}/>
+					<Route exact path='/search/events' component={EventSearchResults} />
 
 					<Route exact path='/dashboard' component={Dashboard} />
 					<Route path='/discover' component={Discover} />
 
 					<Route exact path='/seen' component={Seen} />
+					<Route exact path='/dashboard/settings' component={ResetPassword} />
+					<Route exact path='/dashboard/bucketlist' component={BucketList} />
+					<Route
+						exact
+						path='/dashboard/timeline'
+						render={() => <Timeline dateRange={dateRange} />}
+					/>
+					<Route
+						exact
+						path='/dashboard/memories'
+						render={() => <Memories setCurrentMemory={setCurrentMemory} />}
+					/>
+					<Route
+						exact
+						path='/dashboard/memories/:id'
+						render={() => <MemoryDetail currentMemory={currentMemory} />}
+					/>
 				</DataContext.Provider>
 			</main>
 		</div>

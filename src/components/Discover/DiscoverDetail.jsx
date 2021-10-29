@@ -3,15 +3,20 @@ import { useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import '../../css/DiscoverDetail.css'
 import { Link } from 'react-router-dom';
+import {useHistory} from 'react-router-dom'
 
 const DiscoverDetail = ({ events }) => {
     console.log("Events!", events)
+	let history = useHistory()
 
     if (!events) {
 			return <h2>Loading..</h2>;
 		}
     return (
+		
 			<div>
+				<button onClick={() => history.goBack()}>←</button>	
+
 				{events.map((event) => (
 					// <div>
 					// 	<h3>{event.name}</h3>
@@ -19,7 +24,7 @@ const DiscoverDetail = ({ events }) => {
 					// 	<p>{event.dates.start.localDate}</p>
 					// 	<p>{event.dates.status.code}</p>
 					// </div>
-
+					
 					<Card className='card card-container' style={{ width: '22rem' }}>
 						<Card.Img
 							variant='top'

@@ -8,7 +8,7 @@ import '../../css/Memories.css';
 
 const Memories = ( { setCurrentMemory } ) => {
     const {currentUser} = useContext(DataContext);
-    const history = useHistory();
+	const history = useHistory();
 
     const [memories, setMemories] = useState([]);
     const [events, setEvents] = useState();
@@ -78,45 +78,70 @@ const Memories = ( { setCurrentMemory } ) => {
     }
 
 return (
-    <div>
-        <h1>{memories.length ? 'Hello from memories' : 'No memories yet'}</h1>
-       <button onClick={toggleMem}>Add a memory</button>
-        {addMem && (
-            <form onSubmit={handleSubmit}>
-                <input id="title" type="text" name="title" value={userInput.title} onChange={handleChange}/>
-                <textarea id="body" name="body" rows='10' value={userInput.body} onChange={handleChange}/>
-                <select id="event" name="event" defaultValue={null} value={userInput.event} onChange={handleChange}>
-                    return (
-                        <>
-                         <option name={null} selected value={null}>
-                            Choose an event.</option>
-                    {events.map(event => {
-                            return(
-                            <option name='event' value={event.id}>
-                                {event.name}
-                            </option>
-                            )
-                    })}
-                    </>
-                    )
-                </select>
-                <input type="file" id="photo"name="photo" placeholder="choose image" onChange={fileChange} />
-                <button type="submit">Submit</button>
-                <button onClick={toggleMem}>Cancel</button>
-
-            </form>
-        )}
-        {memories && memories.map(memory => {
-            return(
-            <div className="memory" key={memory.id} id={memory.id}>
-                <h2 onClick={openDetails}>{memory.title}</h2>
-                <img onClick={openDetails} src={memory.photo} alt="alt"/>
-                <p onClick={openDetails} >{memory.body}</p>
-                </div>
-            )
-        })}
-        </div>
-    );
+	<div>
+		<button onClick={() => history.goBack()}>←</button>
+		<h1>{memories.length ? 'Hello from memories' : 'No memories yet'}</h1>
+		<button onClick={toggleMem}>Add a memory</button>
+		{addMem && (
+			<form onSubmit={handleSubmit}>
+				<input
+					id='title'
+					type='text'
+					name='title'
+					value={userInput.title}
+					onChange={handleChange}
+				/>
+				<textarea
+					id='body'
+					name='body'
+					rows='10'
+					value={userInput.body}
+					onChange={handleChange}
+				/>
+				<select
+					id='event'
+					name='event'
+					defaultValue={null}
+					value={userInput.event}
+					onChange={handleChange}>
+					return (
+					<>
+						<option name={null} selected value={null}>
+							Choose an event.
+						</option>
+						{events.map((event) => {
+							return (
+								<option name='event' value={event.id}>
+									{event.name}
+								</option>
+							);
+						})}
+					</>
+					)
+				</select>
+				<input
+					type='file'
+					id='photo'
+					name='photo'
+					placeholder='choose image'
+					onChange={fileChange}
+				/>
+				<button type='submit'>Submit</button>
+				<button onClick={toggleMem}>Cancel</button>
+			</form>
+		)}
+		{memories &&
+			memories.map((memory) => {
+				return (
+					<div className='memory' key={memory.id} id={memory.id}>
+						<h2 onClick={openDetails}>{memory.title}</h2>
+						<img onClick={openDetails} src={memory.photo} alt='alt' />
+						<p onClick={openDetails}>{memory.body}</p>
+					</div>
+				);
+			})}
+	</div>
+);
 }
 
 export default Memories

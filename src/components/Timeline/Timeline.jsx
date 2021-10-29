@@ -2,9 +2,10 @@ import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import {DataContext} from '../../Utility/Context';
 import {DashContext} from '../../Utility/Context'
+import { useHistory } from 'react-router';
 
 const Timeline = ( { dateRange } ) => {
-    
+    const history = useHistory();
     const {currentUser} = useContext(DataContext);
     const [timeline, setTimeline] = useState([]);
     
@@ -87,22 +88,27 @@ const Timeline = ( { dateRange } ) => {
 
 
 return (
-    <div>
-         <h1>{timeline.length ? 'Hello from Timeline' : 'No timeline yet'}</h1>
-        {timeline.length ?  (timeline.map( event => {
-            return  (
-                <Link className='event-link' key={event.id} to={`/events/${event.id}`}>
-                <h2>{event.name}</h2>
-                <img src={event.img_url} style={{width: '100%'}} alt="alt" />
-                <p>{event.start}</p>
-                </Link>
-            )})) : (
-                <h1>No Events yet!</h1>
-            )
-        }
-            
-        </div>
-    );
+	<div>
+		<button onClick={() => history.goBack()}>←</button>
+		<h1>{timeline.length ? 'Hello from Timeline' : 'No timeline yet'}</h1>
+		{timeline.length ? (
+			timeline.map((event) => {
+				return (
+					<Link
+						className='event-link'
+						key={event.id}
+						to={`/events/${event.id}`}>
+						<h2>{event.name}</h2>
+						<img src={event.img_url} style={{ width: '100%' }} alt='alt' />
+						<p>{event.start}</p>
+					</Link>
+				);
+			})
+		) : (
+			<h1>No Events yet!</h1>
+		)}
+	</div>
+);
 }
 
 export default Timeline
