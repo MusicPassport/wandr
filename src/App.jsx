@@ -13,6 +13,7 @@ import axios from 'axios';
 import Login from './components/Authentication/Login/Login';
 import SignUp from './components/Authentication/SignUp/SignUp';
 import Calendar from './components/Calendar/Calendar';
+import AltCalendar from './components/Calendar/altCalendar';
 import Dashboard from './components/Dashboard/Dashboard';
 import BucketList from './components/BucketList/BucketList';
 import EventSearch from './components/Events/EventSearch';
@@ -70,6 +71,8 @@ const App = () => {
 					<Route exact path='/events' component={Events} />
 					<Route exact path='/create' component={Create} />
 					<Route exact path='/calendar' component={Calendar} />
+					<Route exact path='/altcalendar' component={AltCalendar} />
+
 
 					<Route exact path='/search/' component={EventSearch} />
 					<Route exact path='/search/events' component={EventSearchResults}/>
