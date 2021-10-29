@@ -1,0 +1,66 @@
+@import '../../App';
+
+.memory-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.memory-options h1 {
+    font-size: 1rem;
+}
+
+.memory-options button {
+    height: 30px;
+    align-self: center;
+    border-radius: 5px;
+    color: $hot-pink;
+    font-weight: 600;
+}
+
+.add-memory-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-memory-form * {
+    margin-bottom: 15px;
+}
+
+.add-memory-form input:last-of-type{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.memory-buttons {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+}
+
+.memory-buttons * {
+    width: 120px;
+    color: $hot-pink;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .memory-options button {
+    height: 30px;
+    align-self: center;
+    border-radius: 5px;
+    color: $hot-pink;
+    font-weight: 600;
+}
+
+.memory-buttons * {
+    width: 120px;
+    color: $hot-pink;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+
+
+}
