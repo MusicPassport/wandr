@@ -14,6 +14,7 @@ const Timeline = ( { dateRange } ) => {
         let myMonth = parseInt(myEvent[1]);
         let myDay = parseInt(myEvent[2]);
         return {year: myYear, month: myMonth, day: myDay};
+   
     }
     const checkStartDate = (date) => {
         //      2022      >         2021
@@ -64,12 +65,20 @@ const Timeline = ( { dateRange } ) => {
         console.log('date range: ',dateRange)
         const getMashup= async ()=>{
             //revisit the sorting logic. Strings aren't integers!
-            const array = (currentUser.attending.concat(currentUser.viewing)).sort((a, b) => b.start- a.start);
-            console.log('array', array);
+            const strToDateViewing = currentUser.viewing.map((event) => {
+                event.dateInFormat = event.start.split('-').join('')
+                return event
+            })
+            const strToDateAttending = currentUser.attending.map((event) => {
+                event.dateInFormat = event.start.split('-').join('')
+                return event
+            })
+
+            const array = (currentUser.attending.concat(currentUser.viewing)).sort((a, b) => b.dateInFormat- a.dateInFormat);
     
             const nextArray = await addDateProperty(array);
             const lastArray = await filterArrays(nextArray);
-            console.log('last Array: ', lastArray);
+            console.log('lastArray', lastArray)
             setTimeline(lastArray);
         }
         getMashup();
