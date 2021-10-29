@@ -29,8 +29,12 @@ const Nav = () => {
 				{/* <Link to='/map'>Map</Link> */}
 				<Link to='/about'>About</Link>
 				<Link to='/events'>Events</Link>
+				<Link to='/discover'>Discover</Link>
 				{localStorage.getItem('currentUser') ? (
+					<>
+					<Link to='/dashboard'>Dashboard</Link>
 					<button>LogOut</button>
+					</>
 				) : (
 					<>
 						<Link to='/login'>Login</Link>
@@ -42,7 +46,6 @@ const Nav = () => {
 				<Hamburger />
 				<div className={menuOpen ? 'linkDisplay' : 'links hidden'}>
 					<Link to='/'>Home</Link>
-
 					{/* <Link to='/map'>Map</Link> */}
 					<Link to='/about'>About</Link>
 					<Link to='/events'>Events</Link>

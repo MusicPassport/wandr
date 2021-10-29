@@ -57,7 +57,9 @@
   padding: 0;
 }
 
-
+header {
+    background-color: #8f3b76;
+}
 @media (min-width: 600px) {
 
 
