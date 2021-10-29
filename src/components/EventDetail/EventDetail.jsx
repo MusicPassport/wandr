@@ -114,7 +114,7 @@ function EventDetail() {
 				<div className='detail-btns'>
 					<div>
 						{select ? (
-							<Link to='/dashboard/timeline'>
+							<Link to='/dashboard/'>
 								<button className='btn detail-btn view'>
 									View On TimeLine
 								</button>
