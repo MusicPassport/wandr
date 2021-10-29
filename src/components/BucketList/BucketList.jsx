@@ -13,7 +13,6 @@ const BucketList = () => {
     const [updateEvent, setUpdateEvent] = useState();
     const [waitUntilLoad, setWaitUntilLoad] = useState(true);
     const history = useHistory();
-    let update;
 
     useEffect(() => {
         updateUser();
@@ -67,29 +66,24 @@ const BucketList = () => {
 			// const update = await setUpdateEvent((previousState) => {
             //     return{...previousState, ...eventToUpdate.data }});
 
-            const updated = () => {
-                update = {
+
+             const update = {
                 ...updateEvent,
 				attendees: [parseInt(currentUser.id)],viewers: [...updateEvent.viewers.filter(user => user !== currentUser.id)]
             }
-            return update
-            }
-            let timeout = setTimeout(() => updated(), 3000)
-            // if(Object.keys(updated).length<13){
-            //     console.log('waiting')
-            // }
+
             console.log(Object.keys(update).length)
 			console.log('Updated Event:', update);
 			
-			// let res = await axios.put(
-			// 		`https://intense-island-04626.herokuapp.com/events/${event.target.id}`,
-			// 		updated,
-			// 		{
-			// 			headers: {
-			// 				Authorization: `Token  ${auth}`,
-			// 			},
-			// 		}
-			// 	)
+			let res = await axios.put(
+					`https://intense-island-04626.herokuapp.com/events/${event.target.id}`,
+					update,
+					{
+						headers: {
+							Authorization: `Token  ${auth}`,
+						},
+					}
+				)
 
                 // removeFromBucket();
                 
