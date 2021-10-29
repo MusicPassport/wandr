@@ -101,12 +101,18 @@ const App = () => {
 					<Route exact path='/altcalendar' component={AltCalendar} />
 
 					<Route exact path='/search/' component={EventSearch} />
-					<Route exact path='/search/events' component={EventSearchResults}/
+					<Route exact path='/search/events' component={EventSearchResults}/>
 
-					<Route exact path='/dashboard' component={Dashboard} />
+					<Route  path='/dashboard' component={Dashboard} />
 					<Route path='/discover' component={Discover} />
 
 					<Route exact path='/seen' component={Seen} />
+
+					 <Route exact path='/dashboard/settings' component={ResetPassword}/>
+            <Route exact path='/dashboard/bucketlist' component={BucketList}/>
+            <Route exact path='/dashboard/timeline' component={Timeline}/>
+            <Route exact path='/dashboard/memories' component={Memories}/>
+            <Route exact path='/dashboard/memories/:id' component={MemoryDetail}/>
 				</DataContext.Provider>
 			</main>
 		</div>
