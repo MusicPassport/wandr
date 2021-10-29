@@ -78,13 +78,15 @@ const Memories = () => {
     }
 
 return (
-    <div>
+    <div className='memory-page' >
+        <div className='memory-options' >
         <h1>{memories.length ? 'Hello from memories' : 'No memories yet'}</h1>
        <button onClick={toggleMem}>Add a memory</button>
+        </div>
         {addMem && (
-            <form onSubmit={handleSubmit}>
-                <input id="title" type="text" name="title" value={userInput.title} onChange={handleChange}/>
-                <textarea id="body" name="body" rows='10' value={userInput.body} onChange={handleChange}/>
+            <form className='add-memory-form' onSubmit={handleSubmit}>
+                <input id="title" placeholder='Memory title' type="text" name="title" value={userInput.title} onChange={handleChange}/>
+                <textarea placeholder='Describe this memory.' id="body" name="body" rows='10' value={userInput.body} onChange={handleChange}/>
                 <select id="event" name="event" defaultValue={null} value={userInput.event} onChange={handleChange}>
                     return (
                         <>
@@ -101,8 +103,10 @@ return (
                     )
                 </select>
                 <input type="file" id="photo"name="photo" placeholder="choose image" onChange={fileChange} />
-                <button type="submit">Submit</button>
+                <div className='memory-buttons' >
                 <button onClick={toggleMem}>Cancel</button>
+                <button type="submit">Submit</button>
+                </div>
 
             </form>
         )}
