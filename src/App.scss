@@ -5,6 +5,8 @@ $deep-pink: rgba(199, 65, 123, 1);
 $hot-pink: rgba(245, 72, 127, 1);
 $dark-gray: rgb(23, 23, 23, 1);
 $white-smoke: rgba(245,245,245,1);
+$link-size: 2rem;
+$link-border: solid 2px $hot-pink;
 
 
 
@@ -82,8 +84,7 @@ main::-webkit-scrollbar {
 }
 
 .linkDisplay{
-    height: 300px;
-    /* width: 100vw; */
+    height: 100vh;
     display: grid;
     grid-template-rows: repeat(5, 1fr);
     justify-content: space-between;
@@ -92,11 +93,11 @@ main::-webkit-scrollbar {
     margin: .3rem;
 }
 
-.linkDisplay a {
+.linkDisplay a, .logout {
     text-decoration: none;
     color: $white-smoke;
-    border-bottom: solid 2px $hot-pink;
-    font-size: 2rem;
+    border-bottom: $link-border;
+    font-size: $link-size;
 }
 
 .linkDisplay a:hover {
@@ -106,6 +107,16 @@ main::-webkit-scrollbar {
 
 .hamburger-link {
     font-size: 2rem;
+}
+
+.logout {
+    color: $white-smoke;
+    border-bottom: $link-border;
+    font-size: $link-size;
+    background: none;
+    // border: none;
+    padding: 0;
+    // text-decoration: underline solid $hot-pink;
 }
 
 
@@ -163,6 +174,10 @@ input {
         background: $dark-gray;
         color: $white-smoke;
 
+    }
+
+    .e-input-group {
+        color:$white-smoke
     }
 }
 
