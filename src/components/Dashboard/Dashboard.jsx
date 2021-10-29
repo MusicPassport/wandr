@@ -1,17 +1,13 @@
 import {useState, useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import {DataContext, DashContext} from '../../Utility/Context';
-import { backendAPI } from '../../Utility/Config';
+import {DashContext} from '../../Utility/Context';
 
-import { CalendarComponent } from '@syncfusion/ej2-react-calendars';
-import { DateRange } from 'react-date-range';
 import './Dashboard.css';
 import Timeline from '../Timeline/Timeline';
 import Memories from '../Memories/Memories';
 import BucketList from '../BucketList/BucketList';
-import AltCalendar from '../Calendar/altCalendar';
 
+import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
