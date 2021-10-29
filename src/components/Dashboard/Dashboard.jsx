@@ -1,23 +1,23 @@
 import {useState, useEffect, useContext} from 'react';
-import { Link } from 'react-router-dom';
-import {DashContext} from '../../Utility/Context';
+import { Route, Link } from 'react-router-dom';
+// import {DashContext} from '../../Utility/Context';
 
 import './Dashboard.css';
+import DashNav from './DashNav';
+import ResetPassword from '../Authentication/Reset/ResetPassword';
 import Timeline from '../Timeline/Timeline';
 import Memories from '../Memories/Memories';
 import MemoryDetail from '../Memories/MemoryDetail';
 import BucketList from '../BucketList/BucketList';
 
-import { DateRange } from 'react-date-range'; // new Date Range component. Also run: npm i date-fns
+import { DateRange, DateRangePicker } from 'react-date-range'; // new Date Range component. Also run: npm i date-fns
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
+import AltCalendar from '../Calendar/altCalendar';
 
 const Dashboard = () => {
     const [displaySettings, setDisplaySettings] = useState('memories');
-    const [dateRange,setDateRange] = useState({
-        start: null,
-        end: null
-    });
+    const [dateRange,setDateRange] = useState();
     const [currentMemory, setCurrentMemory] = useState({
         title: '',
         body: '',
@@ -31,9 +31,6 @@ const Dashboard = () => {
         key: 'selection',
     })
 
-    const openAndClose = (e) => {
-        setDisplaySettings(e.target.name);
-    }
 
     const formatDate = (date) => {
         let thisDate = date;
@@ -74,60 +71,27 @@ const Dashboard = () => {
     setSelection(ranges['selection']);
     setDates(ranges['selection']);
     console.log(dateRange);
-
   }
 
-    const display = () => {
-        switch(displaySettings){
-            case('calendar'):
-                return(<DateRange
-                scroll={{enabled: true}}
-                ranges={[selection]}
-                onChange={handleSelect}
-            />);
-            case('settings'):
-                return (
-                    <Link to="/dashboard/reset-password">Change Password</Link>
-                );
-            case('timeline'):
-                return(<Timeline/>);
-            case('details'):
-                if(currentMemory){
-                return( <MemoryDetail currentMemory={currentMemory}/>);
-                };
-                break;
-            case('bucketlist'):
-                return( <BucketList/>);
-            default:
-                return ( <Memories/>);
-        }
-    }
 
     return (
         <>
             <section className="dashboard-buttons">
-                <button className="dashboard-btn" name='settings' onClick={openAndClose}>
-                Profile Settings
-                </button>
-                <button className="dashboard-btn" name='calendar' onClick={openAndClose}>
-                    Calendar
-                </button>
-                <button className="dashboard-btn" name='timeline' onClick={openAndClose}>
-                    Time Line
-                </button>
-                <button className="dashboard-btn" name='memories' onClick={openAndClose}>
-                    Memories
-                </button>
-                <button className="dashboard-btn" name='bucketlist' onClick={openAndClose}>
-                    Bucket List
-                </button>
+               <DashNav />
+               <DateRange
+                scroll={{enabled: true}}
+                ranges={[selection]}
+                onChange={handleSelect}
+            />
             </section>
+            <Route path='/dashboard/settings' component={ResetPassword}/>
+            <Route path='/dashboard/bucketlist' component={BucketList}/>
+            <Route path='/dashboard/timeline' render={() => <Timeline dateRange={dateRange}/> } />
+            <Route path='/dashboard/memories' render={() => <Memories setCurrentMemory={setCurrentMemory} /> } />
+            <Route path='/dashboard/memories/:id' render={() => <MemoryDetail currentMemory={currentMemory} /> } />
 
-            <DashContext.Provider value={{dateRange, displaySettings, setDisplaySettings, setCurrentMemory}}>
-                {display()}
-            </DashContext.Provider>
+        </>
            
-            </>
     )
 };
 

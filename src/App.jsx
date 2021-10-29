@@ -96,14 +96,7 @@ const App = () => {
 					<Route exact path='/search/events' component={EventSearchResults}/>
 
 
-					<Route exact path='/dashboard' component={Dashboard}/>
-					<Route path='/dashboard/reset-password' component={ResetPassword}/>
-					<Route path='/dashboard/reset-email' component={ResetEmail}/>
-					<Route path='/dashboard/timeline' component={Timeline}/>
-					<Route exact path='/dashboard/memories' component={Memories}/>
-					<Route path='/dashboard/memories/:id' component={MemoryDetail}/>
-
-
+					<Route path='/dashboard' component={Dashboard}/>
 
 					<Route exact path='/seen' component={Seen} />
 

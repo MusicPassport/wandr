@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import {DataContext} from '../../Utility/Context';
 import {DashContext} from '../../Utility/Context'
 
-const Timeline = () => {
+const Timeline = ( { dateRange } ) => {
+    
     const {currentUser} = useContext(DataContext);
-    const { dateRange } = useContext(DashContext);
     const [timeline, setTimeline] = useState([]);
     
     const formatDate=  (date) => {
@@ -42,7 +42,7 @@ const Timeline = () => {
 
     const checkDate = (date) => {
         //if there's no dateRange, return true.
-        if(!dateRange.start) return true;
+        if(!dateRange) return true;
        if(checkStartDate(date) && checkEndDate(date)) return true;
        // Returns false IF the event doesn't pass the start Date or End Date tests.
        return false;
@@ -61,7 +61,7 @@ const Timeline = () => {
 
     
     useEffect( () => {
-        // console.log('date range: ',dateRange)
+        console.log('date range: ',dateRange)
         const getMashup= async ()=>{
             //revisit the sorting logic. Strings aren't integers!
             const array = (currentUser.attending.concat(currentUser.viewing)).sort((a, b) => b.start- a.start);

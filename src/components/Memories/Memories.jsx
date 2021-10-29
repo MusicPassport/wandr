@@ -1,15 +1,12 @@
 import { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { backendAPI} from '../../Utility/Config';
 import {DataContext, DashContext} from '../../Utility/Context';
 import axios from 'axios';
 
 import './Memories.css';
 
-const Memories = () => {
-    // const { dateRange } = useContext(DashContext);
+const Memories = ( { setCurrentMemory } ) => {
     const {currentUser} = useContext(DataContext);
-    const {setDisplaySettings , currentMemory, setCurrentMemory} = useContext(DashContext);
 
     const [memories, setMemories] = useState([]);
     const [events, setEvents] = useState();
@@ -52,7 +49,7 @@ const Memories = () => {
        setCurrentMemory((previousState) => {
             return {...previousState, ...item}
         });
-        setDisplaySettings('details');
+        // setDisplaySettings('details');
     }
 
     const handleSubmit = async(event) => {
