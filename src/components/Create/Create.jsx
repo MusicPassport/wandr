@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 import { useContext } from 'react';
 import { DataContext } from '../../Utility/Context.jsx';
-import './Create.css'
+import '../../css/Create.css';
 
 const Create = () => {
 

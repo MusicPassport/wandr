@@ -2,7 +2,8 @@ import {useState, useEffect, useContext} from 'react';
 import { Route, Link } from 'react-router-dom';
 // import {DashContext} from '../../Utility/Context';
 
-import './Dashboard.css';
+
+import '../../css/Dashboard.css';
 import DashNav from './DashNav';
 import ResetPassword from '../Authentication/Reset/ResetPassword';
 import Timeline from '../Timeline/Timeline';

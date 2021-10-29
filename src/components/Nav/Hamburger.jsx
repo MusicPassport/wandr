@@ -1,5 +1,5 @@
-import React from 'react'
-import './Hamburger.css'
+import React from 'react';
+import '../../css/Hamburger.css';
 
 const Hamburger = () => {
     return (

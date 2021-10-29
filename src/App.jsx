@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import { DataContext } from './Utility/Context';
-import './App.css';
+import './css/styles.css';
 import Nav from './components/Nav/Nav';
 import Home from './components/Home/Home';
 import About from './components/About/About';

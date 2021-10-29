@@ -1,7 +1,7 @@
 import { Link, Redirect } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import { DataContext } from '../../Utility/Context.jsx';
-import './Events.css'
+import '../../css/Events.css'
 import Select from 'react-select'
 
 

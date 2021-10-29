@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { backendAPI } from '../../Utility/Config';
 import { DataContext } from '../../Utility/Context.jsx';
 import { useHistory } from 'react-router';
-import './BucketList.css'
+import '../../css/BucketList.css'
 
 
 const BucketList = () => {

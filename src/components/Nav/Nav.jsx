@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import Hamburger from './Hamburger';
-import './Nav.css';
+import '../../css/Nav.css';
 
 const Nav = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -22,7 +22,7 @@ const Nav = () => {
 
 	return (
 		<header>
-			<div className='links'>
+			<div className='links hidden'>
 				<Link to='/'>Home</Link>
 				{/* <Link to='/calendar'>Calendar</Link> */}
 				{/* <Link to='/timeline'>Timeline</Link> */}
@@ -47,10 +47,12 @@ const Nav = () => {
 					<Link to='/about'>About</Link>
 					<Link to='/events'>Events</Link>
 					{localStorage.getItem('currentUser') ? (
-                        <>
-                        <Link to='/dashboard'>Dashboard</Link>
-                        <button className='logout' onClick={logoutUser}>Logout</button>
-                        </>    
+						<>
+							<Link to='/dashboard'>Dashboard</Link>
+							<button className='logout' onClick={logoutUser}>
+								Logout
+							</button>
+						</>
 					) : (
 						<>
 							<Link to='/login'>Login</Link>

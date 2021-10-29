@@ -1,6 +1,6 @@
 import React from 'react'
 import { CalendarComponent } from '@syncfusion/ej2-react-calendars';
-import './Calendar.css'
+import '../../css/Calendar.css';
 
 const Calendar = () => {
     const dateValue = new Date(
