@@ -22,6 +22,8 @@ import ResetPassword from './components/Authentication/Reset/ResetPassword';
 import ResetEmail from './components/Authentication/Reset/ResetEmail';
 import Timeline from './components/Timeline/Timeline';
 import Memories from './components/Memories/Memories';
+import MemoryDetail from './components/Memories/MemoryDetail';
+
 import Seen from './components/Seen/Seen';
 
 
@@ -82,7 +84,9 @@ const App = () => {
 					<Route path='/dashboard/reset-password' component={ResetPassword}/>
 					<Route path='/dashboard/reset-email' component={ResetEmail}/>
 					<Route path='/dashboard/timeline' component={Timeline}/>
-					<Route path='/dashboard/memories' component={Memories}/>
+					<Route exact path='/dashboard/memories' component={Memories}/>
+					<Route path='/dashboard/memories/:id' component={MemoryDetail}/>
+
 
 					<Route exact path='/seen' component={Seen} />
 				</DataContext.Provider>

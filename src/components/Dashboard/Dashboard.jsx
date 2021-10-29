@@ -5,6 +5,7 @@ import {DashContext} from '../../Utility/Context';
 import './Dashboard.css';
 import Timeline from '../Timeline/Timeline';
 import Memories from '../Memories/Memories';
+import MemoryDetail from '../Memories/MemoryDetail';
 import BucketList from '../BucketList/BucketList';
 
 import { DateRange } from 'react-date-range'; // new Date Range component. Also run: npm i date-fns
@@ -13,7 +14,17 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 
 const Dashboard = () => {
     const [displaySettings, setDisplaySettings] = useState('memories');
-    const [dateRange,setDateRange] = useState([]);
+    const [dateRange,setDateRange] = useState({
+        start: null,
+        end: null
+    });
+    const [currentMemory, setCurrentMemory] = useState({
+        title: '',
+        body: '',
+        photo: '',
+        owner: '',
+        event: ''
+    });
     const [selection, setSelection] = useState({
         startDate: new Date(),
         endDate: new Date(),
@@ -80,6 +91,11 @@ const Dashboard = () => {
                 );
             case('timeline'):
                 return(<Timeline/>);
+            case('details'):
+                if(currentMemory){
+                return( <MemoryDetail currentMemory={currentMemory}/>);
+                };
+                break;
             case('bucketlist'):
                 return( <BucketList/>);
             default:
@@ -107,7 +123,7 @@ const Dashboard = () => {
                 </button>
             </section>
 
-            <DashContext.Provider value={{dateRange}}>
+            <DashContext.Provider value={{dateRange, displaySettings, setDisplaySettings, setCurrentMemory}}>
                 {display()}
             </DashContext.Provider>
            
