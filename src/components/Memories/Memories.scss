@@ -50,6 +50,7 @@
     border-radius: 5px;
 }
 
+
 .photo-container {
     // height: 10vh;
     width:50vw;
@@ -70,7 +71,6 @@
 }
 
 
-
 @media (prefers-color-scheme: dark) {
     .memory-options button {
     height: 30px;
@@ -86,6 +86,7 @@
     font-weight: 700;
     border-radius: 5px;
 }
+
 
 
 
@@ -160,5 +161,4 @@
 
 .memory-title {
     color: $hot-pink
-}
 }

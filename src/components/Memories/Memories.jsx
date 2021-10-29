@@ -51,6 +51,7 @@ const Memories = () => {
 		});
 	};
 
+
 	const toggleMem = () => {
 		setAddMem(!addMem);
 	};
