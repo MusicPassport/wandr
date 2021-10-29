@@ -7,7 +7,7 @@ import Timeline from '../Timeline/Timeline';
 import Memories from '../Memories/Memories';
 import BucketList from '../BucketList/BucketList';
 
-import { DateRange } from 'react-date-range';
+import { DateRange } from 'react-date-range'; // new Date Range component. Also run: npm i date-fns
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
