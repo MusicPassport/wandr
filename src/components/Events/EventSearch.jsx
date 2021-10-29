@@ -1,7 +1,8 @@
 import { Link, Redirect } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import { DataContext } from '../../Utility/Context.jsx';
-import '../../css/Events.css'
+// import '../../css/Events.css'
+import '../../css/EventSearch.css';
 import Select from 'react-select'
 
 
@@ -77,126 +78,6 @@ const EventSearch = ({ isOpen , setIsOpen }) => {
     { id:'stateCode', label: 'WISCONSIN', value: 'WI'},
     { id:'stateCode', label: 'WYOMING', value: 'WY' }
     ];
-    
-
-
-
-
-
-
-
-
-
-// Film/Family
-//     const genreOptions =[
-//         { id="classificationName", value="All Family Events", label="All Family Events"},
-//         { id="classificationName", value="Puppetry", label="Puppetry"},
-//         { id="classificationName", value="Ice Shows", label="Ice Shows"},
-//         { id="classificationName", value="Magic/Illusion", label="Magic/Illusion"},
-//         { id="classificationName", value="Circus/Specialty Acts", label="Circus/Specialty Acts"},
-//         { id="classificationName", value="Childrens Theater", label="Children's Theater"},
-//         { id="classificationName", value="Rodeo", label="Rodeo"},
-//         { id="classificationName", value="Fairs/Festivals", label="Fairs/Festivals"},
-//         { id="classificationName", value="Latin Childrens", label="Latin Children's"},
-//         { id="classificationName", value="Childrens Music", label="Children's Music"},
-//         { id="classificationName", value="Miscellaneous/Family", label="Miscellaneous/Family"},
-//         { id="classificationName", value="All Genres", label="All Genres"},
-//         { id="classificationName", value="Concerts", label="Concerts"},
-//         { id="classificationName", value="Alternative", label="Alternative"},
-//         { id="classificationName", value="Ballads/Romantic", label="Ballads/Romantic"},
-//         { id="classificationName", value="Blues", label="Blues"},
-//         { id="classificationName", value="Chanson Francaise", label="Chanson Francaise"},
-//         { id="classificationName", value="Classical", label="Classical"},
-//         { id="classificationName", value="Country", label="Country"},
-//         { id="classificationName", value="Dance/Electronic", label="Dance/Electronic"},
-//         { id="classificationName", value="Folk", label="Folk"},
-//         { id="classificationName", value="Hip-Hop/Rap", label="Hip-Hop/Rap"},
-//         { id="classificationName", value="Holiday", label="Holiday"},
-//         { id="classificationName", value="Jazz", label="Jazz"},
-//         { id="classificationName", value="Latin", label="Latin"},
-//         { id="classificationName", value="Medieval/Renaissance", label="Medieval/Renaissance"},
-//         { id="classificationName", value="Metal", label="Metal"},
-//         { id="classificationName", value="New Age", label="New Age"},
-//         { id="classificationName", value="Other", label="Other"},
-//         { id="classificationName", value="Pop", label="Pop"},
-//         { id="classificationName", value="R&B", label="R&B"},
-//         { id="classificationName", value="Reggae", label="Reggae"},
-//         { id="classificationName", value="Religious", label="Religious"},
-//         { id="classificationName", value="Rock", label="Rock"},
-//         { id="classificationName", value="World", label="World"},
-//         { id="classificationName", value="Aquatics", label="Aquatics"},
-//         { id="classificationName", value="Athletic Races", label="Athletic Races"},
-//         { id="classificationName", value="Badminton", label="Badminton"},
-//         { id="classificationName", value="Bandy", label="Bandy"},
-//         { id="classificationName", value="Baseball", label="Baseball"},
-//         { id="classificationName", value="Basketball", label="Basketball"},
-//         { id="classificationName", value="Biathlon", label="Biathlon"},
-//         { id="classificationName", value="Body Building", label="Body Building"},
-//         { id="classificationName", value="Boxing", label="Boxing"},
-//         { id="classificationName", value="Cricket", label="Cricket"},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-        
-
-//     ]
 
     const { searchInputs, setSearchInputs } = useContext(DataContext);
     
@@ -217,9 +98,7 @@ const EventSearch = ({ isOpen , setIsOpen }) => {
 
     function handleSubmit(event) {
         event.preventDefault();
-        // setSearchInputs({...searchInputs})
-        // setSearchInputs(initialState);
-        setIsOpen(!isOpen);
+         setIsOpen(!isOpen);
         
     }
 

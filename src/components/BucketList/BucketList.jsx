@@ -102,14 +102,15 @@ const BucketList = () => {
 
 	return (
 		<div>
-            <button onClick={()=> history.goBack()}>←</button>
-			<h3 className="greeting">Hey, {currentUser.username}!</h3>
-            <h1>BucketList</h1>
-            <div className="event-list">
+            <button className="btn detail-btn backButton" onClick={()=> history.goBack()}>←</button>
+            <div  className="BLPage">
+			{/* <h3 className="greeting">Hey, {currentUser.username}!</h3> */}
+            <h1 className="bucketListTitle">BucketList</h1>
+            <div className="bucket-event-list">
                 {currentUser.viewing.map((event, index)=>
-                <div className="event-link" key={`${event} - ${index}`}>
+                <div className="event-link blEvent" key={`${event} - ${index}`}>
                     <div className="img-container"> 
-                        <img className="image" src={event.img_url} alt=""/> 
+                        <img className="image blImage" src={event.img_url} alt=""/> 
                     </div>
                     <h2>{event.name}</h2>
                     <h4>{event.genre}</h4>
@@ -117,7 +118,7 @@ const BucketList = () => {
                     <h4>{event.start}</h4>
                     <h4>{event.venue}</h4>
                     <a href={event.tm_url}>Get your tickets here!</a>
-                    <button onClick={removeFromBucket} id={event.id}>Remove from Bucketlist</button>
+                    <button className='btn detail-btn' onClick={removeFromBucket} id={event.id}>Remove from Bucketlist</button>
                     <button
 						className='btn detail-btn seen'
 						id={event.id}
@@ -128,7 +129,7 @@ const BucketList = () => {
                  
                 )}
             </div>
-
+        </div>
 		</div>
 	);
     }

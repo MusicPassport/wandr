@@ -85,11 +85,11 @@ const Dashboard = () => {
                 onChange={handleSelect}
             />
             </section>
-            <Route exact path='/dashboard/settings' component={ResetPassword}/>
+            {/* <Route exact path='/dashboard/settings' component={ResetPassword}/>
             <Route exact path='/dashboard/bucketlist' component={BucketList}/>
             <Route exact path='/dashboard/timeline' render={() => <Timeline dateRange={dateRange}/> } />
             <Route exact path='/dashboard/memories' render={() => <Memories setCurrentMemory={setCurrentMemory} /> } />
-            <Route exact path='/dashboard/memories/:id' render={() => <MemoryDetail currentMemory={currentMemory} /> } />
+            <Route exact path='/dashboard/memories/:id' render={() => <MemoryDetail currentMemory={currentMemory} /> } /> */}
 
         </>
            
