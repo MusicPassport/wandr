@@ -38,12 +38,38 @@
     height: 40px;
 }
 
+.memory-container {
+    // border: 2px solid white;
+    margin: 10px 0;
+}
+
 .memory-buttons * {
     width: 120px;
-    color: $hot-pink;
+    // color: $hot-pink;
     font-weight: 700;
     border-radius: 5px;
 }
+
+
+.photo-container {
+    // height: 10vh;
+    width:50vw;
+    margin: 0 auto;
+
+    
+}
+
+.memory-pic {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+
+}
+
+.memory-title {
+    color: $hot-pink
+}
+
 
 @media (prefers-color-scheme: dark) {
     .memory-options button {
@@ -63,4 +89,76 @@
 
 
 
+
+
+}
+
+@media (max-width: 600px) {
+    .memory-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.memory-options h1 {
+    font-size: 1rem;
+}
+
+.memory-options button {
+    height: 30px;
+    align-self: center;
+    border-radius: 5px;
+    color: $hot-pink;
+    font-weight: 600;
+}
+
+.add-memory-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-memory-form * {
+    margin-bottom: 15px;
+}
+
+.add-memory-form input:last-of-type{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.memory-buttons {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+}
+
+.memory-container {
+    border: 2px solid white;
+    margin: 10px 0;
+}
+
+.memory-buttons * {
+    width: 120px;
+    // color: $hot-pink;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+.photo-container {
+    // height: 10vh;
+    width:80vw;
+    margin: 0 auto;
+
+    
+}
+
+.memory-pic {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+
+}
+
+.memory-title {
+    color: $hot-pink
 }

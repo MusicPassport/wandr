@@ -23,6 +23,7 @@ import ResetEmail from './components/Authentication/Reset/ResetEmail';
 import Timeline from './components/Timeline/Timeline';
 import Memories from './components/Memories/Memories';
 import MemoryDetail from './components/Memories/MemoryDetail';
+import Discover from './components/Discover/Discover'
 
 import Seen from './components/Seen/Seen';
 
@@ -76,9 +77,16 @@ const App = () => {
 		<div className='App'>
 			<Nav />
 			<main>
-
-				<DataContext.Provider value={{ events, setEvents, currentUser, setCurrentUser, updateUser, searchInputs, setSearchInputs }}>
-
+				<DataContext.Provider
+					value={{
+						events,
+						setEvents,
+						currentUser,
+						setCurrentUser,
+						updateUser,
+						searchInputs,
+						setSearchInputs,
+					}}>
 					<Route exact path='/' component={Home} />
 					<Route exact path='/about' component={About} />
 					<Route exact path='/login' component={Login} />
@@ -91,22 +99,18 @@ const App = () => {
 					<Route exact path='/calendar' component={Calendar} />
 					<Route exact path='/altcalendar' component={AltCalendar} />
 
-
 					<Route exact path='/search/' component={EventSearch} />
-					<Route exact path='/search/events' component={EventSearchResults}/>
+					<Route exact path='/search/events' component={EventSearchResults} />
 
-
-					<Route exact path='/dashboard' component={Dashboard}/>
-					<Route path='/dashboard/reset-password' component={ResetPassword}/>
-					<Route path='/dashboard/reset-email' component={ResetEmail}/>
-					<Route path='/dashboard/timeline' component={Timeline}/>
-					<Route exact path='/dashboard/memories' component={Memories}/>
-					<Route path='/dashboard/memories/:id' component={MemoryDetail}/>
-
-
+					<Route exact path='/dashboard' component={Dashboard} />
+					<Route path='/dashboard/reset-password' component={ResetPassword} />
+					<Route path='/dashboard/reset-email' component={ResetEmail} />
+					<Route path='/dashboard/timeline' component={Timeline} />
+					<Route exact path='/dashboard/memories' component={Memories} />
+					<Route path='/dashboard/memories/:id' component={MemoryDetail} />
+					<Route path='/discover' component={Discover} />
 
 					<Route exact path='/seen' component={Seen} />
-
 				</DataContext.Provider>
 			</main>
 		</div>
