@@ -23,17 +23,25 @@ const Nav = () => {
 	return (
 		<header>
 			<div className='links hidden'>
-				<Link to='/'>Home</Link>
-				{/* <Link to='/calendar'>Calendar</Link> */}
-				{/* <Link to='/timeline'>Timeline</Link> */}
+				<Link className='nav-link' to='/'>
+					Home
+				</Link>
 				{/* <Link to='/map'>Map</Link> */}
-				<Link to='/about'>About</Link>
-				<Link to='/events'>Events</Link>
-				<Link to='/discover'>Discover</Link>
+				<Link className='nav-link' to='/about'>
+					About
+				</Link>
+				<Link className='nav-link' to='/events'>
+					Events
+				</Link>
+				<Link to='/discover' className='nav-link'>Discover</Link>
 				{localStorage.getItem('currentUser') ? (
 					<>
-					<Link to='/dashboard'>Dashboard</Link>
-					<button>LogOut</button>
+						<Link className='nav-link' to='/dashboard'>
+							Dashboard
+						</Link>
+						<Link className='logout nav-link' onClick={logoutUser}>
+							Logout
+						</Link>
 					</>
 				) : (
 					<>
@@ -45,16 +53,24 @@ const Nav = () => {
 			<div className='hamburger' onClick={handleClick}>
 				<Hamburger />
 				<div className={menuOpen ? 'linkDisplay' : 'links hidden'}>
-					<Link to='/'>Home</Link>
+					<Link className='nav-link' to='/'>
+						Home
+					</Link>
 					{/* <Link to='/map'>Map</Link> */}
-					<Link to='/about'>About</Link>
-					<Link to='/events'>Events</Link>
+					<Link className='nav-link' to='/about'>
+						About
+					</Link>
+					<Link className='nav-link' to='/events'>
+						Events
+					</Link>
 					{localStorage.getItem('currentUser') ? (
 						<>
-							<Link to='/dashboard'>Dashboard</Link>
-							<button className='logout' onClick={logoutUser}>
+							<Link className='nav-link' to='/dashboard'>
+								Dashboard
+							</Link>
+							<Link className='logout nav-link' onClick={logoutUser}>
 								Logout
-							</button>
+							</Link>
 						</>
 					) : (
 						<>

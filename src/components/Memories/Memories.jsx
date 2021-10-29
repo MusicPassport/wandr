@@ -21,7 +21,7 @@ const Memories = ( { setCurrentMemory } ) => {
     });
 
     useEffect( () => {
-        if(currentUser.memories.length) setMemories(currentUser.memories);
+        if(currentUser.memories.length) setMemories([...currentUser.memories].reverse());
         if(currentUser.attending.length) setEvents(currentUser.attending);
     }, []);
 
@@ -80,8 +80,12 @@ const Memories = ( { setCurrentMemory } ) => {
 return (
 	<div>
 		<button onClick={() => history.goBack()}>←</button>
-		<h1>{memories.length ? 'Hello from memories' : 'No memories yet'}</h1>
-		<button onClick={toggleMem}>Add a memory</button>
+		<div className='section-title'>
+			<h1>{memories.length ? 'Your Memories' : 'No memories yet'}</h1>
+			<button className='btn add-memory' onClick={toggleMem}>
+				Add Memory
+			</button>
+		</div>
 		{addMem && (
 			<form onSubmit={handleSubmit}>
 				<input
@@ -130,16 +134,29 @@ return (
 				<button onClick={toggleMem}>Cancel</button>
 			</form>
 		)}
-		{memories &&
-			memories.map((memory) => {
-				return (
-					<div className='memory' key={memory.id} id={memory.id}>
-						<h2 onClick={openDetails}>{memory.title}</h2>
-						<img onClick={openDetails} src={memory.photo} alt='alt' />
-						<p onClick={openDetails}>{memory.body}</p>
-					</div>
-				);
-			})}
+		<div className='memories'>
+			{memories &&
+				memories.map((memory) => {
+					return (
+						<div className='memory' key={memory.id} id={memory.id}>
+							<div className='img-container'>
+								<img
+									className='img'
+									onClick={openDetails}
+									src={memory.photo}
+									alt='alt'
+								/>
+							</div>
+							<div className='memory-info'>
+								<div className='memory-title'>
+									<h2 onClick={openDetails}>{memory.title}</h2>
+								</div>
+								<p onClick={openDetails}>{memory.body}</p>
+							</div>
+						</div>
+					);
+				})}
+		</div>
 	</div>
 );
 }
