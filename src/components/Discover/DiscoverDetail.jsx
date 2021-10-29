@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
-import './DiscoverDetail.css'
+import '../../css/DiscoverDetail.css'
 import { Link } from 'react-router-dom';
 
 const DiscoverDetail = ({ events }) => {

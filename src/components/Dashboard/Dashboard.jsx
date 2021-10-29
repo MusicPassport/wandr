@@ -2,7 +2,7 @@ import {useState, useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import {DashContext} from '../../Utility/Context';
 
-import './Dashboard.css';
+import '../../css/Dashboard.css';
 import Timeline from '../Timeline/Timeline';
 import Memories from '../Memories/Memories';
 import MemoryDetail from '../Memories/MemoryDetail';

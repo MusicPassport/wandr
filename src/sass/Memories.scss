@@ -1,4 +1,4 @@
-@import '../../App';
+@import '../_Variables.scss';
 
 .memory-options {
     display: flex;
@@ -161,4 +161,5 @@
 
 .memory-title {
     color: $hot-pink
+}
 }

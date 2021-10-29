@@ -19,8 +19,8 @@ $link-border: solid 2px $hot-pink;
     background: linear-gradient(180deg, rgba(255,255,255,1)22%, rgba(233,233,233,0.7)66%, rgba(200,200,200,0.5)100%);
     
     
-    display: grid;
-    grid-template-rows: 1fr 7fr;
+    // display: grid;
+    // grid-template-rows: 1fr 7fr;
     grid-template-columns: 1fr;
 
 }
@@ -169,17 +169,6 @@ input {
 
 // Media query for color scheme
 
-@media (prefers-color-scheme: dark) {
-    .App {
-        background: $dark-gray;
-        color: $white-smoke;
-
-    }
-
-    .e-input-group {
-        color:$white-smoke
-    }
-}
 
 /* Down here, I've created a media query for when we are bigger than a phone */
 @media(min-width: 600px) {

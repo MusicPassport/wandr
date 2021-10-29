@@ -4,7 +4,7 @@ import { backendAPI } from '../../Utility/Config';
 import { DataContext, DashContext } from '../../Utility/Context';
 import axios from 'axios';
 
-import './Memories.css';
+import '../../css/Memories.css';
 
 const Memories = () => {
 	// const { dateRange } = useContext(DashContext);

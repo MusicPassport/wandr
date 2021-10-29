@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import Hamburger from './Hamburger';
-import './Nav.css';
+import '../../css/Nav.css';
 
 const Nav = () => {
 	const [menuOpen, setMenuOpen] = useState(false);

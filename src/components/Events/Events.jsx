@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { DataContext } from '../../Utility/Context';
-import './Events.css';
+import '../../css/Events.css';
 import axios from 'axios';
 import EventSearch from './EventSearch.jsx';
 import { useHistory } from 'react-router';
