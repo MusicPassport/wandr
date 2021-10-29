@@ -1,13 +1,16 @@
 import { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { backendAPI} from '../../Utility/Config';
 import {DataContext, DashContext} from '../../Utility/Context';
 import axios from 'axios';
-import { fireEvent } from '@testing-library/react';
+
 import './Memories.css';
 
 const Memories = () => {
-    const {minDate, maxDate, dateValue} = useContext(DashContext);
+    // const { dateRange } = useContext(DashContext);
     const {currentUser} = useContext(DataContext);
+    const {setDisplaySettings , currentMemory, setCurrentMemory} = useContext(DashContext);
+
     const [memories, setMemories] = useState([]);
     const [events, setEvents] = useState();
     const [addMem, setAddMem] = useState(false);
@@ -17,7 +20,6 @@ const Memories = () => {
         photo: "",
         event: ""
     });
-    //need to figure out how to sort memories by their related Event's start.
 
     useEffect( () => {
         if(currentUser.memories.length) setMemories(currentUser.memories);
@@ -25,12 +27,7 @@ const Memories = () => {
     }, []);
 
     const sortMemories = () => {
-        // I want to get  each event that has memories.
-        let memEvents = events.filter(event => memories.some(memory => memory.event === event.id));
-        // Then, I want to sort those events, newest to oldest. 
-        memEvents = memEvents.sort((a,b) => b.start - a.start);
-        // Then, I want to sort my memories to match that order.
-        //Need a good sorting algo here.
+        //I want to sort my memories so they're in the same order as the events they're connected to.
     }
 
     const handleChange = (e) => {
@@ -38,20 +35,30 @@ const Memories = () => {
                  return {...previousState, [e.target.id]: e.target.value};
     })}
 
-      const fileChange = (e) => {
-           setUserInput((previousState) => {
-               return {...previousState, photo: e.target.files[0]};
-    })}
+    const fileChange = (e) => {
+        setUserInput((previousState) => {
+            return {...previousState, photo: e.target.files[0]};
+    })} 
 
     const toggleMem = () => {
         setAddMem(!addMem);
+    }
+    
+    const openDetails = async (e) => {
+        const getMemory = async (e) => {
+            return await memories.find(memory => memory.id.toString() === e.target.parentElement.id)
+        }
+        const item = await getMemory(e);
+       setCurrentMemory((previousState) => {
+            return {...previousState, ...item}
+        });
+        setDisplaySettings('details');
     }
 
     const handleSubmit = async(event) => {
         event.preventDefault();
         try {
             const data = new FormData();
-
            data.append('title', userInput.title);
            data.append('body', userInput.body);
            data.append('photo', userInput.photo);
@@ -84,27 +91,11 @@ return (
                          <option name={null} selected value={null}>
                             Choose an event.</option>
                     {events.map(event => {
-                        if(!dateValue && !minDate){
-                             return(
-                            <option name='event' value={event.id}>
-                                {event.name}
-                            </option>
-                                )}
-                        else if(!dateValue &&
-                            event.start > minDate && 
-                            event.start < maxDate){
-                            return(
-                                <option name='event' value={event.id}>
-                                    {event.name}
-                                </option>
-                            )}
-                        else {
-                            if(event.start === dateValue ){
                             return(
                             <option name='event' value={event.id}>
                                 {event.name}
                             </option>
-                            )}}
+                            )
                     })}
                     </>
                     )
@@ -115,12 +106,12 @@ return (
 
             </form>
         )}
-        {memories && memories.map(event => {
+        {memories && memories.map(memory => {
             return(
-                <div className="memory">
-                <h2>{event.title}</h2>
-                <img src={event.photo} alt="alt"/>
-                <p>{event.body}</p>
+            <div className="memory" key={memory.id} id={memory.id}>
+                <h2 onClick={openDetails}>{memory.title}</h2>
+                <img onClick={openDetails} src={memory.photo} alt="alt"/>
+                <p onClick={openDetails} >{memory.body}</p>
                 </div>
             )
         })}
