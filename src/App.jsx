@@ -18,7 +18,6 @@ import Dashboard from './components/Dashboard/Dashboard';
 import BucketList from './components/BucketList/BucketList';
 import EventSearch from './components/Events/EventSearch';
 import EventSearchResults from './components/Events/EventSearchResults';
-
 import ResetPassword from './components/Authentication/Reset/ResetPassword';
 import ResetEmail from './components/Authentication/Reset/ResetEmail';
 import Timeline from './components/Timeline/Timeline';
@@ -103,7 +102,7 @@ const App = () => {
 					<Route exact path='/search/' component={EventSearch} />
 					<Route exact path='/search/events' component={EventSearchResults}/>
 
-					<Route  path='/dashboard' component={Dashboard} />
+					<Route exact path='/dashboard' component={Dashboard} />
 					<Route path='/discover' component={Discover} />
 
 					<Route exact path='/seen' component={Seen} />
