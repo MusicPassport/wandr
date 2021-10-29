@@ -1,10 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
-import { DashContext } from '../../Utility/Context';
 
-const MemoryDetail = ( {currentMemory}) => {
-    const { id } = useParams();
-    // const { currentMemory } = useContext(DashContext);
+const MemoryDetail = ( {currentMemory} ) => {
     const [memory,setMemory] = useState({
         title: "",
         photo: "",
