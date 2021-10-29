@@ -116,7 +116,7 @@ function EventDetail() {
 						{select ? (
 							<Link to='/dashboard/'>
 								<button className='btn detail-btn view'>
-									View On TimeLine
+									Go To Dashboard
 								</button>
 							</Link>
 						) : (
