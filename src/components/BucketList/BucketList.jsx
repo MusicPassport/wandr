@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { backendAPI } from '../../Utility/Config';
 import { DataContext } from '../../Utility/Context.jsx';
-
+import { useHistory } from 'react-router';
 import './BucketList.css'
 
 
@@ -11,12 +11,16 @@ const BucketList = () => {
 
 	const { currentUser, setCurrentUser, updateUser } = useContext(DataContext);
     const [updateEvent, setUpdateEvent] = useState();
+    const [waitUntilLoad, setWaitUntilLoad] = useState(true);
+    const history = useHistory();
+    let update;
 
     useEffect(() => {
         updateUser();
+        let timeout = setTimeout(() => setWaitUntilLoad(false), 1000)
         
+
         return () => {
-            
         }
     }, [])
 
@@ -53,31 +57,39 @@ const BucketList = () => {
 		console.log(event.target.id);
         
 		try {
-			const eventToUpdate = await axios.get(
+			await axios.get(
 				`https://intense-island-04626.herokuapp.com/events/${event.target.id}`
-			);
-            console.log(eventToUpdate)
-			setUpdateEvent({ ...eventToUpdate.data });
-            // while(!updateEvent){
+			)
+            .then(res => setUpdateEvent(res.data))
+
+            console.log(updateEvent)
+            // console.log(eventToUpdate)
+			// const update = await setUpdateEvent((previousState) => {
+            //     return{...previousState, ...eventToUpdate.data }});
+
+            const updated = () => {
+                update = {
+                ...updateEvent,
+				attendees: [parseInt(currentUser.id)],viewers: [...updateEvent.viewers.filter(user => user !== currentUser.id)]
+            }
+            return update
+            }
+            let timeout = setTimeout(() => updated(), 3000)
+            // if(Object.keys(updated).length<13){
             //     console.log('waiting')
             // }
-            let updated = {
-				...updateEvent,
-				attendees: [parseInt(currentUser.id)],viewers: [...eventToUpdate.data.viewers.filter(user => user !== currentUser.id)],
-			}
-            
-            console.log(updated.length)
-			console.log('Updated Event:', updated);
+            console.log(Object.keys(update).length)
+			console.log('Updated Event:', update);
 			
-			let res = await axios.put(
-					`https://intense-island-04626.herokuapp.com/events/${event.target.id}`,
-					updated,
-					{
-						headers: {
-							Authorization: `Token  ${auth}`,
-						},
-					}
-				)
+			// let res = await axios.put(
+			// 		`https://intense-island-04626.herokuapp.com/events/${event.target.id}`,
+			// 		updated,
+			// 		{
+			// 			headers: {
+			// 				Authorization: `Token  ${auth}`,
+			// 			},
+			// 		}
+			// 	)
 
                 // removeFromBucket();
                 
@@ -88,10 +100,15 @@ const BucketList = () => {
 		}
 	
 	}
-
+    if (waitUntilLoad){
+        return(
+        <h2>Loading...</h2>
+        )
+    } else{
 
 	return (
 		<div>
+            <button onClick={()=> history.goBack()}>←</button>
 			<h3 className="greeting">Hey, {currentUser.username}!</h3>
             <h1>BucketList</h1>
             <div className="event-list">
@@ -120,6 +137,7 @@ const BucketList = () => {
 
 		</div>
 	);
+    }
 };
 
 export default BucketList;

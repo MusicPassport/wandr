@@ -4,14 +4,17 @@ import { DataContext } from '../../Utility/Context';
 import './Events.css';
 import axios from 'axios';
 import EventSearch from './EventSearch.jsx';
+import { useHistory } from 'react-router';
 
 const Events = () => {
 	const { events, setEvents } = useContext(DataContext);
 
     const { searchInputs, setSearchInputs } = useContext(DataContext);
     const [isOpen, setIsOpen] = useState(false);
+	const [skipCount, setSkipCount] = useState(true);
+	const history = useHistory();
     
-    let keyword = searchInputs.keyword ? `&keyword=${encodeURIComponent(searchInputs.keyword)}`:""; 
+    let keyword = searchInputs.keyword ? `&keyword=${encodeURIComponent(searchInputs.keyword)}`:"music"; 
     let postalCode = searchInputs.postalCode ? `&postalCode=${encodeURIComponent(searchInputs.postalCode)}`:"";
     let city = searchInputs.city ? `&city=${encodeURIComponent(searchInputs.city)}` : "";
     let state= searchInputs.stateCode ? `&stateCode=${encodeURIComponent(searchInputs.stateCode)}`:"";
@@ -40,14 +43,16 @@ const Events = () => {
 	};
 
 	useEffect(() => {
-	
-			getEvents();
+		if (skipCount) {
+			setSkipCount(false)
+		} else if (!skipCount && !isOpen) getEvents()
 		
 	}, [isOpen]);
 
 
 	return (
 		 <div>
+			<button onClick={()=> history.goBack()}>←</button>
             <button className={isOpen ? 'noToggle' : 'toggle'} onClick={()=>setIsOpen(!isOpen)}>Advanced Search</button>
             <div className={isOpen ? 'toggle' : 'noToggle'}>
                 <EventSearch setIsOpen={setIsOpen} isOpen={isOpen}/>

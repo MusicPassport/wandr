@@ -18,6 +18,32 @@ const Calendar = () => {
 			new Date().getMonth(),
 			25
 		);
+	const handleClick = (event) => {
+		console.log(event)
+		let startDate = event.target.title
+		let date = startDate.split(' ')
+		console.log(date)
+		let weekday = date.splice(0,1)
+		let month = (date.splice(0,1)).toString();
+		console.log(month)
+		console.log(date)
+		let months = [
+			'January',
+			'February',
+			'March',
+			'April',
+			'May',
+			'June',
+			'July',
+			'August',
+			'September',
+			'October',
+			'November',
+			'December'
+		]
+		let monthNum = months.indexOf(month) +1
+		console.log(monthNum)
+	}
     return (
 			<div>
 				<div>
@@ -27,7 +53,7 @@ const Calendar = () => {
 						value={dateValue}
 						min={minDate}
 						max={maxDate}
-						isMultiSelection={true}></CalendarComponent>
+						isMultiSelection={true} onClick={handleClick}></CalendarComponent>
 				</div>
 				<div>
 					<h2>Display Events</h2>

@@ -4,6 +4,7 @@ import { DataContext } from '../../Utility/Context';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './EventDetail.css';
+import { useHistory } from 'react-router';
 
 function EventDetail() {
 	const { id } = useParams();
@@ -11,6 +12,7 @@ function EventDetail() {
 	const [eventDetail, setEventDetail] = useState();
 	const [updateEvent, setUpdateEvent] = useState();
 	const [select, setSelect] = useState(false)
+	const history = useHistory();
 
 	const url = `https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=${'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB'}`;
 
@@ -99,6 +101,7 @@ function EventDetail() {
 	//display the event detail in a card
 	return (
 		<div className='details-container'>
+			<button onClick={()=> history.goBack()}>←</button>
 			<div className='images-container'>
 				<img
 					className='event-img'
