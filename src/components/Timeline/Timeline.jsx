@@ -86,7 +86,7 @@ const Timeline = ( { dateRange } ) => {
         }
         getMashup();
         console.log('timeline: ',timeline);
-    }, []);
+    }, [dateRange]);
 
 
 return (
