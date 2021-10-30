@@ -109,7 +109,12 @@ const App = () => {
 					<Route exact path='/search/' component={EventSearch} />
 					<Route exact path='/search/events' component={EventSearchResults} />
 
-					<Route exact path='/dashboard' component={Dashboard} />
+					<Route 
+					exact 
+					path='/dashboard' 
+					render={() => < Dashboard setDateRange={setDateRange} /> } />
+
+
 					<Route path='/discover' component={Discover} />
 
 					<Route exact path='/seen' component={Seen} />
