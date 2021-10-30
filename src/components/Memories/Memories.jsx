@@ -87,7 +87,7 @@ return (
 			</button>
 		</div>
 		{addMem && (
-			<form onSubmit={handleSubmit}>
+			<form className='memory-form' onSubmit={handleSubmit}>
 				{/* <label className='form-label'>Title</label> */}
 				<input
 					id='title'

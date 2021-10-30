@@ -189,7 +189,7 @@
 
 /* FORM STYLING */
 
-form {
+.memory-form {
   background-color: rgb(44, 42, 43);
   display: flex;
   flex-direction: column;
@@ -199,7 +199,7 @@ form {
   border-radius: 10px;
 }
 
-form > * {
+.memory-form > * {
   margin: 5px 5px;
 }
 

@@ -26,10 +26,10 @@ const Discover = () => {
 
 
 	useEffect(() => {
-		// getInYourArea();
-        // getSports();
-        // getMusic();
-        // getFilm();
+		getInYourArea();
+        getSports();
+        getMusic();
+        getFilm();
         // getMisc();
 		getLocation()
 	}, []);

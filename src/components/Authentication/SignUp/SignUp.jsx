@@ -3,6 +3,8 @@ import axios from 'axios'
 import { backendAPI } from '../../../Utility/Config'
 import { useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
+import '../../../css/Auth.css';
+import signUpPic from '../../../assets/signup.jpg'
 
 const SignUp = () => {
 
@@ -52,46 +54,54 @@ const captureUsername = (e) => {
 //     }
 // }
     return (
-			<div>
-				<form onSubmit={createUser}>
-					<h2>Sign Up</h2>
-					<div className='username'>
-						<label htmlFor=''>Username:</label>
-						<input
-							type='text'
-							placeholder=' e.g. myaddress@email.com'
-							onChange={captureUsername}
-						/>
+			<>
+				<div className='form-container'>
+					<div className='auth-img-container'>
+						<img className='auth-img' src={signUpPic}></img>
 					</div>
-					<div className='password'>
-						<label htmlFor=''>Password:</label>
-						<input
-							type='password'
-							className='new-password'
-							placeholder=' enter password'
-							onChange={capturePassword}
-						/>
-					</div>
-					<div className='password '>
-						<label htmlFor=''>Confirm Password:</label>
-						<input
-							type='password'
-							className='confirm-password'
-							placeholder=' enter password'
-							onChange={confirmPassword}
-						/>
-					</div>
-					<button type='submit' className='signup-login'>
-						Sign Up
-					</button>
-				</form>
-                <div className='redirect-user'>
-				<p>Already have an account? Login!</p>
-				<Link to='/login'>
-					<button>Login</button>
-				</Link>
-			    </div>
-			</div>
+					<form className='auth-form' onSubmit={createUser}>
+						<h2>Sign Up</h2>
+						<div className='username'>
+							<label htmlFor=''>Username:</label>
+							<input
+								className='auth-input signUp'
+								type='text'
+								placeholder=' e.g. myaddress@email.com'
+								onChange={captureUsername}
+							/>
+						</div>
+						<div className='password'>
+							<label htmlFor=''>Password:</label>
+							<input
+								className='auth-input'
+								type='password'
+								className='new-password'
+								placeholder=' enter password'
+								onChange={capturePassword}
+							/>
+						</div>
+						<div className='password '>
+							<label htmlFor=''>Confirm Password:</label>
+							<input
+								className='auth-input'
+								type='password'
+								className='confirm-password'
+								placeholder=' enter password'
+								onChange={confirmPassword}
+							/>
+						</div>
+						<button type='submit' className='btn signup-login'>
+							Sign Up
+						</button>
+					</form>
+				</div>
+				<div className='redirect-user'>
+					<p>Already have an account? Login!</p>
+					<Link to='/login'>
+						<button>Login</button>
+					</Link>
+				</div>
+			</>
 		);
 }
 
