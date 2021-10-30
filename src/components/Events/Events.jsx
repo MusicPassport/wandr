@@ -52,12 +52,16 @@ const Events = () => {
 
 	return (
 		 <div>
-			<button onClick={()=> history.goBack()}>←</button>
-            <button className={isOpen ? 'noToggle' : 'toggle'} onClick={()=>setIsOpen(!isOpen)}>Advanced Search</button>
-            <div className={isOpen ? 'toggle' : 'noToggle'}>
+			 <div className="searchToolbar">
+				<button className={isOpen ? 'noToggle backButton' : 'toggle backButton'}  onClick={()=> history.goBack()}>←</button>
+				{/* <button className={isOpen ? 'noToggle' : 'toggle'} onClick={()=>setIsOpen(!isOpen)}>Advanced Search</button>
+				<div className={isOpen ? 'toggle' : 'noToggle'}> */}
+				<button className={isOpen ? 'noToggle advancedSearchButton' : 'toggle advancedSearchButton'} onClick={()=>setIsOpen(!isOpen)}>Advanced Search</button>
+			</div>
+			<div className={isOpen ? 'toggle' : 'noToggle'}>	
                 <EventSearch setIsOpen={setIsOpen} isOpen={isOpen}/>
             </div>
-            <div className={isOpen ? 'event-list noToggle' : 'event-list toggle'}>
+            <div className={isOpen ? 'event-list noToggleTest' : 'event-list toggleTest'}>
 				{/* <div className='event-list'> */}
 				{events.map((event) => (
 					<Link className='event-link' to={`/events/${event.id}`}>

@@ -102,8 +102,8 @@ const BucketList = () => {
 
 	return (
 		<div>
-            <button className="btn detail-btn backButton" onClick={()=> history.goBack()}>←</button>
             <div  className="BLPage">
+            <button className="btn detail-btn backButton" onClick={()=> history.goBack()}>←</button>
 			{/* <h3 className="greeting">Hey, {currentUser.username}!</h3> */}
             <h1 className="bucketListTitle">BucketList</h1>
             <div className="bucket-event-list">

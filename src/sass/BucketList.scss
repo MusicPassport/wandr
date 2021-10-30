@@ -3,15 +3,28 @@
 // font-family: 'Raleway', sans-serif;
 // font-family: 'Zen Kurenaido', sans-serif;
 
-.backButton {
-	// background-color: $navy;
-	color: $white-smoke;
+.backButton, .advancedSearchButton {
+	background-color: rgba(0,0,0,0);
+	color: $purple;
 	text-decoration: underline $magenta;
-	padding: 0.3rem 0.4rem;
+	padding: .02rem .4rem 0.3rem 0.4rem;
 	font-size: 1.5rem;
+    border-radius: 10px;
+    height: 2rem;
+    margin: 3px;
+    
 }
-.backButton:hover {
-	box-shadow: inset 0 0 100px 100px rgba(245, 245, 245, 0.2);
+.advancedSearchButton{
+    width: 12rem;
+    font-size: 1rem;
+    // margin: 0 auto;
+}
+.searchToolbar{
+    display:flex;
+    justify-content: space-between;
+}
+.backButton:hover , .advancedSearchButton:hover {
+	box-shadow: inset 0 0 100px 100px rgba(245, 72, 127, 0.7);
 }
 .BLPage {
 	padding: 1rem;
@@ -41,7 +54,7 @@
 }
 
 .blEvent:hover {
-	box-shadow: inset 100px 100px 100px 100px rgba(245, 245, 245, 0.2);
+	box-shadow: inset 100px 100px 100px 100px rgba(245, 245, 245, 0.377);
 }
 .blImage {
 	// border: 1px solid $hot-pink;
@@ -52,6 +65,7 @@
 	overflow: auto;
 	display: flex;
 	flex-direction: column;
+    
 }
 
 .event-list::-webkit-scrollbar {
@@ -70,12 +84,6 @@
 	object-fit: contain;
 }
 
-.toggle {
-	display: block;
-}
-.noToggle {
-	display: none;
-}
 
 @media (min-width: 600px) {
 	.bucket-event-list {
@@ -94,10 +102,5 @@
 		); /* grid has a template for it's columns. the columns repeat at 300px */
 		gap: 2rem; /* place a gap between each child equal to 5 elemental units */
 	}
-	.toggle {
-		display: block;
-	}
-	.noToggle {
-		display: none;
-	}
+
 }
