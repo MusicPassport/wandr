@@ -52,16 +52,21 @@ const Events = () => {
 
 	return (
 		 <div>
-			<button onClick={()=> history.goBack()}>←</button>
-            <button className={isOpen ? 'noToggle' : 'toggle'} onClick={()=>setIsOpen(!isOpen)}>Advanced Search</button>
-            <div className={isOpen ? 'toggle' : 'noToggle'}>
+			 <div className="searchToolbar">
+				<button className={isOpen ? 'noToggle backButton' : 'toggle backButton'}  onClick={()=> history.goBack()}>←</button>
+				{/* <button className={isOpen ? 'noToggle' : 'toggle'} onClick={()=>setIsOpen(!isOpen)}>Advanced Search</button>
+				<div className={isOpen ? 'toggle' : 'noToggle'}> */}
+				<button className={isOpen ? 'noToggle advancedSearchButton' : 'toggle advancedSearchButton'} onClick={()=>setIsOpen(!isOpen)}>Advanced Search</button>
+			</div>
+			<div className={isOpen ? 'toggle' : 'noToggle'}>	
                 <EventSearch setIsOpen={setIsOpen} isOpen={isOpen}/>
             </div>
-            <div className={isOpen ? 'event-list noToggle' : 'event-list toggle'}>
+            <div className={isOpen ? 'event-list noToggleTest' : 'event-list toggleTest'}>
 				{/* <div className='event-list'> */}
 				{events.map((event) => (
 					<Link className='event-link' to={`/events/${event.id}`}>
-							<div className='img-container'>
+						<div className='event-container'>
+						<div className='img-container'>
 								<img className='image' src={event.images[2].url} alt='' />
 						</div>
 						<h2>{event.name}</h2>
@@ -71,6 +76,7 @@ const Events = () => {
 						{/* <h4>Address: {event._embedded.venues[0].address.line1}, {event._embedded.venues[0].city.name}, {event._embedded.venues[0].state.stateCode}</h4> */}
 						<h4>Address: {event._embedded.venues[0].address.line1}, {event._embedded.venues[0].city.name}</h4>
 						{/* {!event._embedded.venues[0].country.countryCode === 'US' ? <h4>{event._embedded.venues[0].country.name} </h4>  : <h4>{event._embedded.venues[0].state.name}</h4>} */}
+						</div>
 					</Link>
 				// <button onClick={addEvent}>Add Event</button>
 			))}

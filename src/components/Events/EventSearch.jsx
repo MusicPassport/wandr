@@ -1,7 +1,11 @@
 import { Link, Redirect } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import { DataContext } from '../../Utility/Context.jsx';
+
+
 import '../../css/Events.css'
+
+
 import Select from 'react-select'
 
 
@@ -77,126 +81,6 @@ const EventSearch = ({ isOpen , setIsOpen }) => {
     { id:'stateCode', label: 'WISCONSIN', value: 'WI'},
     { id:'stateCode', label: 'WYOMING', value: 'WY' }
     ];
-    
-
-
-
-
-
-
-
-
-
-// Film/Family
-//     const genreOptions =[
-//         { id="classificationName", value="All Family Events", label="All Family Events"},
-//         { id="classificationName", value="Puppetry", label="Puppetry"},
-//         { id="classificationName", value="Ice Shows", label="Ice Shows"},
-//         { id="classificationName", value="Magic/Illusion", label="Magic/Illusion"},
-//         { id="classificationName", value="Circus/Specialty Acts", label="Circus/Specialty Acts"},
-//         { id="classificationName", value="Childrens Theater", label="Children's Theater"},
-//         { id="classificationName", value="Rodeo", label="Rodeo"},
-//         { id="classificationName", value="Fairs/Festivals", label="Fairs/Festivals"},
-//         { id="classificationName", value="Latin Childrens", label="Latin Children's"},
-//         { id="classificationName", value="Childrens Music", label="Children's Music"},
-//         { id="classificationName", value="Miscellaneous/Family", label="Miscellaneous/Family"},
-//         { id="classificationName", value="All Genres", label="All Genres"},
-//         { id="classificationName", value="Concerts", label="Concerts"},
-//         { id="classificationName", value="Alternative", label="Alternative"},
-//         { id="classificationName", value="Ballads/Romantic", label="Ballads/Romantic"},
-//         { id="classificationName", value="Blues", label="Blues"},
-//         { id="classificationName", value="Chanson Francaise", label="Chanson Francaise"},
-//         { id="classificationName", value="Classical", label="Classical"},
-//         { id="classificationName", value="Country", label="Country"},
-//         { id="classificationName", value="Dance/Electronic", label="Dance/Electronic"},
-//         { id="classificationName", value="Folk", label="Folk"},
-//         { id="classificationName", value="Hip-Hop/Rap", label="Hip-Hop/Rap"},
-//         { id="classificationName", value="Holiday", label="Holiday"},
-//         { id="classificationName", value="Jazz", label="Jazz"},
-//         { id="classificationName", value="Latin", label="Latin"},
-//         { id="classificationName", value="Medieval/Renaissance", label="Medieval/Renaissance"},
-//         { id="classificationName", value="Metal", label="Metal"},
-//         { id="classificationName", value="New Age", label="New Age"},
-//         { id="classificationName", value="Other", label="Other"},
-//         { id="classificationName", value="Pop", label="Pop"},
-//         { id="classificationName", value="R&B", label="R&B"},
-//         { id="classificationName", value="Reggae", label="Reggae"},
-//         { id="classificationName", value="Religious", label="Religious"},
-//         { id="classificationName", value="Rock", label="Rock"},
-//         { id="classificationName", value="World", label="World"},
-//         { id="classificationName", value="Aquatics", label="Aquatics"},
-//         { id="classificationName", value="Athletic Races", label="Athletic Races"},
-//         { id="classificationName", value="Badminton", label="Badminton"},
-//         { id="classificationName", value="Bandy", label="Bandy"},
-//         { id="classificationName", value="Baseball", label="Baseball"},
-//         { id="classificationName", value="Basketball", label="Basketball"},
-//         { id="classificationName", value="Biathlon", label="Biathlon"},
-//         { id="classificationName", value="Body Building", label="Body Building"},
-//         { id="classificationName", value="Boxing", label="Boxing"},
-//         { id="classificationName", value="Cricket", label="Cricket"},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-//         { id="classificationName", value="", label=""},
-        
-
-//     ]
 
     const { searchInputs, setSearchInputs } = useContext(DataContext);
     
@@ -217,9 +101,7 @@ const EventSearch = ({ isOpen , setIsOpen }) => {
 
     function handleSubmit(event) {
         event.preventDefault();
-        // setSearchInputs({...searchInputs})
-        // setSearchInputs(initialState);
-        setIsOpen(!isOpen);
+         setIsOpen(!isOpen);
         
     }
 
@@ -229,108 +111,47 @@ const EventSearch = ({ isOpen , setIsOpen }) => {
     },[]
     )
     return (
-        <div classlabel="searchForm" >  
-            <h2>Search Items:</h2>  
-            <form  classlabel="searchFields" onSubmit={handleSubmit}>
-                <label classlabel="c11" htmlFor="label">Event label</label>
-                    <input classlabel="c21"id="keyword" type='text' 
-                        placeholder="event label"
+<div className="advancedSearch" >  
+            <h2>What would you like to find?</h2>  
+            <form  className="searchFields" onSubmit={handleSubmit}>
+                <div className="keyword">
+                <label className="row1col1" htmlFor="label">Keyword</label>
+                    <input className="row1col2"id="keyword" type='text' 
+                        placeholder="event name, type of event, etc."
                         onChange={handleChange} 
                         value={searchInputs.keyword}/>
-                <label classlabel="c12" htmlFor="label">Genre</label>                  
-                <select onChange={handleChange} classlabel= "c22" label="Genre" id="classificationName" defaultValue="">
-                    <option value="">Select One</option>
-                    <option value="familyevents">Family Events</option>
-                    <option value="concerts">Concerts</option>
-                    <option value="sports">Sports</option>
-                    <option value="theater">Theater</option>
-                </select>
-                <label classlabel="c13">Start Date</label>
-                    <input classlabel="c23" id="startDateTime" 
+                </div>
+                <div className="startDate">
+                <label className="row2col1">Start Date</label>
+                    <input className="row2col2" id="startDateTime" 
                         type='date' 
                         placeholder="Start Date"
                         onChange={handleChange} 
                         value={searchInputs.startDateTime}/>
-                <label classlabel="c14">End Date</label>
-                    <input classlabel="c24" id="endDateTime" 
+                </div>
+                <div className="endDate">
+                <label className="row3col1">End Date</label>
+                    <input className="row3col2" id="endDateTime" 
                         type='date'
                         placeholder="End Date " 
                         onChange={handleChange} 
                         value={searchInputs.endDateTime }/>
-                <label classlabel="c15">City</label>
-                    <input classlabel="c25" id="city" 
+                </div>
+                <div className="city">
+                <label className="row4col1">City</label>
+                    <input className="row4col2" id="city" 
                         placeholder="city"
                         type='text' 
                         onChange={handleChange} 
                         value={searchInputs.city }/>
-                <label classlabel="c16">State</label>
-                <div>
-                    <Select id="stateCode" onChange={handleChange} options={stateOptions} default=""/>
                 </div>
-                {/* <div classlabel="stateScroll">
-                    <select classlabel="c26 stateScroll" 
-                        id="stateCode" 
-                        placeholder="state"
-                        type='text' 
-                        onChange={handleChange} 
-                        // value={searchInputs.stateCode }
-                        >
-                            <option value="AL">Alabama</option>
-                            <option value="AK">Alaska</option>
-                            <option value="AZ">Arizona</option>
-                            <option value="AR">Arkansas</option>
-                            <option value="CA">California</option>
-                            <option value="CO">Colorado</option>
-                            <option value="CT">Connecticut</option>
-                            <option value="DE">Delaware</option>
-                            <option value="DC">District Of Columbia</option>
-                            <option value="FL">Florida</option>
-                            <option value="GA">Georgia</option>
-                            <option value="HI">Hawaii</option>
-                            <option value="ID">Idaho</option>
-                            <option value="IL">Illinois</option>
-                            <option value="IN">Indiana</option>
-                            <option value="IA">Iowa</option>
-                            <option value="KS">Kansas</option>
-                            <option value="KY">Kentucky</option>
-                            <option value="LA">Louisiana</option>
-                            <option value="ME">Maine</option>
-                            <option value="MD">Maryland</option>
-                            <option value="MA">Massachusetts</option>
-                            <option value="MI">Michigan</option>
-                            <option value="MN">Minnesota</option>
-                            <option value="MS">Mississippi</option>
-                            <option value="MO">Missouri</option>
-                            <option value="MT">Montana</option>
-                            <option value="NE">Nebraska</option>
-                            <option value="NV">Nevada</option>
-                            <option value="NH">New Hampshire</option>
-                            <option value="NJ">New Jersey</option>
-                            <option value="NM">New Mexico</option>
-                            <option value="NY">New York</option>
-                            <option value="NC">North Carolina</option>
-                            <option value="ND">North Dakota</option>
-                            <option value="OH">Ohio</option>
-                            <option value="OK">Oklahoma</option>
-                            <option value="OR">Oregon</option>
-                            <option value="PA">Pennsylvania</option>
-                            <option value="RI">Rhode Island</option>
-                            <option value="SC">South Carolina</option>
-                            <option value="SD">South Dakota</option>
-                            <option value="TN">Tennessee</option>
-                            <option value="TX">Texas</option>
-                            <option value="UT">Utah</option>
-                            <option value="VT">Vermont</option>
-                            <option value="VA">Virginia</option>
-                            <option value="WA">Washington</option>
-                            <option value="WV">West Virginia</option>
-                            <option value="WI">Wisconsin</option>
-                            <option value="WY">Wyoming</option>
-                        </select>
-                    </div>			 */}
+                <div className="state">
+                <label className="row5col1">State</label>
+                    <Select id="stateCode" className="row5col2" onChange={handleChange} options={stateOptions} default=""/>
+                </div>
             </form>
             <Link to="/events">
-                <button classlabel="searchButton" type="submit" onClick={handleSubmit}>Search</button>
+                <button className="searchButton" type="submit" onClick={handleSubmit}>Search</button>
             </Link>
         </div>  
     );

@@ -1,65 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,500;0,700;0,800;0,900;1,100;1,500;1,600;1,900&family=Zen+Kurenaido&display=swap");
 .memory-options {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .memory-options h1 {
-	font-size: 1rem;
+  font-size: 1rem;
 }
 
 .memory-options button {
-	height: 30px;
-	align-self: center;
-	border-radius: 5px;
-	color: #f5487f;
-	font-weight: 600;
+  height: 30px;
+  align-self: center;
+  border-radius: 5px;
+  color: #f5487f;
+  font-weight: 600;
 }
 
 .add-memory-form {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .add-memory-form * {
-	margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .add-memory-form input:last-of-type {
-	margin-top: 15px;
-	margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .memory-buttons {
-	display: flex;
-	justify-content: space-between;
-	height: 40px;
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
 }
 
 .memory-container {
-	margin: 10px 0;
+  margin: 10px 0;
 }
 
 .memory-buttons * {
-	width: 120px;
-	font-weight: 700;
-	border-radius: 5px;
+  width: 120px;
+  font-weight: 700;
+  border-radius: 5px;
 }
 
 .photo-container {
-	width: 50vw;
-	margin: 0 auto;
+  width: 50vw;
+  margin: 0 auto;
 }
 
 .memory-pic {
-	object-fit: contain;
-	height: 100%;
-	width: 100%;
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
 }
 
 .memory-title {
-	color: #f5487f;
+  color: #f5487f;
 }
+
 
 @media (prefers-color-scheme: dark) {
 	.memory-options button {
@@ -273,70 +275,93 @@ input[type=file]::file-selector-button {
 }
 
 
+
+h2 {
+  color: #f5487f;
+  background-color: azure;
+}
+
+@media (prefers-color-scheme: dark) {
+  .memory-options button {
+    height: 30px;
+    align-self: center;
+    border-radius: 5px;
+    color: #f5487f;
+    font-weight: 600;
+  }
+
+  .memory-buttons * {
+    width: 120px;
+    color: #f5487f;
+    font-weight: 700;
+    border-radius: 5px;
+  }
+}
+
 @media (max-width: 600px) {
-	.memory-options {
-		display: flex;
-		justify-content: space-between;
-		margin-bottom: 10px;
-	}
+  .memory-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
 
-	.memory-options h1 {
-		font-size: 1rem;
-	}
+  .memory-options h1 {
+    font-size: 1rem;
+  }
 
-	.memory-options button {
-		height: 30px;
-		align-self: center;
-		border-radius: 5px;
-		color: #f5487f;
-		font-weight: 600;
-	}
+  .memory-options button {
+    height: 30px;
+    align-self: center;
+    border-radius: 5px;
+    color: #f5487f;
+    font-weight: 600;
+  }
 
-	.add-memory-form {
-		display: flex;
-		justify-content: space-between;
-	}
+  .add-memory-form {
+    display: flex;
+    justify-content: space-between;
+  }
 
-	.add-memory-form * {
-		margin-bottom: 15px;
-	}
+  .add-memory-form * {
+    margin-bottom: 15px;
+  }
 
-	.add-memory-form input:last-of-type {
-		margin-top: 15px;
-		margin-bottom: 15px;
-	}
+  .add-memory-form input:last-of-type {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
 
-	.memory-buttons {
-		display: flex;
-		justify-content: space-between;
-		height: 40px;
-	}
+  .memory-buttons {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+  }
 
-	.memory-container {
-		border: 2px solid white;
-		margin: 10px 0;
-	}
+  .memory-container {
+    border: 2px solid white;
+    margin: 10px 0;
+  }
 
-	.memory-buttons * {
-		width: 120px;
-		font-weight: 700;
-		border-radius: 5px;
-	}
+  .memory-buttons * {
+    width: 120px;
+    font-weight: 700;
+    border-radius: 5px;
+  }
 
-	.photo-container {
-		width: 80vw;
-		margin: 0 auto;
-	}
+  .photo-container {
+    width: 80vw;
+    margin: 0 auto;
+  }
 
-	.memory-pic {
-		object-fit: contain;
-		height: 100%;
-		width: 100%;
-	}
+  .memory-pic {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+  }
 
-	.memory-title {
-		color: #f5487f;
-	}
+  .memory-title {
+    color: #f5487f;
+  }
 }
 
 /*# sourceMappingURL=Memories.css.map */

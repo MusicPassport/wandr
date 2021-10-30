@@ -21,7 +21,7 @@
 
 /* Don't display the links on mobile */
 .links {
-  /* display: none; */
+  display: none;
 }
 
 .linkDisplay {
