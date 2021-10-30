@@ -152,7 +152,7 @@ return (
 				memories.map((memory) => {
 					return (
 						<div className='memory' key={memory.id} id={memory.id}>
-							<div className='img-container'>
+							<div className='image-container'>
 								<img
 									className='img'
 									onClick={openDetails}

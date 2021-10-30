@@ -120,7 +120,7 @@
   box-shadow: 10px 10px white;
 } */
 
-.img-container {
+.image-container {
 	width: 100%;
 	height: 50%;
 	/* border:1px solid #f5487f; */
@@ -135,7 +135,7 @@
   
 }
 
-.img-container:hover {
+.image-container:hover {
   transform: rotate(-10deg);
   /* transform: scaleX(1.1); */
   transition: ease 0.5s;

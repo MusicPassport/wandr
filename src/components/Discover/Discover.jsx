@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { DataContext } from '../../Utility/Context';
 import axios from 'axios';
 import DiscoverDetail from './DiscoverDetail';
+import landing from '../../assets/discover.jpg'
 
 const Discover = () => {
 	// get events in the area
@@ -14,12 +15,23 @@ const Discover = () => {
 	const [music, setMusic] = useState();
 	const [misc, setMisc] = useState();
 
+	function getLocation() {
+		window.navigator.geolocation.getCurrentPosition(console.log, console.log);
+		// navigator.geolocation.getCurrentPosition(function (position) {
+		// 	console.log('Latitude is :', position.coords.latitude);
+		// 	console.log('Longitude is :', position.coords.longitude);
+		// });
+	}
+
+
+
 	useEffect(() => {
-		getInYourArea();
+		// getInYourArea();
         // getSports();
         // getMusic();
         // getFilm();
         // getMisc();
+		getLocation()
 	}, []);
 
 	const getSuggest = async () => {
@@ -39,7 +51,7 @@ const Discover = () => {
 
 	const getMusic = async () => {
 		let res = await axios.get(
-			`https://app.ticketmaster.com/discovery/v2/events.json?&segmentName=music&apikey=RW9cwwI0fopdanO8UIpgzYPYq0GlSavB`
+			`https://app.ticketmaster.com/discovery/v2/events.json?&segmentName=music&random=true&apikey=RW9cwwI0fopdanO8UIpgzYPYq0GlSavB`
 		);
 		console.log(res.data['_embedded'].events);
         setMusic(res.data['_embedded'].events);
@@ -73,25 +85,30 @@ const Discover = () => {
 
 	return (
 		<div>
-			<h1>Discover</h1>
-			<h2>In Your Area</h2>
-			<DiscoverDetail events={inYourArea} />
-			<div>{/* map In Your Area Results */}</div>
-			{/* <h2>Suggested Attractions</h2>
+			<div className='discover-landing'>
+				<h2 className='landing-title'>Discover Something New</h2>		
+			</div>
+			<div className='main-div'>
+				<h2 className='discover-section-title'>In Your Area</h2>
+				<DiscoverDetail events={inYourArea} />
+				<div>{/* map In Your Area Results */}</div>
+				{/* <h2>Suggested Attractions</h2>
 			<DiscoverDetail props={inYourArea} />
 			<div></div> */}
-			<h2>Dive Into Something New</h2>
-			<div>{/* map In Your Area Results */}</div>
-			<DiscoverDetail events={misc} />
-			<h2>For Music Lovers</h2>
-			<div>{/* map In Your Area Results */}</div>
-			<DiscoverDetail events={music} />
-			<h2>For Cinephiles</h2>
-			<div>{/* map In Your Area Results */}</div>
-			<DiscoverDetail events={films} />
-			<h2>For Sports Fans</h2>
-			<DiscoverDetail events={sports} />
-			<div>{/* map In Your Area Results */}</div>
+				{/* <h2 className='discover-section-title'>Dive Into Something New</h2> */}
+				<div className='discover-section-title'>
+					{/* map In Your Area Results */}
+				</div>
+				{/* <DiscoverDetail events={misc} /> */}
+				<h2 className='discover-section-title'>For Music Lovers</h2>
+				<div>{/* map In Your Area Results */}</div>
+				<DiscoverDetail events={music} />
+				<h2 className='discover-section-title'>For Cinephiles</h2>
+				<div>{/* map In Your Area Results */}</div>
+				<DiscoverDetail events={films} />
+				<h2 className='discover-section-title'>For Sports Fans</h2>
+				<DiscoverDetail events={sports} />
+			</div>
 		</div>
 	);
 };
