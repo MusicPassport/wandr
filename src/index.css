@@ -10,6 +10,24 @@ body {
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
+
+}
+
+body {
+	background-color: whitesmoke;
+	color: rgba(31, 48, 110, 1);
+}
+
+button {
+	cursor: pointer;
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: rgba(23, 23, 23, 1);
+		color: whitesmoke;
+	}
+
 }
 
 body {
