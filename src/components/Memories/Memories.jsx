@@ -88,19 +88,25 @@ return (
 		</div>
 		{addMem && (
 			<form onSubmit={handleSubmit}>
+				{/* <label className='form-label'>Title</label> */}
 				<input
 					id='title'
 					type='text'
 					name='title'
 					value={userInput.title}
 					onChange={handleChange}
+					className='form-title'
+					placeholder='title'
 				/>
+				{/* <label className='form-label'>Body</label> */}
 				<textarea
 					id='body'
 					name='body'
 					rows='10'
 					value={userInput.body}
 					onChange={handleChange}
+					className='form-input'
+					placeholder='Write something unforgettable'
 				/>
 				<select
 					id='event'
@@ -115,7 +121,7 @@ return (
 						</option>
 						{events.map((event) => {
 							return (
-								<option name='event' value={event.id}>
+								<option className='select-item' name='event' value={event.id}>
 									{event.name}
 								</option>
 							);
@@ -127,11 +133,18 @@ return (
 					type='file'
 					id='photo'
 					name='photo'
+					className='btn form-btn'
 					placeholder='choose image'
 					onChange={fileChange}
 				/>
-				<button type='submit'>Submit</button>
-				<button onClick={toggleMem}>Cancel</button>
+				<div className='form-btns'>
+					<button className='btn form-btn submit' type='submit'>
+						Submit
+					</button>
+					<button className='btn form-btn cancel' onClick={toggleMem}>
+						Cancel
+					</button>
+				</div>
 			</form>
 		)}
 		<div className='memories'>
@@ -146,11 +159,12 @@ return (
 									src={memory.photo}
 									alt='alt'
 								/>
+								<h2 className='mem-title' onClick={openDetails}>
+									{memory.title}
+								</h2>
 							</div>
 							<div className='memory-info'>
-								<div className='memory-title'>
-									<h2 onClick={openDetails}>{memory.title}</h2>
-								</div>
+								<div className='memory-title'></div>
 								<p onClick={openDetails}>{memory.body}</p>
 							</div>
 						</div>

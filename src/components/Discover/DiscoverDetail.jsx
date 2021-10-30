@@ -30,7 +30,7 @@ const DiscoverDetail = ({ events }) => {
 							variant='top'
 							src={event.images[3].url}
 							style={{ height: '100px' }}
-							className='detail-img hidden'
+							className='detail-img'
 						/>
 						<div className='card-body'>
 							<div className='title'>
