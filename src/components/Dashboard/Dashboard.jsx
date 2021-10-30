@@ -5,27 +5,22 @@ import { Route, Link } from 'react-router-dom';
 
 import '../../css/Dashboard.css';
 import DashNav from './DashNav';
-import ResetPassword from '../Authentication/Reset/ResetPassword';
-import Timeline from '../Timeline/Timeline';
-import Memories from '../Memories/Memories';
-import MemoryDetail from '../Memories/MemoryDetail';
-import BucketList from '../BucketList/BucketList';
 
-import { DateRange, DateRangePicker } from 'react-date-range'; // new Date Range component. Also run: npm i date-fns
+import { DateRange } from 'react-date-range'; // new Date Range component. Also run: npm i date-fns
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import AltCalendar from '../Calendar/altCalendar';
 
-const Dashboard = () => {
+const Dashboard = ( { setDateRange }) => {
     const [displaySettings, setDisplaySettings] = useState('memories');
-    const [dateRange,setDateRange] = useState();
-    const [currentMemory, setCurrentMemory] = useState({
-        title: '',
-        body: '',
-        photo: '',
-        owner: '',
-        event: ''
-    });
+    // const [dateRange,setDateRange] = useState();
+    // const [currentMemory, setCurrentMemory] = useState({
+    //     title: '',
+    //     body: '',
+    //     photo: '',
+    //     owner: '',
+    //     event: ''
+    // });
     const [selection, setSelection] = useState({
         startDate: new Date(),
         endDate: new Date(),
@@ -71,7 +66,7 @@ const Dashboard = () => {
   const handleSelect = async (ranges) => {
     setSelection(ranges['selection']);
     setDates(ranges['selection']);
-    console.log(dateRange);
+    // console.log(dateRange);
   }
 
 
