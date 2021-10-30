@@ -1,7 +1,10 @@
 import { Link, Redirect } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import { DataContext } from '../../Utility/Context.jsx';
-// import '../../css/Events.css'
+
+
+import '../../css/Events.css'
+
 
 import Select from 'react-select'
 
@@ -108,7 +111,7 @@ const EventSearch = ({ isOpen , setIsOpen }) => {
     },[]
     )
     return (
-        <div className="advancedSearch" >  
+<div className="advancedSearch" >  
             <h2>What would you like to find?</h2>  
             <form  className="searchFields" onSubmit={handleSubmit}>
                 <div className="keyword">
