@@ -13,47 +13,17 @@ const DiscoverDetail = ({ events }) => {
 			return <h2>Loading..</h2>;
 		}
     return (
-		
-			<div>
-				<button onClick={() => history.goBack()}>←</button>	
-
-				{events.map((event) => (
-					// <div>
-					// 	<h3>{event.name}</h3>
-					// 	<h5>{event['_embedded'].venues[0].name}</h5>
-					// 	<p>{event.dates.start.localDate}</p>
-					// 	<p>{event.dates.status.code}</p>
-					// </div>
-					
-					<Card className='card card-container' style={{ width: '22rem' }}>
-						<Card.Img
-							variant='top'
-							src={event.images[3].url}
-							style={{ height: '100px' }}
-							className='detail-img hidden'
-						/>
-						<div className='card-body'>
-							<div className='title'>
-								<div className='title-container'>
-									<h3>{event.name}</h3>
-								</div>
-							</div>
-							<div className='info'>
-								<div className='details'>
-									<h5>{event['_embedded'].venues[0].name}</h5>
-									<div>
-										<p className='date'>Date: {event.dates.start.localDate}</p>
-									</div>
-								</div>
-								<div>
-									<p className='status'>{event.dates.status.code}</p>
-									<Link to={`/events/${event.id}`}>
-										<Button variant='outline-success'>More Details</Button>
-									</Link>
-								</div>
-							</div>
+			<div className='display'>
+				{events.map((event, idx) => (
+					<div id={`discover-${idx}`} className='card-body'>
+						<Link to={`events/${event.id}`}>
+							<img className='details-image' src={event.images[0].url}></img>
+						</Link>
+						<div className='discover-title'>
+							<h2 className='discover-title'>{event.name}</h2>
+							<p>Starting: {event.dates.start.localDate}</p>
 						</div>
-					</Card>
+					</div>
 				))}
 			</div>
 		);

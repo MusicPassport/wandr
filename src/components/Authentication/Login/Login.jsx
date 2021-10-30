@@ -4,9 +4,11 @@ import { useHistory } from 'react-router-dom';
 import { backendAPI } from '../../../Utility/Config';
 import { DataContext } from '../../../Utility/Context.jsx';
 import { Link } from 'react-router-dom';
+import loginPic from '../../../assets/login.jpg'
+import '../../../css/Auth.css'
 
 const Login = () => {
-    const { currentUser, setCurrentUser } = useContext(DataContext)
+	const { currentUser, setCurrentUser } = useContext(DataContext);
 	const history = useHistory();
 
 	const [email, setEmail] = useState();
@@ -31,7 +33,7 @@ const Login = () => {
 
 	const getUser = async (auth) => {
 		console.log(localStorage.getItem('auth'));
-        // console.log(auth);
+		// console.log(auth);
 
 		const login = await axios.get(`${backendAPI}/users/me/`, {
 			headers: {
@@ -39,15 +41,18 @@ const Login = () => {
 			},
 		});
 		console.log(login.data.id);
-        const getUserInfo = await axios.get(`${backendAPI}/users/${login.data.id}/`, {
-			headers: {
-				Authorization: `Token  ${auth}`,
-			},
-		})
-        console.log(getUserInfo);
+		const getUserInfo = await axios.get(
+			`${backendAPI}/users/${login.data.id}/`,
+			{
+				headers: {
+					Authorization: `Token  ${auth}`,
+				},
+			}
+		);
+		console.log(getUserInfo);
 		localStorage.setItem('currentUser', JSON.stringify(getUserInfo.data));
-        setCurrentUser({...getUserInfo.data})
-        console.log(currentUser)
+		setCurrentUser({ ...getUserInfo.data });
+		console.log(currentUser);
 	};
 
 	const captureEmail = (e) => {
@@ -59,36 +64,43 @@ const Login = () => {
 	};
 
 	return (
-		<div>
-			<form onSubmit={handleSubmit}>
-				<h2>Login</h2>
-				<div className='username'>
-					<label htmlFor=''>Username:</label>
-					<input
-						type='text'
-						placeholder=' e.g. myaddress@email.com'
-						onChange={captureEmail}
-					/>
+		<>
+			<h1>Welcome Back</h1>
+			<div className='form-container'>
+				<div className='auth-img-container'>
+					<img className='auth-img' src={loginPic}></img>
 				</div>
-				<div className='password'>
-					<label htmlFor=''>Password:</label>
-					<input
-						type='password'
-						placeholder=' enter password'
-						onChange={capturePassword}
-					/>
-				</div>
-				<button type='submit' className='signup-login'>
-					Login
-				</button>
-			</form>
+				<form className='auth-form signup-form' onSubmit={handleSubmit}>
+					<h2>Login</h2>
+					<div className='username'>
+						<label className='auth-label'>Email</label>
+						<input
+							type='text'
+							placeholder=' e.g. myaddress@email.com'
+							onChange={captureEmail}
+							className='auth-input'
+						/>
+					</div>
+					<div className='password'>
+						<input
+							className='auth-input'
+							type='password'
+							placeholder=' enter password'
+							onChange={capturePassword}
+						/>
+					</div>
+					<button type='submit' className='btn signup-login'>
+						Login
+					</button>
+				</form>
+			</div>
 			<div className='redirect-user'>
 				<p>New? Sign Up!</p>
 				<Link to='/signup'>
 					<button>SignUp</button>
 				</Link>
 			</div>
-		</div>
+		</>
 	);
 };
 
