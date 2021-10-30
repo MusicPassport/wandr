@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,500;0,700;0,800;0,900;1,100;1,500;1,600;1,900&family=Zen+Kurenaido&display=swap");
+
 .advancedSearch {
   font-family: "Zen Kurenaido", sans-serif;
+
   width: 80vw;
   border: 2px solid hotpink;
   margin: 50px auto;
@@ -162,6 +164,7 @@
     max-width: 12rem;
   }
 
+
   .formInput {
     margin-top: 0px;
     margin-bottom: 1rem;
@@ -170,6 +173,7 @@
   .searchLabel {
     margin-bottom: 0px;
   }
+
 
   .keyword,
 .startDate,
@@ -180,6 +184,7 @@
     flex-wrap: wrap;
     flex-direction: column;
     margin-top: 1rem;
+
   }
 }
 

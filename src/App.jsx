@@ -113,7 +113,7 @@ const App = () => {
 					<Route 
 					exact 
 					path='/dashboard' 
-					render={() => < Dashboard setDateRange={setDateRange} /> } />
+					render={() => < Dashboard dateRange={dateRange} setDateRange={setDateRange} /> } />
 
 
 					<Route path='/discover' component={Discover} />
@@ -121,11 +121,11 @@ const App = () => {
 					<Route exact path='/seen' component={Seen} />
 					<Route exact path='/dashboard/settings' component={ResetPassword} />
 					<Route exact path='/dashboard/bucketlist' component={BucketList} />
-					<Route
+					{/* <Route
 						exact
 						path='/dashboard'
 						render={() => <Timeline dateRange={dateRange} />}
-					/>
+					/> */}
 					<Route
 						exact
 						path='/dashboard/memories'
