@@ -70,6 +70,10 @@
     color: $hot-pink
 }
 
+h2 {
+    color: $hot-pink;
+    background-color: azure;
+}
 
 @media (prefers-color-scheme: dark) {
     .memory-options button {
