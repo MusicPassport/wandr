@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import { DataContext } from './Utility/Context';
 import './css/styles.css';
+import './css/EventSearch.css'
 import Nav from './components/Nav/Nav';
 import Home from './components/Home/Home';
 import About from './components/About/About';
@@ -100,14 +101,15 @@ const App = () => {
 					<Route exact path='/login' component={Login} />
 					<Route exact path='/signup' component={SignUp} />
 					{/* <Route exact path='/timeline' component={Timeline}/> */}
+
 					<Route exact path='/events/:id' component={EventDetail} />
 					<Route exact path='/events' component={Events} />
 					<Route exact path='/create' component={Create} />
 					<Route exact path='/calendar' component={Calendar} />
 					<Route exact path='/altcalendar' component={AltCalendar} />
-
+{/* 
 					<Route exact path='/search/' component={EventSearch} />
-					<Route exact path='/search/events' component={EventSearchResults} />
+					<Route exact path='/search/events' component={EventSearchResults}/> */}
 
 					<Route exact path='/dashboard' component={Dashboard} />
 					<Route path='/discover' component={Discover} />

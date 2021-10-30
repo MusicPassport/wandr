@@ -70,6 +70,7 @@ const Timeline = ( { dateRange } ) => {
                 event.dateInFormat = event.start.split('-').join('')
                 return event
             })
+            console.log(currentUser)
             const strToDateAttending = currentUser.attending.map((event) => {
                 event.dateInFormat = event.start.split('-').join('')
                 return event
