@@ -1,7 +1,7 @@
 import { Link, Redirect } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import { DataContext } from '../../Utility/Context.jsx';
-import '../../css/Events.css'
+import '../../css/EventSearch.css'
 import Select from 'react-select'
 
 
@@ -231,7 +231,7 @@ const EventSearch = ({ isOpen , setIsOpen }) => {
     return (
         <div classlabel="searchForm" >  
             <h2>Search Items:</h2>  
-            <form  classlabel="searchFields" onSubmit={handleSubmit}>
+            <form className="searchFields" onSubmit={handleSubmit}>
                 <label classlabel="c11" htmlFor="label">Event label</label>
                     <input classlabel="c21"id="keyword" type='text' 
                         placeholder="event label"

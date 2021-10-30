@@ -1,0 +1,12 @@
+@media (min-width: 600px) {
+  .searchFields {
+    border: 10px solid orange;
+    height: 600px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+}
+
+/*# sourceMappingURL=EventSearch.css.map */
