@@ -1,7 +1,7 @@
 /* Okay, first, we're going to create a simple, scrollable, mobile-friendly design, that's based on grid. */
 .App {
   /* we'll need to specify our app's height and width, too */
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   background: linear-gradient(180deg, white 22%, rgba(233, 233, 233, 0.7) 66%, rgba(200, 200, 200, 0.5) 100%);
   display: grid;

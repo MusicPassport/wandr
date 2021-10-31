@@ -63,7 +63,7 @@
 		grid-template-columns: 1fr 5fr;
 		gap: 1rem;
 
-		  background: url('../assets/Adobe_lantern.jpeg');
+		background-image: url('../assets/Adobe_lantern.jpeg');
     	background-size: cover;
 	}
 
@@ -80,4 +80,5 @@
         animation-name: expand;
         animation-duration: 2s;
 	}
+
 }
