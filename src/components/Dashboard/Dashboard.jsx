@@ -1,9 +1,6 @@
 import { useState } from 'react';
-
-
 import '../../css/Dashboard.css';
 import DashNav from './DashNav';
-
 import { DateRange } from 'react-date-range'; 
 import 'react-date-range/dist/styles.css'; 
 import 'react-date-range/dist/theme/default.css'; 
@@ -24,7 +21,6 @@ const Dashboard = ( { dateRange, setDateRange }) => {
 		let day = parseInt(thisDate[2]);
 		let month = thisDate[1];
         let year = parseInt(thisDate[3]);
-        console.log(day);
 		let months = [
 			'Jan',
 			'Feb',
@@ -62,7 +58,6 @@ const Dashboard = ( { dateRange, setDateRange }) => {
 const handleCal = () => {
     if(displaySettings === 'none') setDisplaySettings('flex');
     else setDisplaySettings('none');
-    console.log(displaySettings);
 }
 
 
@@ -75,17 +70,20 @@ const handleCal = () => {
             </section>
             <button id="cal-btn" onClick={ handleCal}></button>
             {displaySettings === 'flex' ? (
-            <section style={{height: '400px'}} className='calendar'>
+            <section style={{height: '425px'}} className='calendar'>
                <DateRange
                 scroll={{enabled: false, months: 2}}
-                style={{height: '500px'}}
+                style={{height: '375px'}}
+                direction="horizontal"
                 showDateDispay={false}
                 ranges={[selection]}
                 onChange={handleSelect}
                 />
             </section>
-            ) : ( null) }            
-            <Timeline className="timeline" dateRange={dateRange} />
+            ) : ( null) }
+            <div className="timeline-box">  
+                <Timeline className="timeline" dateRange={dateRange} />
+            </div>            
            
         </div>
         </>

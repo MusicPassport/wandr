@@ -13,8 +13,8 @@ const Events = () => {
     const { searchInputs } = useContext(DataContext);
     const [isOpen, setIsOpen] = useState(false);
 	const [skipCount, setSkipCount] = useState(true);
+	const [noEvents, setNoEvents] = useState(false);
 	const history = useHistory();
-    
     let keyword = searchInputs.keyword ? `&keyword=${encodeURIComponent(searchInputs.keyword)}`:"music"; 
     let postalCode = searchInputs.postalCode ? `&postalCode=${encodeURIComponent(searchInputs.postalCode)}`:"";
     let city = searchInputs.city ? `&city=${encodeURIComponent(searchInputs.city)}` : "";
@@ -26,17 +26,15 @@ const Events = () => {
 
      let url=`https://app.ticketmaster.com/discovery/v2/events.json?size=100&apikey=${process.env.REACT_APP_API_KEY}${keyword}${postalCode}${city}${state}${startDate}${endDate}${classification}`
 
-	 console.log(url)
 
 	const getEvents = async () => {
 		try {
 			const result = await axios.get(url);
-			console.log('this is the result', result);
 			if (result.data.page.totalElements > 0 ){
 			setEvents([...result.data['_embedded'].events]);
-
+			setNoEvents(false)		
 			} else {
-				console.log('No events matched')
+				setNoEvents(true)
 			}
 		} catch (error) {
 			console.log(error);
@@ -50,6 +48,14 @@ const Events = () => {
 		
 	}, [isOpen]);
 
+	if (noEvents){
+		return(
+			<>
+				<h1 className='events-title-D'>No Events From Search</h1>
+				<button className="backButton" onClick={()=> history.goBack()}>←</button>
+			</>
+		)
+	} else {
 
 	return (
 		 <div>
@@ -72,10 +78,12 @@ const Events = () => {
 						<div className='img-container-D'>
 							<img className='image-D' src={event.images[2].url} alt='' />
 						</div>
-						<h2>{event.name}</h2>
-						<h4>{event.dates.start.localDate}</h4>
-						<h4>{event.dates.status.code}</h4>
-						<h4>{event._embedded.venues[0].name}</h4>						
+						<div className='event-info-D'>
+						<h2 className="event-info-title-D">{event.name}</h2>
+						<h4>Event Date: {event.dates.start.localDate}</h4>
+						<h4>Ticket status: {event.dates.status.code}</h4>
+						<h4>Venue: {event._embedded.venues[0].name}</h4>
+						</div>						
 						</div>
 						</Link>
 					</div>
@@ -83,6 +91,6 @@ const Events = () => {
 		</div>
 		</div>
 	);
-};
+}};
 
 export default Events;

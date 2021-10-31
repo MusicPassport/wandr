@@ -47,8 +47,7 @@ const  createID = (length=8) => {
         addEvent()
         
     }
-    console.log(formState);
-    console.log(eventID);
+ 
 
     const addEvent = async (e) => {
         // e.preventDefault();
@@ -79,7 +78,7 @@ const  createID = (length=8) => {
            },
             
          }) 
-            console.log(res);
+
         } catch (error) {
             console.log(error)
         }
@@ -94,47 +93,102 @@ const  createID = (length=8) => {
     };
 
     return (
-        <div className='create-page' >
-            <button className='backButton' onClick={() => history.goBack()}>←</button>
-            {/* <h3>Add Event</h3> */}
-            <div className='form-container signup-form'>
-            <form className='auth-form' onSubmit={handleSubmit} onChange={handleChange}>
-                <div className='input-group'>
-                    <label className='auth-label' htmlFor="event-name">Event Name:</label>
-                    <input id="name" className='auth-input signUp' placeholder='event name'/>                    
-                </div>
-                <div className='input-group'>
-                    <label className='auth-label' htmlFor="genre">Genre:</label>
-                    <input id="genre" className='auth-input signUp' placeholder='genre'/> 
-                </div>
-                <div className='input-group'>
-                    <label className='auth-label' htmlFor="address">Address:</label>
-                    <input id="address" className='auth-input signUp' placeholder='address'/>
-                </div>
-                <div className='input-group'>
-                    <label className='auth-label' htmlFor="city">City:</label>
-                    <input id="city" className='auth-input signUp' placeholder='city'/>
-                </div>
-                <div className='input-group'>
-                    <label className='auth-label' htmlFor="state">State:</label>
-                    <input id="state" className='auth-input signUp' placeholder='state'/>
-                </div>
-                <div className='input-group'>
-                    <label className='auth-label' htmlFor="image url">Image URL:</label>
-                    <input id="img_url" className='auth-input signUp' placeholder='image url'/>
-                </div>
-                <div className='input-group'>
-                    <label className='auth-label' htmlFor="start-time">Start Time:</label>
-                    <input id="start" className='auth-input signUp' placeholder='start time'/>
-                </div>
-                <button type="submit" >Submit</button>  
+			<div className='create-page'>
+				<button className='backButton' onClick={() => history.goBack()}>
+					←
+				</button>
+				<h2 className='auth-title'>Create A New Event</h2>
 
-                               
-            </form>  
-            </div>     
-        </div>
-
-    );
+				<div className='form-container signup-form create-container'>
+					<form
+						className='auth-form create-container'
+						onSubmit={handleSubmit}
+						onChange={handleChange}>
+						<div className='right'>
+							<div className='input-group'>
+								<label className='auth-label' htmlFor='event-name'>
+									Event Name:
+								</label>
+								<input
+									id='name'
+									className='auth-input signUp'
+									placeholder='event name'
+								/>
+							</div>
+							<div className='input-group'>
+								<label className='auth-label' htmlFor='genre'>
+									Genre:
+								</label>
+								<input
+									id='genre'
+									className='auth-input signUp '
+									placeholder='genre'
+								/>
+							</div>
+							<div className='input-group'>
+								<label className='auth-label' htmlFor='address'>
+									Address:
+								</label>
+								<input
+									id='address'
+									className='auth-input signUp reset'
+									placeholder='address'
+								/>
+							</div>
+							<div className='input-group'>
+								<label className='auth-label' htmlFor='city'>
+									City:
+								</label>
+								<input
+									id='city'
+									className='auth-input signUp reset'
+									placeholder='city'
+								/>
+							</div>
+						</div>
+						<div className='left'>
+							<div className='input-group'>
+								<label className='auth-label' htmlFor='state'>
+									State:
+								</label>
+								<input
+									id='state'
+									className='auth-input signUp reset'
+									placeholder='state'
+								/>
+							</div>
+							<div className='input-group'>
+								<label className='auth-label' htmlFor='image url'>
+									Image URL:
+								</label>
+								<input
+									id='img_url'
+									className='auth-input signUp reset'
+									placeholder='image url'
+								/>
+							</div>
+							<div className='input-group'>
+								<label className='auth-label' htmlFor='start-time'>
+									Start Date:
+								</label>
+								<input
+									id='start'
+									className='auth-input signUp'
+									placeholder='start date'
+								/>
+							</div>
+							<div className='create-btn'>
+								<button
+									type='submit'
+									className='btn signup-login create-button'>
+									Submit
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		);
 };
 
 export default Create;

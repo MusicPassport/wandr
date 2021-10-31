@@ -25,7 +25,7 @@ const createUser = async (e) => {
                 password: password,
                 re_password: password
             })
-            console.log(res);
+            
             history.push('/login')
         }
     } catch (error) {

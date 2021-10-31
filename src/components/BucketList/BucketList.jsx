@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import { backendAPI } from '../../Utility/Config';
 import { DataContext } from '../../Utility/Context.jsx';
 import { useHistory } from 'react-router';
-import '../../css/BucketList.css'
+import '../../css/BucketList.css';
 
 
 const BucketList = () => {
@@ -26,7 +26,7 @@ const BucketList = () => {
         try {
 
             const url = `${backendAPI}/events/${event.target.id}`
-            console.log(url)
+
      
             const targetEvent = await axios
             .get(url)
@@ -49,7 +49,6 @@ const BucketList = () => {
     const addEvent = async (event) => {
 		// send a request to update the user detail to include the current user in the events viewers
 		const auth = localStorage.getItem('auth');
-		console.log(event.target.id);
         
 		try {
 			await axios.get(
@@ -81,7 +80,7 @@ const BucketList = () => {
 	}
     if (waitUntilLoad){
         return(
-        <h2>Loading...</h2>
+        <h2 className="bucketListTitle">Loading...</h2>
         )
     } else{
 
@@ -99,7 +98,7 @@ const BucketList = () => {
                     <div className="img-container"> 
                         <img className="image blImage" src={event.img_url} alt=""/> 
                     </div>
-                    <h2>{event.name}</h2>
+                    <h2 className="blEventName">{event.name}</h2>
                     <h4>{event.genre}</h4>
                     <h4>{event.city}, {event.state}</h4>
                     <h4>{event.start}</h4>

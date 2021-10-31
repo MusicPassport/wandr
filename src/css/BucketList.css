@@ -3,11 +3,11 @@
 .advancedSearchButton {
   background-color: rgba(0, 0, 0, 0);
   color: #553772;
-  text-decoration: underline #8f3b76;
-  padding: 0.02rem 0.4rem 0.3rem 0.4rem;
+  text-decoration: none;
+  padding: 0.4rem;
   font-size: 1.5rem;
   border-radius: 10px;
-  margin: 3px;
+  margin: 1rem;
 }
 
 .btn {
@@ -49,7 +49,51 @@
   font-family: "Raleway", sans-serif;
   width: 90vw;
   border-bottom: 3px solid #f5487f;
-  animation: flyin 1.2s ease forwards;
+  animation: slide 1.2s ease forwards;
+  font-size: 48px;
+  text-shadow: 5px 5px #f5487f;
+}
+
+@keyframes slideup {
+  from {
+    margin-top: 100%;
+  }
+  to {
+    margin-top: 0;
+  }
+}
+@-webkit-keyframes slideup {
+  from {
+    margin-top: 100%;
+  }
+  to {
+    margin-top: 0;
+  }
+}
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+  }
+  67% {
+    margin-left: -0.5%;
+  }
+  to {
+    margin-left: 0;
+  }
+}
+@-webkit-keyframes slidein {
+  from {
+    margin-left: 100%;
+  }
+  67% {
+    margin-left: -0.5%;
+  }
+  to {
+    margin-left: 0;
+  }
+}
+.blEventName {
+  font-size: 1.6rem;
 }
 
 .greeting {
@@ -87,7 +131,6 @@
   width: 100%;
   height: 150px;
   object-fit: cover;
-  background-color: black;
 }
 
 .bucket-event-list {
@@ -104,8 +147,7 @@
   display: none;
 }
 
-.topImageContainer,
-.blEvent {
+.topImageContainer {
   object-fit: cover;
   -webkit-animation: expand 1s;
   /* Safari, Chrome and Opera > 12.1 */
@@ -118,6 +160,12 @@
   animation: expand 1.5s;
   transition: height 0.5s;
   -webkit-transition: height 0.5s;
+  border-bottom: 5px solid #f5487f;
+}
+
+.blEvent {
+  animation-name: slideup;
+  animation-duration: 4s;
 }
 
 .event-link {
@@ -194,6 +242,12 @@
 
   .bucketButton {
     background-color: #8f3b76;
+  }
+
+  .backButton,
+.advancedSearchButton {
+    color: white;
+    border: 2px solid #c7417b;
   }
 }
 
