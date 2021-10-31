@@ -72,7 +72,7 @@
   padding: 0 1rem;
   height: 250px;
   width: 200px;
-  background: whitesmoke;
+  background-color: whitesmoke;
   box-shadow: 10px 5px 5px black;
   animation-name: slideup;
   animation-duration: 4s;

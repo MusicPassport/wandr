@@ -13,7 +13,10 @@
 
 .reset-container {
     width:400px;
+    height: 50%;
 }
+
+
 
 .signup-form {
     height: 600px;
@@ -109,4 +112,44 @@
 .redirect-btn {
     background-color: rgb(41, 34, 37);
     box-shadow: none;
+}
+
+.reset {
+    margin: 10px
+}
+
+.reset-btns {
+    margin: 20px auto;
+}
+
+.create-container {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    height:50%;
+}
+
+.create-btn {
+    margin: 30px 20px;
+
+}
+.create-button {
+    background-color: white;
+    color:rgba(199, 65, 123, 1)
+}
+.right, .left {
+    margin:10px 20px;
+}
+
+.right {
+    grid-column: 1;
+    
+}
+
+.left {
+    grid-column: 2;
+    margin-top: 20px;
+}
+
+.create-page{
+    padding:20px;
 }

@@ -79,14 +79,16 @@
 }
 
 .timeline-link {
+
     border: solid black 1px;
     margin: .5rem;
+
     padding: 0 1rem;
     height: 250px;
     width: 200px;
-    background: $white-smoke;
+    // background: $white-smoke;
+    background-color: $white-smoke;
     box-shadow: $box-shadow;
-
     animation-name: slideup;
     animation-duration: 4s;
 
@@ -132,6 +134,7 @@
         flex-flow: row wrap;
         justify-content: space-evenly;
     
+
 
     }
     .timeline-title {

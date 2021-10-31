@@ -5,14 +5,18 @@
 	flex-direction: column;
 	max-height: 100%;
 	max-width: 100%;
-	background: $white-smoke-fade;
+	// background: $white-smoke-fade;
 }
 
 .dashboard-buttons {
-	background: $white-smoke-fade;
+	// background: $white-smoke-fade;
+	background: rgba(17, 17, 17, 0.925);
+	color:$hot-pink;
+	// background-color: rgb(8, 5, 7);
 	display: inline-flex;
 	border: none;
 	text-decoration: none;
+	height:50px;
 }
 
 #cal-btn {
