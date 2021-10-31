@@ -1,9 +1,6 @@
 import { useState } from 'react';
-
-
 import '../../css/Dashboard.css';
 import DashNav from './DashNav';
-
 import { DateRange } from 'react-date-range'; 
 import 'react-date-range/dist/styles.css'; 
 import 'react-date-range/dist/theme/default.css'; 
@@ -78,14 +75,17 @@ const handleCal = () => {
             <section style={{height: '400px'}} className='calendar'>
                <DateRange
                 scroll={{enabled: false, months: 2}}
-                style={{height: '500px'}}
+                style={{height: '300px'}}
+                direction="horizontal"
                 showDateDispay={false}
                 ranges={[selection]}
                 onChange={handleSelect}
                 />
             </section>
-            ) : ( null) }            
-            <Timeline className="timeline" dateRange={dateRange} />
+            ) : ( null) }
+            <div className="timeline-box">  
+                <Timeline className="timeline" dateRange={dateRange} />
+            </div>            
            
         </div>
         </>

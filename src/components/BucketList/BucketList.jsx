@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import { backendAPI } from '../../Utility/Config';
 import { DataContext } from '../../Utility/Context.jsx';
 import { useHistory } from 'react-router';
-import '../../css/BucketList.css'
+import '../../css/BucketList.css';
 
 
 const BucketList = () => {
