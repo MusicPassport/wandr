@@ -7,7 +7,7 @@ import axios from 'axios';
 import '../../css/Memories.css'
 
 const Memories = ( { setCurrentMemory } ) => {
-    const {currentUser} = useContext(DataContext);
+    const {currentUser, updateUser} = useContext(DataContext);
 	const history = useHistory();
 
     const [memories, setMemories] = useState([]);
@@ -21,6 +21,7 @@ const Memories = ( { setCurrentMemory } ) => {
     });
 
     useEffect( () => {
+		updateUser()
         if(currentUser.memories.length) setMemories([...currentUser.memories].reverse());
         if(currentUser.attending.length) setEvents(currentUser.attending);
     }, []);
@@ -67,6 +68,7 @@ const Memories = ( { setCurrentMemory } ) => {
                     }
                 })
                 setAddMem(!addMem);
+				updateUser()
         } catch(err) {
             console.log(err);
         }
@@ -142,7 +144,7 @@ return (
 		)}
 		<div className='memories'>
 			{memories &&
-				memories.map((memory) => {
+				currentUser.memories.map((memory) => {
 					return (
 						<div className='memory' key={memory.id} id={memory.id}>
 							<div className='image-container'>

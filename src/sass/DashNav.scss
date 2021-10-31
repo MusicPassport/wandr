@@ -3,7 +3,6 @@
 @media (prefers-color-scheme: dark) {
 
     .dashboard-btn {
-        // color: $white-smoke;
         text-decoration: underline $magenta;
     }
     .dashboard-btn:hover {
@@ -31,7 +30,6 @@
 
 .dashboard-btn:hover {
     text-decoration: underline 3px #e0d5d8;
-    /* text-decoration-color: rgba(0, 0, 0, 1); */
     text-shadow: 0px -2px 0px rgba(0,0,0,1), 0 0 5px rgba(241, 150, 222, 0.8),0 -4px 15px rgba(255,255,255,0.5);
     transition: 0.5s ease;
     -webkit-transition: 0.1s ease;

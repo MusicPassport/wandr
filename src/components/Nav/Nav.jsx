@@ -10,14 +10,12 @@ const Nav = () => {
 
 	const handleClick = () => {
 		setMenuOpen(!menuOpen);
-		// When the burger is clicked, we want its links to appear inside a dropdown.
-		// To do this, we use the menuOpen state variable.
 	};
 
     const logoutUser = () => {
-        console.log("Logging Out!!")
         localStorage.clear();
         history.push('/')
+		window.location.reload(false)
     }
 
 	return (
@@ -37,7 +35,7 @@ const Nav = () => {
 						<Link className='nav-link' to='/dashboard'>
 							Dashboard
 						</Link>
-						<Link className='logout nav-link' onClick={logoutUser}>
+						<Link to='/login' className='logout nav-link' onClick={logoutUser}>
 							Logout
 						</Link>
 					</>
@@ -67,7 +65,7 @@ const Nav = () => {
 					<Link className='nav-link' to='/events'>
 						Events
 					</Link>
-					{localStorage.getItem('currentUser') ? (
+					{/* {localStorage.getItem('currentUser') ? (
 						<>
 							<Link className='nav-link' to='/dashboard'>
 								Dashboard
@@ -81,7 +79,7 @@ const Nav = () => {
 							<Link to='/login'>Login</Link>
 							<Link to='/signup'>Sign Up</Link>
 						</>
-					)}
+					)} */}
 				</div>
 			</div>
 		</header>

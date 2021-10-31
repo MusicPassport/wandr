@@ -10,6 +10,7 @@
 		// margin: 0;
 		height: 400px;
 		overflow: hidden;
+		border-bottom:5px solid $hot-pink;
 	}
 
 	.video-D {
@@ -17,6 +18,7 @@
 		object-fit: cover;
 		// margin-top: -400px;
 		height:100%;
+		
 	}
 	.event-list-D {
 		display: flex;
@@ -50,12 +52,16 @@
 		font-family: 'Raleway', sans-serif;
 		width: 95vw;
 		border-bottom: 3px solid $hot-pink;
-		margin: 1rem;
-		color: $navy;
+		margin: 2rem;
+		color: $white-smoke;
+		text-shadow:5px 5px $hot-pink;
+		font-size: 48px;
+		padding:5px;
+
 	}
 
 	.event-container-D h2 {
-		font-size: 1rem;
+		font-size: 2rem;
 		background-color: transparent;
 	}
 
@@ -73,6 +79,11 @@
 		object-fit: cover;
 		justify-self: center;
 	}
+
+	.event-info-D {
+		text-align:center;
+	}
+
 }
 
 @media (prefers-color-scheme: dark) {

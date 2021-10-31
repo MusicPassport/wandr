@@ -47,8 +47,7 @@ const  createID = (length=8) => {
         addEvent()
         
     }
-    console.log(formState);
-    console.log(eventID);
+ 
 
     const addEvent = async (e) => {
         // e.preventDefault();
@@ -79,7 +78,7 @@ const  createID = (length=8) => {
            },
             
          }) 
-            console.log(res);
+
         } catch (error) {
             console.log(error)
         }
@@ -100,7 +99,6 @@ const  createID = (length=8) => {
 				</button>
 				<h2 className='auth-title'>Create A New Event</h2>
 
-				{/* <h3>Add Event</h3> */}
 				<div className='form-container signup-form create-container'>
 					<form
 						className='auth-form create-container'
@@ -171,12 +169,12 @@ const  createID = (length=8) => {
 							</div>
 							<div className='input-group'>
 								<label className='auth-label' htmlFor='start-time'>
-									Start Time:
+									Start Date:
 								</label>
 								<input
 									id='start'
 									className='auth-input signUp'
-									placeholder='start time reset'
+									placeholder='start date'
 								/>
 							</div>
 							<div className='create-btn'>

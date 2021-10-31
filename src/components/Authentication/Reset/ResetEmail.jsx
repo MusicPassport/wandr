@@ -22,14 +22,13 @@ const ResetEmail = () => {
             },
         }
         try {
-            console.log({username: userInput['email'], email: userInput[[]]})
             const update = await axios.put(`${backendAPI}/users/me/`, {
                     username: userInput['email'],
                     email: userInput['email']
                 }, { 
                     headers: {  Authorization: `Token ${localStorage.getItem('auth')}` } 
                 });
-            console.log(update);
+
         } catch(err) {
             console.log(err);
         }

@@ -17,13 +17,8 @@ const ResetPassword = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
 
-        //This is NOT for users who have forgotten their info. THAT should be handled on LOGIN/SIGNUP
-        //When that is created, it should be done with reset endpoints
         try {
-            console.log(userInput);
-            if(userInput['new_password'].length < 8) {
-                //for dev only. Replace with toast/message later.
-                console.log('pw is too short');
+             if(userInput['new_password'].length < 8) {
                 return;
             }
             if(userInput['password'] === userInput['pw-confirm']){ 
@@ -38,10 +33,7 @@ const ResetPassword = () => {
                         Authorization: `Token ${localStorage.getItem('auth')}`
                     }
                 });
-                console.log(update);
-                //add logout option here.
-                
-                
+                                
                 await axios.post(`${backendAPI}/token/logout/`, localStorage.getItem('auth'),
                  {
                      headers: {
@@ -50,7 +42,7 @@ const ResetPassword = () => {
                 }
                 );
                 history.push('/dashboard');
-            } else {console.log('pws don\'t match')}
+            } else {}
 
         } catch(err) {
             console.log(err);
@@ -62,13 +54,23 @@ const ResetPassword = () => {
 				<div className='form-container reset-container'>
 					<form className='auth-form' onSubmit={handleSubmit}>
 						<>
+							<label htmlFor='current_password' className='auth-label'>
+								Current Password:{' '}
+							</label>
+							<input
+								name='current_password'
+								className='auth-input signUp reset'
+								type='password'
+								placeholder='current password'
+								onChange={handleChange}
+							/>
 							<label htmlFor='new_password' className='auth-label'>
 								New Password:{' '}
 							</label>
 							<input
 								name='new_password'
 								className='auth-input signUp reset'
-								type='text'
+								type='password'
 								placeholder='new password'
 								onChange={handleChange}
 							/>
@@ -79,21 +81,11 @@ const ResetPassword = () => {
 							<input
 								name='re_new_password'
 								className='auth-input signUp reset'
-								type='text'
+								type='password'
 								placeholder='confirm new password'
 								onChange={handleChange}
 							/>
 
-							<label htmlFor='current_password' className='auth-label'>
-								Current Password:{' '}
-							</label>
-							<input
-								name='current_password'
-								className='auth-input signUp reset'
-								type='text'
-								placeholder='current password'
-								onChange={handleChange}
-							/>
 
 							<div className='reset-btns'>
 								<button type='submit' className='btn signup-login'>

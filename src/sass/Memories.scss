@@ -102,7 +102,7 @@
 	display: grid;
 	grid-template-columns: 2fr 2fr 2fr;
 	grid-template-rows: 1fr;
-	margin: 0 auto;
+	margin: 0 auto 1rem auto;
 	width: 65vw;
 	border: 5px solid #f5487f;
 	justify-content: center;
@@ -364,4 +364,3 @@ h2 {
     color: #f5487f;
   }
 }
-

@@ -8,6 +8,7 @@
   .movie-D {
     height: 400px;
     overflow: hidden;
+    border-bottom: 5px solid #f5487f;
   }
 
   .video-D {
@@ -47,12 +48,15 @@
     font-family: "Raleway", sans-serif;
     width: 95vw;
     border-bottom: 3px solid #f5487f;
-    margin: 1rem;
-    color: #1f306e;
+    margin: 2rem;
+    color: whitesmoke;
+    text-shadow: 5px 5px #f5487f;
+    font-size: 48px;
+    padding: 5px;
   }
 
   .event-container-D h2 {
-    font-size: 1rem;
+    font-size: 2rem;
     background-color: transparent;
   }
 
@@ -68,6 +72,10 @@
     height: 150px;
     object-fit: cover;
     justify-self: center;
+  }
+
+  .event-info-D {
+    text-align: center;
   }
 }
 @media (prefers-color-scheme: dark) {

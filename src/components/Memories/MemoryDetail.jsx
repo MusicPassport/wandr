@@ -11,7 +11,6 @@ const MemoryDetail = ( {currentMemory} ) => {
 
 
     useEffect( () => {
-        console.log('current Memory: ',currentMemory)
         if(currentMemory) {
             setMemory(previousState => {
             return{...previousState, ...currentMemory}
