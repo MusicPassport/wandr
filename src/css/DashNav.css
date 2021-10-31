@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Kaushan+Script&family=Raleway:ital,wght@0,100;0,500;0,700;0,800;0,900;1,100;1,500;1,600;1,900&family=Satisfy&family=Seaweed+Script&family=Zen+Kurenaido&display=swap");
 @media (prefers-color-scheme: dark) {
   .dashboard-btn {
-    color: whitesmoke;
     text-decoration: underline #8f3b76;
   }
 
@@ -18,17 +17,17 @@
 
 .dashboard-btn {
   margin: 0 auto;
-  width: 120px;
+  width: 200px;
   height: 30px;
   border: none;
   background: none;
-  color: #c7417b;
+  color: #f5487f;
   font-size: 1.5em;
   text-decoration: none;
 }
 
 .dashboard-btn:hover {
-  text-decoration: underline 1px #f5487f;
+  text-decoration: underline 3px #e0d5d8;
   /* text-decoration-color: rgba(0, 0, 0, 1); */
   text-shadow: 0px -2px 0px black, 0 0 5px rgba(241, 150, 222, 0.8), 0 -4px 15px rgba(255, 255, 255, 0.5);
   transition: 0.5s ease;

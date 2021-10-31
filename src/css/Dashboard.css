@@ -4,14 +4,15 @@
   flex-direction: column;
   max-height: 100%;
   max-width: 100%;
-  background: rgba(245, 245, 245, 0.2);
 }
 
 .dashboard-buttons {
-  background: rgba(245, 245, 245, 0.2);
+  background: rgba(17, 17, 17, 0.925);
+  color: #f5487f;
   display: inline-flex;
   border: none;
   text-decoration: none;
+  height: 50px;
 }
 
 #cal-btn {

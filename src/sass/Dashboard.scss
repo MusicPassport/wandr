@@ -9,11 +9,14 @@
 }
 
 .dashboard-buttons {
-	background: $white-smoke-fade;
+	// background: $white-smoke-fade;
+	background: rgba(17, 17, 17, 0.925);
+	color:$hot-pink;
 	// background-color: rgb(8, 5, 7);
 	display: inline-flex;
 	border: none;
 	text-decoration: none;
+	height:50px;
 }
 
 #cal-btn {
@@ -63,8 +66,8 @@
 		grid-template-rows: 1fr 7fr;
 		grid-template-columns: 1fr 5fr;
 		gap: 1rem;
-
-		  background: url('../assets/Adobe_lantern.jpeg');
+		background: url('../assets/Adobe_lantern.jpeg');
+		// background-color: 
     	background-size: cover;
 	}
 

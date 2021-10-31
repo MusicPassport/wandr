@@ -67,12 +67,11 @@
 }
 
 .timeline-link {
-  border: solid black 1px;
   margin: 1rem;
   padding: 0 1rem;
   height: 230px;
   width: 200px;
-  background: whitesmoke;
+  background-color: whitesmoke;
   box-shadow: 10px 5px 5px black;
   animation-name: slideup;
   animation-duration: 4s;
@@ -110,6 +109,8 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: 1fr 7fr;
     justify-content: center;
+    background-color: rgba(5, 5, 5, 0.788);
+    margin: 0 auto;
   }
 
   .timeline-title {
