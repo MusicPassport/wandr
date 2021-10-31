@@ -10,10 +10,7 @@
 }
 
 .timeline {
-    max-width: 600px;
-
-  
-    
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,7 +71,7 @@
     width: 100%;
     text-align: left;
 
-    background: rgba( 0,0,0, 0.4);
+    background: rgba( 0,0,0, 0.7);
 
     font-family:'Dancing Script';
     text-align: left;
@@ -126,17 +123,29 @@
 
 @media(min-width: 600px) {
     .timeline {
-        height: 600px;
+        height: 100vh;
 
         grid-column: 2;
-        height: 400px;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         grid-template-rows: 1fr 7fr;
         justify-content: center;
     }
     .timeline-title {
+        // width: 100%;
         grid-row: 1;
-        grid-column: 1/ -1;
+        grid-column: 1/ span 3;
+        display: flex;
+        // flex-direction: row;
+        justify-content: space-apart;
+        color: rgba(245, 72, 127, 1);
+        border-bottom: 3px solid;
+        margin: 0 auto;
+        width: 60vw; 
+        font-family: 'Raleway', sans-serif;
+        margin: 5%;
+        display: flex;
+        justify-content: space-between;
+        height: 5rem;
     }
 }

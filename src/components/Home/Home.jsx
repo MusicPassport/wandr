@@ -1,14 +1,15 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../../css/Home.css';
+// import TypeAnimation from 'react-type-animation';
+
 
 const Home = () => {
-    return (
+	return (
         <>
-            <h1 className="headline" >Wandr</h1>
-            <Link className="home-link" to="/events">Explore</Link>  
+	
         </>
-    );
+	);
 };
 
 export default Home;

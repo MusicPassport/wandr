@@ -92,8 +92,15 @@ const Timeline = ( { dateRange } ) => {
 return (
     <>
 	<div className="timeline">
-		<h1 className='timeline-title'>{timeline.length ? 'Go make some memories' : 'No timeline yet'}</h1>
-		{/* <button onClick={() => history.goBack()}>←</button> */}
+        
+    <div className='timeline-title'>
+			<h1>Upcoming Events</h1>
+			<Link to='/dashboard/create' className='btn add-memory'>
+				Add Event
+			</Link>
+		</div>
+		
+        
 		{timeline.length ? (
 			timeline.map((event) => {
 				return (

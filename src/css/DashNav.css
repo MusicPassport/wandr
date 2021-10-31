@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,500;0,700;0,800;0,900;1,100;1,500;1,600;1,900&family=Zen+Kurenaido&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Kaushan+Script&family=Raleway:ital,wght@0,100;0,500;0,700;0,800;0,900;1,100;1,500;1,600;1,900&family=Satisfy&family=Seaweed+Script&family=Zen+Kurenaido&display=swap");
 @media (prefers-color-scheme: dark) {
   .dashboard-btn {
     color: whitesmoke;
@@ -23,7 +23,7 @@
   border: none;
   background: none;
   color: #c7417b;
-  font-size: 1em;
+  font-size: 1.5em;
   text-decoration: none;
 }
 

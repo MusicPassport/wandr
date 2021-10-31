@@ -103,7 +103,7 @@ const App = () => {
 
 					<Route exact path='/events/:id' component={EventDetail} />
 					<Route exact path='/events' component={Events} />
-					<Route exact path='/create' component={Create} />
+					<Route exact path='/dashboard/create' component={Create} />
 					<Route exact path='/calendar' component={Calendar} />
 					<Route exact path='/altcalendar' component={AltCalendar} />
 {/* 

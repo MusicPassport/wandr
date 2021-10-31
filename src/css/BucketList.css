@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,500;0,700;0,800;0,900;1,100;1,500;1,600;1,900&family=Zen+Kurenaido&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Kaushan+Script&family=Raleway:ital,wght@0,100;0,500;0,700;0,800;0,900;1,100;1,500;1,600;1,900&family=Satisfy&family=Seaweed+Script&family=Zen+Kurenaido&display=swap");
 .backButton,
 .advancedSearchButton {
   background-color: rgba(0, 0, 0, 0);
@@ -15,14 +15,14 @@
   border: 2px solid #241e24;
   padding: 10px;
   border-radius: 10px;
-  background-color: #231E23;
+  background-color: #231e23;
   color: white;
 }
 
 .btn:hover {
-  border: 2px solid #39A6A3;
+  border: 2px solid #39a6a3;
   background-color: transparent;
-  color: #39A6A3;
+  color: #39a6a3;
 }
 
 .advancedSearchButton {
@@ -104,7 +104,8 @@
   display: none;
 }
 
-.topImageContainer, .blEvent {
+.topImageContainer,
+.blEvent {
   object-fit: cover;
   -webkit-animation: expand 1s;
   /* Safari, Chrome and Opera > 12.1 */
@@ -132,6 +133,7 @@
 .topImageContainer {
   height: 300px;
   width: 100vw;
+  position: cover;
 }
 
 @keyframes expand {
@@ -183,9 +185,9 @@
   .blEvent {
     border-radius: 5px;
     border: solid 3px #f5487f;
-    height: 500px;
+    height: 550px;
     width: 300px;
-    margin: 1rem;
+    margin: 1rem 2rem;
     padding: 1rem;
     flex-grow: 1 0 33%;
   }

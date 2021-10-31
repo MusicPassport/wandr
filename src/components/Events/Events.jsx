@@ -5,6 +5,7 @@ import '../../css/Events.css';
 import axios from 'axios';
 import EventSearch from './EventSearch.jsx';
 import { useHistory } from 'react-router';
+import video from '../../assets/Wandr Video.mp4'
 
 const Events = () => {
 	const { events, setEvents } = useContext(DataContext);
@@ -52,6 +53,9 @@ const Events = () => {
 
 	return (
 		 <div>
+			 <div className='movie-D' >
+				<video className='video-D' src={video} loop autoPlay muted></video>
+			 </div>
 			 <div className="searchToolbar">
 				<button className={isOpen ? 'noToggle backButton' : 'toggle backButton'}  onClick={()=> history.goBack()}>←</button>
 				{/* <button className={isOpen ? 'noToggle' : 'toggle'} onClick={()=>setIsOpen(!isOpen)}>Advanced Search</button>
@@ -61,13 +65,15 @@ const Events = () => {
 			<div className={isOpen ? 'toggle' : 'noToggle'}>	
                 <EventSearch setIsOpen={setIsOpen} isOpen={isOpen}/>
             </div>
-            <div className={isOpen ? 'event-list noToggleTest' : 'event-list toggleTest'}>
+				<h1 className='events-title-D'>Events</h1>
+            <div className={isOpen ? 'event-list-D noToggleTest' : 'event-list-D toggleTest'}>
 				{/* <div className='event-list'> */}
 				{events.map((event) => (
-					<Link className='event-link' to={`/events/${event.id}`}>
-						<div className='event-container'>
-						<div className='img-container'>
-								<img className='image' src={event.images[2].url} alt='' />
+					<div className="eventDiv">
+					<Link className='event-link-D' to={`/events/${event.id}`}>
+						<div className='event-container-D'>
+						<div className='img-container-D'>
+								<img className='image-D' src={event.images[2].url} alt='' />
 						</div>
 						<h2>{event.name}</h2>
 						<h4>{event.dates.start.localDate}</h4>
@@ -78,7 +84,8 @@ const Events = () => {
 						{/* {!event._embedded.venues[0].country.countryCode === 'US' ? <h4>{event._embedded.venues[0].country.name} </h4>  : <h4>{event._embedded.venues[0].state.name}</h4>} */}
 						</div>
 					</Link>
-				// <button onClick={addEvent}>Add Event</button>
+				 {/* <button onClick={addEvent}>Add Event</button> */}
+					</div>
 			))}
 
 			{/* <Link to="/create">Create an Event</Link> */}

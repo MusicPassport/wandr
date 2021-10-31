@@ -79,14 +79,16 @@ const handleCal = () => {
     return (
         <>
         <div className="dashboard">
+        
         <section className="dashboard-buttons">
                <DashNav />
             </section>
             <button id="cal-btn" onClick={ handleCal}></button>
             {displaySettings === 'flex' ? (
-            <section className='calendar'>
+            <section style={{height: '400px'}} className='calendar'>
                <DateRange
-                scroll={{enabled: false}}
+                scroll={{enabled: false, months: 2}}
+                style={{height: '500px'}}
                 showDateDispay={false}
                 ranges={[selection]}
                 onChange={handleSelect}
