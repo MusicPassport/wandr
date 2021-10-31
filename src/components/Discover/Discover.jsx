@@ -31,12 +31,7 @@ const Discover = () => {
         getMusic();
         getFilm();
         // getMisc();
-		getInYourArea();
-        getSports();
-        getMusic();
-        getFilm();
-        // getMisc();
-		getLocation()
+		// getLocation()
 	}, []);
 
 	const getSuggest = async () => {

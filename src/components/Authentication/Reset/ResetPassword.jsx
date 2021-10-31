@@ -57,26 +57,60 @@ const ResetPassword = () => {
         }
     }
     return (
-        <div className='form-container reset-container'>
-         <form className='auth-form' onSubmit={handleSubmit}>
-            <>
-                <label htmlFor="new_password" className='auth-label'>New Password: </label>
-                <input name='new_password' className='auth-input signUp' type="text" placeholder="new password"onChange={handleChange}/>
-                
-                <label htmlFor="re_new-password" className='auth-label'>Confirm Password: </label>
-                <input name='re_new_password' className='auth-input signUp' type="text" placeholder="confirm new password" onChange={handleChange}/>
+			<>
+				<h2 className='auth-title'>Update Your Password</h2>
+				<div className='form-container reset-container'>
+					<form className='auth-form' onSubmit={handleSubmit}>
+						<>
+							<label htmlFor='new_password' className='auth-label'>
+								New Password:{' '}
+							</label>
+							<input
+								name='new_password'
+								className='auth-input signUp reset'
+								type='text'
+								placeholder='new password'
+								onChange={handleChange}
+							/>
 
-                <label htmlFor="current_password" className='auth-label'>Current Password: </label>
-                <input name='current_password' className='auth-input signUp' type="text" placeholder="current password"onChange={handleChange}/>
+							<label htmlFor='re_new-password' className='auth-label'>
+								Confirm Password:{' '}
+							</label>
+							<input
+								name='re_new_password'
+								className='auth-input signUp reset'
+								type='text'
+								placeholder='confirm new password'
+								onChange={handleChange}
+							/>
 
-                <div className="dashboard-buttons">
-                        <button type="submit"  className='btn signup-login'>Submit</button>
-                        <Link to='/dashboard/'> <button type="submit"  className='btn signup-login'>Cancel</button></Link>
-                </div>
-            </>
-        </form>
-        </div>
-    );
+							<label htmlFor='current_password' className='auth-label'>
+								Current Password:{' '}
+							</label>
+							<input
+								name='current_password'
+								className='auth-input signUp reset'
+								type='text'
+								placeholder='current password'
+								onChange={handleChange}
+							/>
+
+							<div className='reset-btns'>
+								<button type='submit' className='btn signup-login'>
+									Submit
+								</button>
+								<Link to='/dashboard/'>
+									{' '}
+									<button type='submit' className='btn signup-login'>
+										Cancel
+									</button>
+								</Link>
+							</div>
+						</>
+					</form>
+				</div>
+			</>
+		);
 };
 
 export default ResetPassword;
