@@ -57,7 +57,7 @@ const App = () => {
 	const [searchInputs, setSearchInputs] = useState(initialState);
 
 
-	const url = `https://app.ticketmaster.com/discovery/v2/events.json?size=100&keyword=music&random=true&apikey=${'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB'}`;
+	const url = `https://app.ticketmaster.com/discovery/v2/events.json?size=100&keyword=music&random=true&apikey=${process.env.REACT_APP_API_KEY}`;
 
 
 	useEffect(() => {

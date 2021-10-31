@@ -1,5 +1,5 @@
-import { Link, Redirect } from 'react-router-dom'
-import { useEffect, useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { useEffect, useContext } from 'react'
 import { DataContext } from '../../Utility/Context.jsx';
 import '../../css/EventSearch.css'
 
@@ -106,7 +106,6 @@ const EventSearch = ({ isOpen , setIsOpen }) => {
 
     useEffect ( ()=>{
         setSearchInputs(initialState);
-        //eslint-disable-next-line
     },[]
     )
     return (

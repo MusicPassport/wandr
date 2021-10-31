@@ -1,26 +1,17 @@
-import {useState, useEffect, useContext} from 'react';
-import { Route, Link } from 'react-router-dom';
-// import {DashContext} from '../../Utility/Context';
+import { useState } from 'react';
 
 
 import '../../css/Dashboard.css';
 import DashNav from './DashNav';
 
-import { DateRange } from 'react-date-range'; // new Date Range component. Also run: npm i date-fns
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+import { DateRange } from 'react-date-range'; 
+import 'react-date-range/dist/styles.css'; 
+import 'react-date-range/dist/theme/default.css'; 
 import Timeline from '../Timeline/Timeline';
 
 const Dashboard = ( { dateRange, setDateRange }) => {
     const [displaySettings, setDisplaySettings] = useState(window.screen.width > 600 ? 'flex' : 'none');
-    // const [dateRange,setDateRange] = useState();
-    // const [currentMemory, setCurrentMemory] = useState({
-    //     title: '',
-    //     body: '',
-    //     photo: '',
-    //     owner: '',
-    //     event: ''
-    // });
+
     const [selection, setSelection] = useState({
         startDate: new Date(),
         endDate: new Date(),
@@ -66,7 +57,6 @@ const Dashboard = ( { dateRange, setDateRange }) => {
   const handleSelect = async (ranges) => {
     setSelection(ranges['selection']);
     setDates(ranges['selection']);
-    // console.log(dateRange);
   }
 
 const handleCal = () => {
@@ -96,12 +86,7 @@ const handleCal = () => {
             </section>
             ) : ( null) }            
             <Timeline className="timeline" dateRange={dateRange} />
-            {/* <Route exact path='/dashboard/settings' component={ResetPassword}/>
-            <Route exact path='/dashboard/bucketlist' component={BucketList}/>
-            <Route exact path='/dashboard/timeline' render={() => <Timeline dateRange={dateRange}/> } />
-            <Route exact path='/dashboard/memories' render={() => <Memories setCurrentMemory={setCurrentMemory} /> } />
-            <Route exact path='/dashboard/memories/:id' render={() => <MemoryDetail currentMemory={currentMemory} /> } /> */}
-
+           
         </div>
         </>
            

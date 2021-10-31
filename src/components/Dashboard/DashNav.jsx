@@ -8,9 +8,7 @@ const DashNav = () => {
             <Link className="dashboard-btn" name='settings' to="/dashboard/settings">
                 Profile Settings
             </Link>
-            {/* <Link className="dashboard-btn" name='timeline' to="/dashboard/timeline">
-                    Time Line
-            </Link> */}
+            
             <Link className="dashboard-btn" name='memories' to="/dashboard/memories">
                     Memories
             </Link>

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
 import { backendAPI } from '../../Utility/Config';
 import { DataContext } from '../../Utility/Context.jsx';
 import { useHistory } from 'react-router';
@@ -9,7 +8,7 @@ import '../../css/BucketList.css'
 
 const BucketList = () => {
 
-	const { currentUser, setCurrentUser, updateUser } = useContext(DataContext);
+	const { currentUser, updateUser } = useContext(DataContext);
     const [updateEvent, setUpdateEvent] = useState();
     const [waitUntilLoad, setWaitUntilLoad] = useState(true);
     const history = useHistory();
@@ -25,14 +24,12 @@ const BucketList = () => {
 
     const removeFromBucket = async (event) => {
         try {
-            console.log(event.target.id)
-            console.log(currentUser)
+
             const url = `${backendAPI}/events/${event.target.id}`
             console.log(url)
      
             const targetEvent = await axios
             .get(url)
-            console.log(targetEvent.data.viewers)
             const newEvent ={...targetEvent.data, viewers: [...targetEvent.data.viewers.filter(user => user !== currentUser.id)]}
                 
             const auth = localStorage.getItem('auth')
@@ -42,7 +39,6 @@ const BucketList = () => {
             Authorization: `Token ${auth}`,
         }
         } )
-        console.log(res)
         updateUser();
 
         } catch (error) {
@@ -61,20 +57,11 @@ const BucketList = () => {
 			)
             .then(res => setUpdateEvent(res.data))
 
-            console.log(updateEvent)
-            // console.log(eventToUpdate)
-			// const update = await setUpdateEvent((previousState) => {
-            //     return{...previousState, ...eventToUpdate.data }});
-
-
              const update = {
                 ...updateEvent,
 				attendees: [parseInt(currentUser.id)],viewers: [...updateEvent.viewers.filter(user => user !== currentUser.id)]
             }
 
-            console.log(Object.keys(update).length)
-			console.log('Updated Event:', update);
-			
 			let res = await axios.put(
 					`https://intense-island-04626.herokuapp.com/events/${event.target.id}`,
 					update,
@@ -84,8 +71,6 @@ const BucketList = () => {
 						},
 					}
 				)
-
-                // removeFromBucket();
                 
                 updateUser();
                 
@@ -107,7 +92,6 @@ const BucketList = () => {
             </div>
             <div  className="BLPage">
             <button className="backButton" onClick={()=> history.goBack()}>←</button>
-			{/* <h3 className="greeting">Hey, {currentUser.username}!</h3> */}
             <h1 className="bucketListTitle">BucketList</h1>
             <div className="bucket-event-list">
                 {currentUser.viewing.map((event, index)=>
@@ -129,7 +113,6 @@ const BucketList = () => {
 						Add To Attending
 					</button>
                 </div>
-                 
                 )}
             </div>
         </div>

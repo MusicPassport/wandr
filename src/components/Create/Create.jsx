@@ -97,48 +97,43 @@ const  createID = (length=8) => {
         <div className='create-page' >
             <button className='backButton' onClick={() => history.goBack()}>←</button>
             {/* <h3>Add Event</h3> */}
-            <form className='create-form' onSubmit={handleSubmit} onChange={handleChange}>
+            <div className='form-container signup-form'>
+            <form className='auth-form' onSubmit={handleSubmit} onChange={handleChange}>
                 <div className='input-group'>
-                <label htmlFor="event-name">Event Name:</label>
-                <input id="name" placeholder='event name'/>                    
+                    <label className='auth-label' htmlFor="event-name">Event Name:</label>
+                    <input id="name" className='auth-input signUp' placeholder='event name'/>                    
                 </div>
                 <div className='input-group'>
-                <label htmlFor="genre">Genre:</label>
-                <input id="genre" placeholder='genre'/> 
+                    <label className='auth-label' htmlFor="genre">Genre:</label>
+                    <input id="genre" className='auth-input signUp' placeholder='genre'/> 
                 </div>
                 <div className='input-group'>
-                <label htmlFor="address">Address:</label>
-                <input id="address" placeholder='address'/>
+                    <label className='auth-label' htmlFor="address">Address:</label>
+                    <input id="address" className='auth-input signUp' placeholder='address'/>
                 </div>
                 <div className='input-group'>
-                <label htmlFor="city">City:</label>
-                <input id="city" placeholder='city'/>
+                    <label className='auth-label' htmlFor="city">City:</label>
+                    <input id="city" className='auth-input signUp' placeholder='city'/>
                 </div>
                 <div className='input-group'>
-                <label htmlFor="state">State:</label>
-                <input id="state" placeholder='state'/>
+                    <label className='auth-label' htmlFor="state">State:</label>
+                    <input id="state" className='auth-input signUp' placeholder='state'/>
                 </div>
                 <div className='input-group'>
-                <label htmlFor="image url">Image URL:</label>
-                <input id="img_url" placeholder='image url'/>
+                    <label className='auth-label' htmlFor="image url">Image URL:</label>
+                    <input id="img_url" className='auth-input signUp' placeholder='image url'/>
                 </div>
                 <div className='input-group'>
-                <label htmlFor="start-time">Start Time:</label>
-                <input id="start" placeholder='start time'/>
+                    <label className='auth-label' htmlFor="start-time">Start Time:</label>
+                    <input id="start" className='auth-input signUp' placeholder='start time'/>
                 </div>
+                <button type="submit" >Submit</button>  
 
-
-
-
-                {/* <label id="url" htmlFor="event-url">Event URL</label>
-                <input placeholder='event url'/> */}
-                {/* <label htmlFor="venue">Venue</label> */}
-                {/* <input id="venue" placeholder='venue'/> */}
-
-
-                <button type="submit" >Submit</button>                 
-            </form>       
+                               
+            </form>  
+            </div>     
         </div>
+
     );
 };
 

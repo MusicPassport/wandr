@@ -1,8 +1,8 @@
-
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import {backendAPI} from '../../../Utility/Config';
 import axios from 'axios';
+import '../../../css/Auth.css';
 
 const ResetPassword = () => {
     const history = useHistory();
@@ -57,23 +57,25 @@ const ResetPassword = () => {
         }
     }
     return (
-         <form className="personal-settings" onSubmit={handleSubmit}>
+        <div className='form-container reset-container'>
+         <form className='auth-form' onSubmit={handleSubmit}>
             <>
-                <label htmlFor="new_password">New Password: </label>
-                <input name='new_password' type="text" placeholder="new password"onChange={handleChange}/>
+                <label htmlFor="new_password" className='auth-label'>New Password: </label>
+                <input name='new_password' className='auth-input signUp' type="text" placeholder="new password"onChange={handleChange}/>
                 
-                <label htmlFor="re_new-password">Confirm Password: </label>
-                <input name='re_new_password' type="text" placeholder="confirm new password" onChange={handleChange}/>
+                <label htmlFor="re_new-password" className='auth-label'>Confirm Password: </label>
+                <input name='re_new_password' className='auth-input signUp' type="text" placeholder="confirm new password" onChange={handleChange}/>
 
-                <label htmlFor="current_password">Current Password: </label>
-                <input name='current_password' type="text" placeholder="current password"onChange={handleChange}/>
+                <label htmlFor="current_password" className='auth-label'>Current Password: </label>
+                <input name='current_password' className='auth-input signUp' type="text" placeholder="current password"onChange={handleChange}/>
 
                 <div className="dashboard-buttons">
-                        <button type="submit">Submit</button>
-                        <Link to='/dashboard/'>Cancel</Link>
+                        <button type="submit"  className='btn signup-login'>Submit</button>
+                        <Link to='/dashboard/'> <button type="submit"  className='btn signup-login'>Cancel</button></Link>
                 </div>
             </>
         </form>
+        </div>
     );
 };
 

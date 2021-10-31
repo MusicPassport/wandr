@@ -18,7 +18,7 @@ function EventDetail() {
 	const [select, setSelect] = useState(false)
 	const history = useHistory();
 
-	const url = `https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=${'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB'}`;
+	const url = `https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=${process.env.REACT_APP_API_KEY}`;
 
 	useEffect(() => {
 		// get events

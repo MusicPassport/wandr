@@ -11,6 +11,10 @@
 
 }
 
+.reset-container {
+    width:400px;
+}
+
 .signup-form {
     height: 600px;
 }

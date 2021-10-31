@@ -21,7 +21,7 @@ const EventSearchResults = () => {
     let classification= searchInputs.classificationName ? `&segment=${encodeURIComponent(searchInputs.classificationName) }` :"";
 
 
-     let url=`https://app.ticketmaster.com/discovery/v2/events.json?size=100&apikey=${'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB'}${keyword}${postalCode}${city}${state}${startDate}${endDate}${classification}`
+     let url=`https://app.ticketmaster.com/discovery/v2/events.json?size=100&apikey=${process.env.REACT_APP_API_KEY}${keyword}${postalCode}${city}${state}${startDate}${endDate}${classification}`
 
 
     console.log(url)
@@ -52,15 +52,11 @@ const EventSearchResults = () => {
 							<img className='image' src={event.images[2].url} alt='' />
 						</div>
 						<h2>{event.name}</h2>
-						{/* <h4>{event.dates.start.localDate}</h4> */}
 						<h4>{event.dates.status.code}</h4>
 						<h4>{event._embedded.venues[0].name}</h4>
-						{/* <h4>Address: {event._embedded.venues[0].address.line1}, {event._embedded.venues[0].city.name}, {event._embedded.venues[0].state.stateCode}</h4> */}
 					</Link>
-					// <button onClick={addEvent}>Add Event</button>
 				))}
 
-				{/* <Link to="/create">Create an Event</Link> */}
             </div>
         </div>
     );

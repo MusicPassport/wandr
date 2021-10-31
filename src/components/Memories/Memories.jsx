@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { backendAPI} from '../../Utility/Config';
-import {DataContext, DashContext} from '../../Utility/Context';
+import {DataContext} from '../../Utility/Context';
 import axios from 'axios';
 
 import '../../css/Memories.css'
@@ -24,10 +24,6 @@ const Memories = ( { setCurrentMemory } ) => {
         if(currentUser.memories.length) setMemories([...currentUser.memories].reverse());
         if(currentUser.attending.length) setEvents(currentUser.attending);
     }, []);
-
-    const sortMemories = () => {
-        //I want to sort my memories so they're in the same order as the events they're connected to.
-    }
 
     const handleChange = (e) => {
              setUserInput((previousState) => {
@@ -52,7 +48,6 @@ const Memories = ( { setCurrentMemory } ) => {
             return {...previousState, ...item}
         });
         history.push(`/dashboard/memories/${e.target.parentElement.id}`)
-        // setDisplaySettings('details');
     }
 
     const handleSubmit = async(event) => {
@@ -79,7 +74,7 @@ const Memories = ( { setCurrentMemory } ) => {
 
 return (
 	<div>
-		<button onClick={() => history.goBack()}>←</button>
+		<button className='backButton' onClick={() => history.goBack()}>←</button>
 		<div className='section-title'>
 			<h1>{memories.length ? 'Your Memories' : 'No memories yet'}</h1>
 			<button className='btn add-memory' onClick={toggleMem}>
@@ -88,7 +83,6 @@ return (
 		</div>
 		{addMem && (
 			<form className='memory-form' onSubmit={handleSubmit}>
-				{/* <label className='form-label'>Title</label> */}
 				<input
 					id='title'
 					type='text'
@@ -98,7 +92,6 @@ return (
 					className='form-title'
 					placeholder='title'
 				/>
-				{/* <label className='form-label'>Body</label> */}
 				<textarea
 					id='body'
 					name='body'

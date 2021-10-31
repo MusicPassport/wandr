@@ -7,7 +7,7 @@ import DiscoverDetail from './DiscoverDetail';
 import landing from '../../assets/discover.jpg'
 
 const Discover = () => {
-	// get events in the area
+
 	const [sports, setSports] = useState();
 	const [inYourArea, setInYourArea] = useState();
 	const [films, setFilms] = useState();
@@ -31,19 +31,24 @@ const Discover = () => {
         getMusic();
         getFilm();
         // getMisc();
+		getInYourArea();
+        getSports();
+        getMusic();
+        getFilm();
+        // getMisc();
 		getLocation()
 	}, []);
 
 	const getSuggest = async () => {
 		let res = await axios.get(
-			`https://app.ticketmaster.com/discovery/v2/suggest?apikey=${'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB'}`
+			`https://app.ticketmaster.com/discovery/v2/suggest?apikey=${process.env.REACT_APP_API_KEY}`
 		);
 		console.log(res.data['_embedded'].attractions);
 	};
 
 	const getSports = async () => {
 		let res = await axios.get(
-			`https://app.ticketmaster.com/discovery/v2/events.json?&random=true&apikey=${'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB'}`
+			`https://app.ticketmaster.com/discovery/v2/events.json?&random=true&apikey=${process.env.REACT_APP_API_KEY}`
 		);
 		console.log(res.data['_embedded'].events);
         setSports(res.data['_embedded'].events);
@@ -51,7 +56,7 @@ const Discover = () => {
 
 	const getMusic = async () => {
 		let res = await axios.get(
-			`https://app.ticketmaster.com/discovery/v2/events.json?&segmentName=music&random=true&apikey=RW9cwwI0fopdanO8UIpgzYPYq0GlSavB`
+			`https://app.ticketmaster.com/discovery/v2/events.json?&segmentName=music&random=true&apikey=${process.env.REACT_APP_API_KEY}`
 		);
 		console.log(res.data['_embedded'].events);
         setMusic(res.data['_embedded'].events);
@@ -59,7 +64,7 @@ const Discover = () => {
 
 	const getInYourArea = async () => {
 		let res = await axios.get(
-			`https://app.ticketmaster.com/discovery/v2/events?apikey=RW9cwwI0fopdanO8UIpgzYPYq0GlSavB&radius=100&locale=*&startDateTime=2021-10-28T21:42:00Z&endDateTime=2021-11-28T21:43:00Z&city=brooklyn&segmentName=music`
+			`https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_API_KEY}&radius=100&locale=*&startDateTime=2021-10-28T21:42:00Z&endDateTime=2021-11-28T21:43:00Z&city=brooklyn&segmentName=music`
 		);
 		console.log(res.data['_embedded'].events);
 		setInYourArea([...res.data['_embedded'].events]);
@@ -67,7 +72,7 @@ const Discover = () => {
 
 	const getMisc = async () => {
 		let res = await axios.get(
-			`https://app.ticketmaster.com/discovery/v2/events.json?&segmentName=miscellaneous&apikey=RW9cwwI0fopdanO8UIpgzYPYq0GlSavB`
+			`https://app.ticketmaster.com/discovery/v2/events.json?&segmentName=miscellaneous&apikey=${process.env.REACT_APP_API_KEY}`
 		);
 
         setMisc(res.data['_embedded'].events);
@@ -75,8 +80,8 @@ const Discover = () => {
 
 	const getFilm = async () => {
 		let res = await axios.get(
-			`https://app.ticketmaster.com/discovery/v2/events.json?&segmentName=film&apikey=RW9cwwI0fopdanO8UIpgzYPYq0GlSavB`
-			// https://app.ticketmaster.com/discovery/v2/events?apikey=RW9cwwI0fopdanO8UIpgzYPYq0GlSavB&radius=100&locale=*&daterange=from20211030-to-20211106&city=brooklyn&segmentName=music
+			`https://app.ticketmaster.com/discovery/v2/events.json?&segmentName=film&apikey=${process.env.REACT_APP_API_KEY}`
+			// https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_API_KEY}&radius=100&locale=*&daterange=from20211030-to-20211106&city=brooklyn&segmentName=music
 		);
 
 		console.log(res);

@@ -26,14 +26,12 @@ const Nav = () => {
 				<Link className='nav-link' to='/'>
 					Home
 				</Link>
-				{/* <Link to='/map'>Map</Link> */}
-				<Link className='nav-link' to='/about'>
-					About
-				</Link>
 				<Link className='nav-link' to='/events'>
 					Events
 				</Link>
-				<Link to='/discover' className='nav-link'>Discover</Link>
+				<Link to='/discover' className='nav-link'>
+					Discover
+				</Link>
 				{localStorage.getItem('currentUser') ? (
 					<>
 						<Link className='nav-link' to='/dashboard'>
@@ -45,10 +43,17 @@ const Nav = () => {
 					</>
 				) : (
 					<>
-						<Link to='/login'>Login</Link>
-						<Link to='/signup'>Sign Up</Link>
+						<Link to='/login' className='nav-link'>
+							Login
+						</Link>
+						<Link to='/signup' className='nav-link'>
+							Sign Up
+						</Link>
 					</>
 				)}
+				<Link className='nav-link' to='/about'>
+					About
+				</Link>
 			</div>
 			<div className='hamburger' onClick={handleClick}>
 				<Hamburger />
@@ -56,7 +61,6 @@ const Nav = () => {
 					<Link className='nav-link' to='/'>
 						Home
 					</Link>
-					{/* <Link to='/map'>Map</Link> */}
 					<Link className='nav-link' to='/about'>
 						About
 					</Link>
