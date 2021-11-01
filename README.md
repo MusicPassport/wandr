@@ -16,7 +16,7 @@ Wandr is a social app allowing users to find new events in their area by either 
     - is a "control" center for a user that allows them an area to change their password, view an event calendar, and a timeline
 - Timeline
     - allows users to see a list of events that they have marked as attending and can use the calendar to filter events by date range
-Dark mode
+- Dark mode
     - website display will adjust according to the users visual settings 
 ## Visuals
 
