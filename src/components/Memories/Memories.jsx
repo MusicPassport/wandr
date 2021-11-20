@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { backendAPI} from '../../Utility/Config';
 import {DataContext} from '../../Utility/Context';
 import axios from 'axios';
+import DashNav from '../Dashboard/DashNav';
 
 import '../../css/Memories.css'
 
@@ -76,6 +77,7 @@ const Memories = ( { setCurrentMemory } ) => {
 
 return (
 	<div>
+		<DashNav />
 		<button className='backButton' onClick={() => history.goBack()}>←</button>
 		<div className='section-title'>
 			<h1>{memories.length ? 'Your Memories' : 'No memories yet'}</h1>
