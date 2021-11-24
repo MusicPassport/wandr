@@ -352,4 +352,17 @@ h2 {
   }
 }
 
+@media (max-width:800px) {
+  .memories {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 50vw;
+
+  }
+
+  .memory {
+    margin-left:50px;
+  }
+}
+
 /*# sourceMappingURL=Memories.css.map */
