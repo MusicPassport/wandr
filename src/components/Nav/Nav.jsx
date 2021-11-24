@@ -65,7 +65,7 @@ const Nav = () => {
 					<Link className='nav-link' to='/events'>
 						Events
 					</Link>
-					{/* {localStorage.getItem('currentUser') ? (
+					{localStorage.getItem('currentUser') ? (
 						<>
 							<Link className='nav-link' to='/dashboard'>
 								Dashboard
@@ -79,7 +79,7 @@ const Nav = () => {
 							<Link to='/login'>Login</Link>
 							<Link to='/signup'>Sign Up</Link>
 						</>
-					)} */}
+					)}
 				</div>
 			</div>
 		</header>
