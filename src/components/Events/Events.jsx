@@ -9,6 +9,7 @@ import video from '../../assets/Wandr Video.mp4'
 
 const Events = () => {
 	const { events, setEvents } = useContext(DataContext);
+	const API = 'RW9cwwI0fopdanO8UIpgzYPYq0GlSavB';
 
     const { searchInputs } = useContext(DataContext);
     const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +25,8 @@ const Events = () => {
     let classification= searchInputs.classificationName ? `&segment=${encodeURIComponent(searchInputs.classificationName) }` :"";
 
 
-     let url=`https://app.ticketmaster.com/discovery/v2/events.json?size=100&apikey=${process.env.REACT_APP_API_KEY}${keyword}${postalCode}${city}${state}${startDate}${endDate}${classification}`
+    //  let url=`https://app.ticketmaster.com/discovery/v2/events.json?size=100&apikey=${process.env.REACT_APP_API_KEY}${keyword}${postalCode}${city}${state}${startDate}${endDate}${classification}`
+     let url=`https://app.ticketmaster.com/discovery/v2/events.json?size=100&apikey=${API}`
 
 
 	const getEvents = async () => {
