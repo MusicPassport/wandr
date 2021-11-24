@@ -64,6 +64,8 @@
   text-align: left;
   animation-name: slidein;
   animation-duration: 3s;
+  display: flex;
+  flex-direction: row;
 }
 
 .timeline-link {
@@ -104,8 +106,16 @@
 }
 
 .timeline-box {
-  width: 55vw;
+  margin: 0 1em;
   background: rgba(0, 0, 0, 0.76);
+}
+
+#add-event {
+  z-index: 1;
+  background-color: #f5487f;
+  font-family: "Zen Kurenaido", sans-serif;
+  font-weight: 900;
+  font-size: larger;
 }
 
 @media (min-width: 600px) {
@@ -128,6 +138,12 @@
     display: flex;
     justify-content: space-between;
     height: 5rem;
+  }
+
+  .timeline-box {
+    width: 55vw;
+    grid-row: 2;
+    grid-column: 2;
   }
 }
 

@@ -4,6 +4,8 @@ import { backendAPI } from '../../Utility/Config';
 import { DataContext } from '../../Utility/Context.jsx';
 import { useHistory } from 'react-router';
 import '../../css/BucketList.css';
+import DashNav from '../Dashboard/DashNav';
+
 
 
 const BucketList = () => {
@@ -86,6 +88,7 @@ const BucketList = () => {
 
 	return (
 		<div>
+            <DashNav />
             <div className="topImageContainer">
                 <img className="topImage" src="https://wallpapermemory.com/uploads/223/hot-air-balloon-background-full-hd-1080p-478513.jpg" alt="" />
             </div>

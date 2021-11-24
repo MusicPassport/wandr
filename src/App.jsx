@@ -105,12 +105,28 @@ const App = () => {
 
 					<Route exact path='/seen' component={Seen} />
 					<Route exact path='/dashboard/settings' component={ResetPassword} />
-					<Route exact path='/dashboard/bucketlist' component={BucketList} />
+					{/* <Route exact path='/dashboard/bucketlist' component={BucketList} /> */}
+					<Route 
+						exact 
+						path= '/dashboard/bucketlist'
+						render={() => 
+								<BucketList 
+									dateRange={dateRange} 
+									setDateRange={setDateRange}
+								/>
+						}
+					/>
 			
 					<Route
 						exact
 						path='/dashboard/memories'
-						render={() => <Memories setCurrentMemory={setCurrentMemory} />}
+						render={() => 
+								<Memories 
+									setCurrentMemory={setCurrentMemory} 
+									dateRange={dateRange} 
+									setDateRange={setDateRange}
+								/>
+						}
 					/>
 					<Route
 						exact

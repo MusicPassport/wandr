@@ -10,9 +10,10 @@
 }
 .dash-nav {
   width: 100%;
-  padding: 1rem;
+  padding: 0.6rem;
   display: flex;
   justify-items: space-evenly;
+  text-align: center;
 }
 
 .dashboard-btn {
@@ -22,7 +23,7 @@
   border: none;
   background: none;
   color: #f5487f;
-  font-size: 1.5em;
+  font-size: 1em;
   text-decoration: none;
 }
 
@@ -32,6 +33,12 @@
   transition: 0.5s ease;
   -webkit-transition: 0.1s ease;
   cursor: pointer;
+}
+
+@media (min-width: 500px) {
+  .dashboard-btn {
+    font-size: 1.5em;
+  }
 }
 
 /*# sourceMappingURL=DashNav.css.map */
