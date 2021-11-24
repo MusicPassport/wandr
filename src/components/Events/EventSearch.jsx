@@ -85,7 +85,6 @@ const EventSearch = ({ isOpen , setIsOpen }) => {
     
 
         function handleChange(event) {
-            console.log(event)
             if(event.target){
 
                 setSearchInputs({ ...searchInputs, [event.target.id]: event.target.value });
@@ -96,7 +95,7 @@ const EventSearch = ({ isOpen , setIsOpen }) => {
 
 
     }
-    console.log(isOpen)
+
 
     function handleSubmit(event) {
         event.preventDefault();

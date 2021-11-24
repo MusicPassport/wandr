@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import {useHistory} from 'react-router-dom'
 
 const DiscoverDetail = ({ events }) => {
-    console.log("Events!", events)
 	let history = useHistory()
 
     if (!events) {
@@ -20,7 +19,7 @@ const DiscoverDetail = ({ events }) => {
 							<img className='details-image' src={event.images[0].url}></img>
 						</Link>
 						<div className='discover-title'>
-							<h2 className='discover-title'>{event.name}</h2>
+							<h5 className="discover-title">{event.name.length > 30 ? `${event.name.substring(0, 31).concat('...')}` : event.name }</h5>
 							<p>Starting: {event.dates.start.localDate}</p>
 						</div>
 					</div>

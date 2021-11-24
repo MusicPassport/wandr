@@ -52,19 +52,13 @@ function EventDetail() {
 		// send a request to update the user detail to include the current user in the events viewers
 		setSelect(true)
 		const auth = localStorage.getItem('auth');
-		console.log(event.target.id);
 		let target = event.target.id;
 		try {
 			const event = await axios.get(
 				`https://intense-island-04626.herokuapp.com/events/${id}`
 			);
 			setUpdateEvent({ ...event.data });
-			console.log('Updated Event:', {
-				...updateEvent,
-				target: [...target, parseInt(currentUser.id)],
-			});
 			if (event.status == 200) {
-				console.log('Updating Event!');
 				await axios.put(
 					`https://intense-island-04626.herokuapp.com/events/${id}`,
 					{ ...updateEvent, target: [...target, parseInt(currentUser.id)] },
@@ -79,11 +73,7 @@ function EventDetail() {
 			updateUser()
 
 		} catch (error) {
-			console.log(error);
-			console.log(event.target.id);
 			let newTarget = event.target.id;
-			console.log({ ...formatData(), [newTarget]: [currentUser.id] });
-			console.log('Not Found!');
 			const results = await axios.post(
 				`https://intense-island-04626.herokuapp.com/events/`,
 				{ ...formatData(), [newTarget]: [currentUser.id] },
@@ -94,7 +84,7 @@ function EventDetail() {
 				}
 			);
 			updateUser();
-			console.log('Results ', results);
+
 		}
 	};
 

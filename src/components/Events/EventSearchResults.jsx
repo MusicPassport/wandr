@@ -24,7 +24,7 @@ const EventSearchResults = () => {
      let url=`https://app.ticketmaster.com/discovery/v2/events.json?size=100&apikey=${process.env.REACT_APP_API_KEY}${keyword}${postalCode}${city}${state}${startDate}${endDate}${classification}`
 
 
-    console.log(url)
+  
     const getEvents = async () => {
         try {
             const result = await axios.get(url)

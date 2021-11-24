@@ -20,14 +20,9 @@ const Seen = () => {
 						Authorization: `Token  ${auth}`,
 					},
 				};
-        // send to back end
         let res = await axios.put(
 					`https://intense-island-04626.herokuapp.com/events/${id}`, newEvent, config
 				);
-
-        console.log(res)
-
-        // update user 
         updateUser()
     
     }

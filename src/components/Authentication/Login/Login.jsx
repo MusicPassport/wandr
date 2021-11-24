@@ -20,7 +20,6 @@ const Login = () => {
 				password: password,
 				email: email,
 			});
-			console.log(res);
 			const auth = res.data.auth_token;
 			localStorage.setItem('auth', auth);
 			await getUser(auth);
@@ -32,13 +31,11 @@ const Login = () => {
 	};
 
 	const getUser = async (auth) => {
-		console.log(localStorage.getItem('auth'));
 		const login = await axios.get(`${backendAPI}/users/me/`, {
 			headers: {
 				Authorization: `Token  ${auth}`,
 			},
 		});
-		console.log(login.data.id);
 		const getUserInfo = await axios.get(
 			`${backendAPI}/users/${login.data.id}/`,
 			{
@@ -47,11 +44,9 @@ const Login = () => {
 				},
 			}
 		);
-		console.log(getUserInfo);
 		localStorage.setItem('currentUser', JSON.stringify(getUserInfo.data));
 		setCurrentUser({ ...getUserInfo.data });
-		console.log(currentUser);
-	};
+		};
 
 	const captureEmail = (e) => {
 		setEmail(e.target.value);
