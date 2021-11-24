@@ -20,7 +20,7 @@ const Dashboard = ( { dateRange, setDateRange }) => {
         let thisDate = date;
 		let day = parseInt(thisDate[2]);
 		let month = thisDate[1];
-        let year = parseInt(thisDate[3]);
+        let year = parseInt(thisDate[3]); 
 		let months = [
 			'Jan',
 			'Feb',

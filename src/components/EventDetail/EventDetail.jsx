@@ -109,7 +109,7 @@ function EventDetail() {
 						Event Start Date: {eventDetail.dates.start.localDate}
 					</p>
 					<p className='start end'>
-						Sales End:{eventDetail.sales.public.endDateTime.substr(0, 10)}
+						{/* {eventDetail.sales.public.endDateTime ? Sales End:{eventDetail.sales.public.endDateTime.substr(0, 10)} : null} */}
 					</p>
 					<div className='detail-btns'>
 						<div>
