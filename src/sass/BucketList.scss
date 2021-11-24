@@ -47,7 +47,7 @@
 	font-family: 'Zen Kurenaido', sans-serif;
 
 	// background-color: rgb(238, 236, 236);
-}
+} 
 .bucketListTitle {
 	font-family: 'Raleway', sans-serif;
 	width: 90vw;
@@ -214,6 +214,71 @@
 	height: 300px;
 	object-fit: none;
 }
+@media (max-width: 600px) {
+	.BLPage{
+		padding: .25rem;
+	}
+	.topImageContainer{
+		height: 150px;
+		text-align: center;
+	}
+	.topImage{
+		height: 150px;
+	}
+
+	.bucketListTitle{
+		font-size: 24px;
+		
+	}
+	.bucket-event-list{
+		padding-top: 1rem;
+		width: 80vw;
+		
+	}
+	.blEvent{
+		max-width: 300px;
+		width: 70vw;
+		text-align: center;
+		margin: 0rem;
+		margin-top: 1.7rem;
+	}
+	.img-container{
+		width: 60vw;
+		max-width: 250px;
+		margin: 0rem auto;
+	}
+	.blImage{
+		// height: 100px;
+		width: 100%;
+	}
+	.blEventName{
+		font-size: 18px;
+	}
+}
+@media (prefers-color-scheme: dark) {
+	.blEvent:hover {
+		box-shadow: 8px 8px 8px $white-smoke;
+		color: $hot-pink;
+	}
+
+	.blEvent {
+		border-radius: 5px;
+		border: solid 3px $hot-pink;
+		// height: 550px;
+		// width: 300px;
+		// margin: 1rem 2rem;
+		// padding: 1rem;
+		// flex-grow: 1 0 33%;
+	}
+	.bucketButton {
+		background-color: $magenta;
+	}
+	.backButton,
+	.advancedSearchButton {
+		color: white;
+		border: 2px solid $deep-pink;
+	}
+}
 @media (min-width: 600px) {
 	.bucket-event-list {
 		/* how event list is displayed (itself) */
@@ -230,29 +295,5 @@
 			minmax(300px, 1fr)
 		); /* grid has a template for it's columns. the columns repeat at 300px */
 		gap: 2rem; /* place a gap between each child equal to 5 elemental units */
-	}
-}
-@media (prefers-color-scheme: dark) {
-	.blEvent:hover {
-		box-shadow: 8px 8px 8px $white-smoke;
-		color: $hot-pink;
-	}
-
-	.blEvent {
-		border-radius: 5px;
-		border: solid 3px $hot-pink;
-		height: 550px;
-		width: 300px;
-		margin: 1rem 2rem;
-		padding: 1rem;
-		flex-grow: 1 0 33%;
-	}
-	.bucketButton {
-		background-color: $magenta;
-	}
-	.backButton,
-	.advancedSearchButton {
-		color: white;
-		border: 2px solid $deep-pink;
 	}
 }

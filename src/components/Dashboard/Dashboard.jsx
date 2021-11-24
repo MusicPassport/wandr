@@ -5,7 +5,7 @@ import Timeline from '../Timeline/Timeline';
 import Calendar from '../Calendar/Calendar';
 
 const Dashboard = ( { dateRange, setDateRange }) => {
-    
+
     return (
         <>
         <div className="dashboard">
