@@ -1,153 +1,162 @@
-@import "../Variables";
+@import '../Variables';
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Kaushan+Script&family=Raleway:ital,wght@0,100;0,500;0,700;0,800;0,900;1,100;1,500;1,600;1,900&family=Satisfy&family=Seaweed+Script&family=Zen+Kurenaido&display=swap');
 
 @media (prefers-color-scheme: dark) {
-
-    .timeline {
-        color: $white-smoke;
-    }
+	.timeline {
+		color: $white-smoke;
+	}
 }
 
 .timeline {
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-y: auto;
+	max-width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow-y: auto;
 }
 
 .timeline::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 @keyframes slideup {
-   from {
-       margin-top: 100%;
-    }
-    to {
-      margin-top: 0;
-    }
+	from {
+		margin-top: 100%;
+	}
+	to {
+		margin-top: 0;
+	}
 }
 
 @-webkit-keyframes slideup {
-    from {
-       margin-top: 100%;
-    }
-    to {
-      margin-top: 0;
-    }
+	from {
+		margin-top: 100%;
+	}
+	to {
+		margin-top: 0;
+	}
 }
 
 @keyframes slidein {
-     from {
-       margin-left: 100%;
-    }
-    67% {
-        margin-left: -0.5%;
-    }
-    to {
-      margin-left: 0;
-    }
-
+	from {
+		margin-left: 100%;
+	}
+	67% {
+		margin-left: -0.5%;
+	}
+	to {
+		margin-left: 0;
+	}
 }
 
 @-webkit-keyframes slidein {
-     from {
-       margin-left: 100%;
-    }
-    67% {
-        margin-left: -0.5%;
-    }
-    to {
-      margin-left: 0;
-    }
-
+	from {
+		margin-left: 100%;
+	}
+	67% {
+		margin-left: -0.5%;
+	}
+	to {
+		margin-left: 0;
+	}
 }
 
 .timeline-title {
-    height: 100%;
-    width: 100%;
-    text-align: left;
+	height: 100%;
+	width: 100%;
+	text-align: left;
 
-    background: rgba( 0,0,0, 0.7);
+	background: rgba(0, 0, 0, 0.7);
 
-    font-family:'Dancing Script';
-    text-align: left;
+	font-family: 'Dancing Script';
+	text-align: left;
 
-    animation-name: slidein;
-    animation-duration: 3s;
+	animation-name: slidein;
+	animation-duration: 3s;
+
+	display: flex;
+	flex-direction: row;
 }
 
 .timeline-link {
+	border: solid black 1px;
+	margin: 0.5rem;
 
-    border: solid black 1px;
-    margin: .5rem;
+	padding: 0 1rem;
+	height: 250px;
+	width: 200px;
+	background-color: $white-smoke;
+	box-shadow: $box-shadow;
+	animation-name: slideup;
+	animation-duration: 4s;
 
-    padding: 0 1rem;
-    height: 250px;
-    width: 200px;
-    background-color: $white-smoke;
-    box-shadow: $box-shadow;
-    animation-name: slideup;
-    animation-duration: 4s;
+	align-self: center;
 
-    align-self: center;
-
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-
+	display: flex;
+	flex-direction: column;
+	text-decoration: none;
 }
 
 .timeline-link:hover {
-    transform: scale(1.05);
-    transition: ease 0.3s;
+	transform: scale(1.05);
+	transition: ease 0.3s;
 }
 
 .timeline-event-title {
-    margin-top: 1rem;
-    color: $deep-pink;
+	margin-top: 1rem;
+	color: $deep-pink;
 }
 
-.timeline-img{
-    border-radius: 0.4rem;
-
+.timeline-img {
+	border-radius: 0.4rem;
 }
 
 .timeline-date {
-    text-align: right;
-    font-size: 16px;
-    font-weight: 600;
-     color: $hot-pink;
+	text-align: right;
+	font-size: 16px;
+	font-weight: 600;
+	color: $hot-pink;
 }
-.timeline-box{
-    width: 55vw;
-    
-    background: rgba(0, 0, 0, 0.76);
+.timeline-box {
+	margin: 0 1em;
+	background: rgba(0, 0, 0, 0.76);
 }
 
-@media(min-width: 600px) {
-    .timeline {
-        height: 100vh;
+#add-event {
+	z-index: 1;
 
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-evenly;
-    
+	background-color: #f5487f;
+	font-family: 'Zen Kurenaido', sans-serif;
+	font-weight: 900;
+	font-size: larger;
+}
 
+@media (min-width: 600px) {
+	.timeline {
+		height: 100vh;
 
-    }
-    .timeline-title {
-        display: flex;
-        justify-content: space-apart;
-        color: rgba(245, 72, 127, 1);
-        border-bottom: 3px solid;
-        margin: 0 auto;
-        width: 50vw; 
-        font-family: 'Raleway', sans-serif;
-        margin: 5%;
-        display: flex;
-        justify-content: space-between;
-        height: 5rem;
-    }
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-evenly;
+	}
+	.timeline-title {
+		display: flex;
+		justify-content: space-apart;
+		color: rgba(245, 72, 127, 1);
+		border-bottom: 3px solid;
+		margin: 0 auto;
+		width: 50vw;
+		font-family: 'Raleway', sans-serif;
+		margin: 5%;
+		display: flex;
+		justify-content: space-between;
+		height: 5rem;
+	}
+
+	.timeline-box {
+		width: 55vw;
+
+		grid-row: 2;
+		grid-column: 2;
+	}
 }
