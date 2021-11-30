@@ -89,15 +89,15 @@ const Discover = () => {
 				{(locationEnabled) ? <>
 					<h2 className='discover-section-title'>In Your Area</h2>
 				<DiscoverDetail events={inYourArea} />
-				</> : null}		
-				<h2 className='discover-section-title'>Dive Into Something New</h2>
-				<DiscoverDetail events={misc} />
-				<h2 className='discover-section-title'>For Music Lovers</h2>
-				<DiscoverDetail events={music} />
+				</> : null}
 				<h2 className='discover-section-title'>For Cinephiles</h2>
 				<DiscoverDetail events={films} />
+				<h2 className='discover-section-title'>For Music Lovers</h2>
+				<DiscoverDetail events={music} />
 				<h2 className='discover-section-title'>For Sports Fans</h2>
 				<DiscoverDetail events={sports} />
+				<h2 className='discover-section-title'>Dive Into Something New</h2>
+				<DiscoverDetail events={misc} />
 			</div>
 		</div>
 	);
