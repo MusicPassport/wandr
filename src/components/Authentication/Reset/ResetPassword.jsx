@@ -13,6 +13,10 @@ const ResetPassword = () => {
     setUserInput({...userInput, [e.target.name]: e.target.value});
     }
 
+	const navToDash = () => {
+		history.push('/dashboard');
+	}
+
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -51,11 +55,11 @@ const ResetPassword = () => {
     return (
 			<>
 				<h2 className='auth-title'>Update Your Password</h2>
-				<div className='form-container reset-container'>
-					<form className='auth-form' onSubmit={handleSubmit}>
+					<form className="form-container" onSubmit={handleSubmit}>
 						<>
+						<div className="form-input-group">
 							<label htmlFor='current_password' className='auth-label'>
-								Current Password:{' '}
+								Old Password:{' '}
 							</label>
 							<input
 								name='current_password'
@@ -76,7 +80,7 @@ const ResetPassword = () => {
 							/>
 
 							<label htmlFor='re_new-password' className='auth-label'>
-								Confirm Password:{' '}
+								Confirm New Password:{' '}
 							</label>
 							<input
 								name='re_new_password'
@@ -85,22 +89,17 @@ const ResetPassword = () => {
 								placeholder='confirm new password'
 								onChange={handleChange}
 							/>
-
-
-							<div className='reset-btns'>
-								<button type='submit' className='btn signup-login'>
+							</div>
+							<div className='form-btns'>
+								<button className="form-submit-button" type='submit' >
 									Submit
 								</button>
-								<Link to='/dashboard/'>
-									{' '}
-									<button type='submit' className='btn signup-login'>
-										Cancel
-									</button>
-								</Link>
+								<button className="form-submit-button" onClick={navToDash}>
+									Cancel
+								</button>
 							</div>
 						</>
 					</form>
-				</div>
 			</>
 		);
 };

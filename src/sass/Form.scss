@@ -1,0 +1,61 @@
+@import '../_Variables.scss';
+
+.form-container {
+    height: fit-content;
+    width: 80%;
+    margin: 0 auto;
+
+    border-radius: 20px;
+    box-shadow: 15px 15px black;
+    background-image: linear-gradient(rgba(31, 48, 110, 1), rgba(245, 72, 127, 1));
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container * {
+  margin: 7px;
+  width: 70%;
+
+}
+
+.form-submit-button {
+    border-radius: $borderRadius;
+    height: 50px;
+    width: 150px;
+    color: $white-smoke;
+
+
+    background-color: $dark-gray;
+    font-family: 'Raleway', sans-serif;
+}
+
+.form-submit-button:hover {
+    color: $dark-gray;
+    background-color: $white-smoke-fade;
+}
+
+.form-input-group {
+    width: 300px;
+
+    display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+
+
+@media(min-width: 600px){
+    .form-container {
+        width:90vw;
+        margin: 50px auto;
+        
+        justify-content: start;
+        align-items: center;
+    }
+
+    .form-input {
+        width: 300px;
+    }
+}

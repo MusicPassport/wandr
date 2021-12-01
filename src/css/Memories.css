@@ -286,7 +286,7 @@ h2 {
     border-radius: 5px;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .memory-options {
     display: flex;
     justify-content: space-between;
@@ -349,19 +349,6 @@ h2 {
 
   .memory-title {
     color: #f5487f;
-  }
-}
-
-@media (max-width:800px) {
-  .memories {
-  display: grid;
-  grid-template-columns: 1fr;
-  width: 50vw;
-
-  }
-
-  .memory {
-    margin-left:50px;
   }
 }
 

@@ -9,21 +9,15 @@
   text-decoration: none;
 }
 
-.img-container-D {
-  width: 100%;
-}
-
-.image-D {
+.img-container-D,
+.image-D,
+.video-D {
   width: 100%;
 }
 
 .movie-D {
   width: 100vw;
   height: fit-content;
-}
-
-.video-D {
-  width: 100%;
 }
 
 @media (min-width: 600px) {

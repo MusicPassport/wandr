@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useContext } from 'react';
 import { DataContext } from '../../Utility/Context.jsx';
 import '../../css/Create.css';
+import '../../css/Form.css';
 import { useHistory } from 'react-router-dom';
 
 const Create = () => {
@@ -99,94 +100,86 @@ const  createID = (length=8) => {
 				</button>
 				<h2 className='auth-title'>Create A New Event</h2>
 
-				<div className='form-container signup-form create-container'>
 					<form
-						className='auth-form create-container'
+						className='form-container'
 						onSubmit={handleSubmit}
 						onChange={handleChange}>
-						<div className='right'>
-							<div className='input-group'>
+							<div className='form-input-group'>
 								<label className='auth-label' htmlFor='event-name'>
 									Event Name:
 								</label>
 								<input
 									id='name'
-									className='auth-input signUp'
+									className='form-input signUp'
 									placeholder='event name'
 								/>
 							</div>
-							<div className='input-group'>
+							<div className='form-input-group'>
 								<label className='auth-label' htmlFor='genre'>
 									Genre:
 								</label>
 								<input
 									id='genre'
-									className='auth-input signUp '
+									className='form-input signUp '
 									placeholder='genre'
 								/>
 							</div>
-							<div className='input-group'>
+							<div className='form-input-group'>
 								<label className='auth-label' htmlFor='address'>
 									Address:
 								</label>
 								<input
 									id='address'
-									className='auth-input signUp reset'
+									className='form-input signUp reset'
 									placeholder='address'
 								/>
 							</div>
-							<div className='input-group'>
+							<div className='form-input-group'>
 								<label className='auth-label' htmlFor='city'>
 									City:
 								</label>
 								<input
 									id='city'
-									className='auth-input signUp reset'
+									className='form-input signUp reset'
 									placeholder='city'
 								/>
 							</div>
-						</div>
-						<div className='left'>
-							<div className='input-group'>
+							<div className='form-input-group'>
 								<label className='auth-label' htmlFor='state'>
 									State:
 								</label>
 								<input
 									id='state'
-									className='auth-input signUp reset'
+									className='form-input signUp reset'
 									placeholder='state'
 								/>
 							</div>
-							<div className='input-group'>
+							<div className='form-input-group'>
 								<label className='auth-label' htmlFor='image url'>
 									Image URL:
 								</label>
 								<input
 									id='img_url'
-									className='auth-input signUp reset'
+									className='form-input signUp reset'
 									placeholder='image url'
 								/>
 							</div>
-							<div className='input-group'>
+							<div className='form-input-group'>
 								<label className='auth-label' htmlFor='start-time'>
 									Start Date:
 								</label>
 								<input
 									id='start'
-									className='auth-input signUp'
+									className='form-input signUp'
 									placeholder='start date'
 								/>
 							</div>
-							<div className='create-btn'>
-								<button
-									type='submit'
-									className='btn signup-login create-button'>
-									Submit
-								</button>
-							</div>
-						</div>
+							<button
+								type='submit'
+								className=' form-submit-button'>
+								Submit
+							</button>
 					</form>
-				</div>
 			</div>
 		);
 };

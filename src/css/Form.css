@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Kaushan+Script&family=Raleway:ital,wght@0,100;0,500;0,700;0,800;0,900;1,100;1,500;1,600;1,900&family=Satisfy&family=Seaweed+Script&family=Zen+Kurenaido&display=swap");
+.form-container {
+  height: fit-content;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 20px;
+  box-shadow: 15px 15px black;
+  background-image: linear-gradient(#1f306e, #f5487f);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container * {
+  margin: 7px;
+  width: 70%;
+}
+
+.form-submit-button {
+  border-radius: 10px;
+  height: 50px;
+  width: 150px;
+  color: whitesmoke;
+  background-color: #171717;
+  font-family: "Raleway", sans-serif;
+}
+
+.form-submit-button:hover {
+  color: #171717;
+  background-color: rgba(245, 245, 245, 0.2);
+}
+
+.form-input-group {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 600px) {
+  .form-container {
+    width: 90vw;
+    margin: 50px auto;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .form-input {
+    width: 300px;
+  }
+}
+
+/*# sourceMappingURL=Form.css.map */

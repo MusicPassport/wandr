@@ -6,6 +6,7 @@ import axios from 'axios';
 import DashNav from '../Dashboard/DashNav';
 
 import '../../css/Memories.css'
+import '../../css/Form.css';
 
 const Memories = ( { setCurrentMemory } ) => {
     const {currentUser, updateUser} = useContext(DataContext);
@@ -86,14 +87,15 @@ return (
 			</button>
 		</div>
 		{addMem && (
-			<form className='memory-form' onSubmit={handleSubmit}>
+			<form className='form-container' onSubmit={handleSubmit}>
+				<div className="form-input-group">
 				<input
 					id='title'
 					type='text'
 					name='title'
 					value={userInput.title}
 					onChange={handleChange}
-					className='form-title'
+					className='form-input'
 					placeholder='title'
 				/>
 				<textarea
@@ -105,7 +107,10 @@ return (
 					className='form-input'
 					placeholder='Write something unforgettable'
 				/>
+				</div>
+				<div className="form-input-group">
 				<select
+					className="form-select"
 					id='event'
 					name='event'
 					defaultValue={null}
@@ -130,15 +135,16 @@ return (
 					type='file'
 					id='photo'
 					name='photo'
-					className='btn form-btn'
+					className='form-input'
 					placeholder='choose image'
 					onChange={fileChange}
 				/>
+				</div>
 				<div className='form-btns'>
-					<button className='btn form-btn submit' type='submit'>
+					<button className='form-submit-button' type='submit'>
 						Submit
 					</button>
-					<button className='btn form-btn cancel' onClick={toggleMem}>
+					<button className='form-submit-button' onClick={toggleMem}>
 						Cancel
 					</button>
 				</div>
